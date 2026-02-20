@@ -11,22 +11,22 @@ const features = [
     {
         title: 'Place qualified tenants quickly',
         description: 'Streamlined screening + leasing workflow built for speed.',
-        icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 40 40" class="w-10 h-10"><circle cx="20" cy="14" r="6"/><path stroke-linecap="round" stroke-linejoin="round" d="M8 34c0-6.627 5.373-12 12-12s12 5.373 12 12"/><path stroke-linecap="round" d="M28 10l2 2 4-4"/></svg>`,
+        icon: `/assets/Thunder, Lightning, Notifications.png`,
     },
     {
         title: 'Automate rent collection and accounting',
         description: 'Receive, log, and reconcile receipts, and see any report to management.',
-        icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 40 40" class="w-10 h-10"><rect x="8" y="10" width="24" height="20" rx="2"/><path stroke-linecap="round" d="M14 20h12M14 25h8"/><circle cx="20" cy="16" r="3"/></svg>`,
+        icon: `/assets/science-rotate.png`,
     },
     {
         title: 'Manage the lease effortlessly from signing to renewals',
         description: 'Digital signatures, renewals and referral easily.',
-        icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 40 40" class="w-10 h-10"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8h16a2 2 0 012 2v20a2 2 0 01-2 2H12a2 2 0 01-2-2V10a2 2 0 012-2z"/><path stroke-linecap="round" d="M15 16h10M15 21h7M15 26h5"/><path stroke-linecap="round" d="M25 14l3 3-6 6"/></svg>`,
+        icon: `/assets/documet-edit-pen.png`,
     },
     {
         title: 'Access fast, reliable repair coordination, day or night',
         description: 'Get real-time coordination with local repair support.',
-        icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 40 40" class="w-10 h-10"><path stroke-linecap="round" stroke-linejoin="round" d="M28 12a8 8 0 00-11.31 11.31l-8 8 2.83 2.83 8-8A8 8 0 0028 12z"/><path stroke-linecap="round" d="M24 16l-4 4"/></svg>`,
+        icon: `/assets/Tools, Settings.png`,
     },
 ]
 
@@ -88,7 +88,6 @@ const listings = [
                 <div
                     class="max-w-[1440px] mx-auto pl-[106px] pr-[108px] flex items-center justify-between font-figtree h-auto">
                     <NuxtLink to="/" class="flex items-center gap-2">
-                        <!-- House icon matching design -->
                         <span class="w-6 h-6 flex items-center justify-center">
                             <svg width="24" height="24" viewBox="0 0 20 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -113,10 +112,10 @@ const listings = [
                     </div>
 
                     <!-- CTA -->
-                    <a href="#"
+                    <NuxtLink to="/signin"
                         class="flex items-center justify-center w-[92px] h-10 border border-[#004CE5] text-[#004CE5] text-[12px] font-extrabold leading-none tracking-[-0.02em] uppercase rounded-[80px]">
                         Sign In
-                    </a>
+                    </NuxtLink>
                 </div>
             </nav>
 
@@ -165,8 +164,6 @@ const listings = [
 
                 <!-- Right — Dashboard card -->
                 <div class="relative flex-shrink-0" style="width:520px; height:480px;">
-
-                    <!-- White dashboard card -->
                     <div class="absolute top-0 right-[73px] bg-primary rounded-[32px] pt-[28px] pb-10"
                         style="width:520px; height:426px; box-shadow: 0px 0px 40px -20px #0F1B3333;">
 
@@ -226,7 +223,6 @@ const listings = [
                         </div>
                     </div>
 
-                    <!-- 3D house image — overlaps bottom-right of card -->
                     <div class="absolute top-[247px] right-0 rounded-[32px] overflow-hidden"
                         style="width:288px; height:260px;">
                         <NuxtImg src="/assets/hero-image.jpg" alt="3D isometric house"
@@ -238,36 +234,39 @@ const listings = [
         </section>
 
         <!-- ─── FEATURES ───────────────────────────────────────────────────── -->
-        <section class="bg-white px-[108px] py-20">
+        <section class="bg-white px-6 md:px-[108px] py-12 md:py-20">
             <div class="max-w-[1440px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div v-for="feat in features" :key="feat.title"
-                    class="h-[440px] py-[28px] px-8 border border-[#0F111426] rounded-3xl group">
+                    class="relative h-auto min-h-[400px] md:h-[440px] py-[28px] px-8 border border-[#0F111426] rounded-3xl group">
                     <h3 class="text-2xl font-bold text-[#00091A] leading-7 mb-[13px]">{{ feat.title }}</h3>
                     <p class="text-base text-[#0F1114CC] leading-5">{{ feat.description }}</p>
+                    <div class="absolute bottom-[21px] right-[14px] h-[102px] w-[102px]">
+                        <NuxtImg :src="feat.icon" alt="Feature icon" class="w-full h-full object-cover" />
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- ─── HOW IT GOES ────────────────────────────────────────────────── -->
-        <section class="bg-hero-radial px-[108px] py-[84px]">
-            <div class="max-w-[1440px] mx-auto flex justify-between">
-                <!-- Steps -->
-                <div class="border-t border-b border-[#0F11141A] w-[600px]">
+        <section class="bg-hero-radial px-6 py-12 md:px-[108px] md:py-[84px]">
+            <div class="max-w-[1440px] mx-auto flex flex-col-reverse lg:flex-row justify-between gap-12 lg:gap-[100px]">
+                <div class="border-t border-b border-[#0F11141A] w-full lg:w-[600px]">
                     <div v-for="(step, i) in steps" :key="i" class="flex gap-5 pt-12">
                         <span
-                            class="text-xl leading-[100%] font-bold flex items-center justify-center h-12 w-12 border border-[#0F11141A] rounded-full text-[#00091A]">{{
+                            class="text-xl leading-[100%] font-bold p-3 flex items-center justify-center h-12 w-12 border border-[#0F11141A] rounded-full text-[#00091A] shrink-0">{{
                                 i + 1 }}</span>
-                        <div class="border-b border-[#0F11141A] pb-11 w-full">
+                        <div class="border-b border-[#0F11141A] pb-11 w-full"
+                            :class="{ 'border-b-0': i === steps.length - 1 }">
                             <h4 class="text-2xl leading-7 font-bold text-[#00091A] mb-[5px]">{{ step.title }}</h4>
                             <p class="text-base leading-5 text-[#0F1114CC]">{{ step.description }}</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right copy -->
-                <div class="pt-[33px] w-[520px]">
-                    <h2 class="text-[64px] leading-[64px] font-semibold text-[#00091A] mb-[15px]">How it goes</h2>
-                    <p class="text-xl leading-7 text-[#0F1114CC] mb-[78px]">
+                <div class="pt-0 lg:pt-[33px] w-full lg:w-[520px]">
+                    <h2 class="text-4xl md:text-[64px] md:leading-[64px] font-semibold text-[#00091A] mb-[15px]">How it
+                        goes</h2>
+                    <p class="text-xl leading-7 text-[#0F1114CC] mb-8 md:mb-[78px]">
                         A simple loop that keeps your property running smoothly.
                     </p>
 
@@ -275,9 +274,15 @@ const listings = [
                     <p class="text-base leading-5 text-[#0F1114CC] font-normal mb-9">Use Gable as software-only, or
                         combine it with management services depending on your needs.</p>
 
-                    <button class="w-12 h-12 rounded-full bg-[#004CE51A] flex items-center justify-center">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    <button
+                        class="w-12 h-12 rounded-full bg-[#004CE51A] text-[#004CE5] flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M5 12l14 0" />
+                            <path d="M15 16l4 -4" />
+                            <path d="M15 8l4 4" />
                         </svg>
                     </button>
                 </div>
@@ -285,34 +290,34 @@ const listings = [
         </section>
 
         <!-- ─── EXPLORE LISTINGS ───────────────────────────────────────────── -->
-        <section class="bg-primary pt-[66px] px-[108px]">
+        <section class="bg-primary px-6 md:px-[108px] pt-12 md:pt-[66px] mb-12 md:mb-[102px]">
             <div class="max-w-[1440px] mx-auto">
-                <h2 class="text-[64px] leading-[64px] font-semibold text-[#00091A] mb-[59px] text-center">
+                <h2
+                    class="text-4xl md:text-[64px] md:leading-[64px] font-semibold text-[#00091A] mb-8 md:mb-[59px] text-center">
                     Explore <span class="font-playfair italic font-normal">Listings</span>
                 </h2>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-[25px]">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-[25px]">
                     <div v-for="listing in listings" :key="listing.address" class="overflow-hidden group">
                         <div class="h-[288px] rounded-[24px] border border-[#0F111426] overflow-hidden mb-[18px]">
                             <NuxtImg :src="listing.Image" alt="3D isometric house" class="w-full h-full object-cover" />
                         </div>
-                        <div class="p-4">
+                        <div class="p-4 md:p-0">
                             <p class="text-2xl leading-[100%] font-extrabold text-[#00091A] mb-[7px]">
                                 {{ listing.price }}
                             </p>
                             <p class="text-base font-medium leading-[100%] text-[#0F1114CC] mb-[7px]">
                                 {{ listing.address }}</p>
                             <p class="text-xl leading-[100%] text-[#00091A] font-bold mb-[19px]">{{ listing.type }}</p>
-                            <div class="flex items-center h-6 text-sx text-[#00091A] mb-6">
-                                <span>📐 <span class="text-[14px] leading-[100%] pr-4">
+                            <div class="flex items-center flex-wrap h-auto text-sx text-[#00091A] mb-6 gap-y-2">
+                                <span class="flex items-center">📐 <span class="text-[14px] leading-[100%] pr-4">
                                         {{ listing.sqft }}
                                         sqft </span></span>
-                                <span class="border-r border-l border-[#0F111466] pr-4 pl-[17px]">🛏 <span
+                                <span class="border-r border-l border-[#0F111466] pr-4 pl-4 flex items-center">🛏 <span
                                         class="text-[14px] leading-[100%]"> {{ listing.beds }}
                                         Bedrooms </span></span>
-                                <span class=" pl-[17px]">🚿 <span class="text-[14px] leading-[100%]"> {{ listing.baths
-                                }}
-                                        Bathrooms </span></span>
+                                <span class="pl-4 flex items-center">🚿 <span class="text-[14px] leading-[100%]">
+                                        {{ listing.baths }} Bathrooms </span></span>
                             </div>
                             <button
                                 class="w-full h-[50px] text-[14px] font-extrabold text-[#00091A] border border-[#0F111433] rounded-[80px] leading-[100%] uppercase tracking-[-2%]">
@@ -325,109 +330,140 @@ const listings = [
         </section>
 
         <!-- ─── CTA BANNER ─────────────────────────────────────────────────── -->
-        <section class="bg-gradient-radial h-[536px] px-[108px]">
-            <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
-                <div class="rounded-3xl overflow-hidden grid lg:grid-cols-2 bg-white shadow-lg min-h-[240px]">
-                    <!-- Left copy -->
-                    <div class="p-10 lg:p-14 flex flex-col justify-center">
-                        <h2 class="text-4xl font-bold text-gray-900 leading-tight mb-3">
-                            Ready to<br />
-                            <span class="font-playfair italic">get started?</span>
+        <section class="bg-gradient-radial px-6 md:px-[108px] mb-12 md:mb-16">
+            <div class="max-w-[1440px] mx-auto">
+                <div class="rounded-[32px] overflow-hidden flex flex-col lg:flex-row min-h-[400px] lg:h-[536px]"
+                    style="background: radial-gradient(55.56% 100% at 50% 0%, #FFFFFF 0%, #EDF3FA 100%);">
+
+                    <div class="flex-1 px-8 py-12 lg:py-0 lg:pl-20 flex flex-col justify-center h-full">
+                        <h2
+                            class="text-4xl md:text-[64px] md:leading-[64px] font-semibold text-[#00091A] mb-6 md:mb-[30px]">
+                            Ready to
+                            <span class="font-playfair inline-block font-normal italic">get started?</span>
                         </h2>
-                        <p class="text-sm text-gray-500 leading-relaxed mb-8 max-w-xs">
+                        <p class="text-base leading-5 text-[#0F1114CC] mb-9">
                             Go immediately to your property dashboard.
                         </p>
-                        <a href="#"
-                            class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-6 py-3 rounded-full w-fit transition-colors shadow">
+                        <button class="pl-8 pr-[27px] inline-flex items-center h-[50px] gap-3 text-primary text-[14px] font-extrabold uppercase tracking-[-2%] leading-[100%] rounded-[80px] w-fit transition-colors shadow
+                            " style="background: linear-gradient(225.01deg, #3388FF 0%, #004CE6 100%);">
                             Get Started Now
-                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M5 12l14 0" />
+                                <path d="M15 16l4 -4" />
+                                <path d="M15 8l4 4" />
                             </svg>
-                        </a>
+                        </button>
                     </div>
-                    <!-- Right image -->
-                    <div class="hidden lg:block bg-gradient-to-br from-sky-200 to-blue-400 relative">
-                        <NuxtImg src="/assets/footer.png" class="w-full h-full" />
+
+                    <div
+                        class="hidden lg:flex flex-shrink-0 w-[704px] h-full rounded-tr-[32px] rounded-br-[32px] overflow-hidden">
+                        <NuxtImg src="/assets/footer.png" class="w-full h-full object-cover" />
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ─── FOOTER ─────────────────────────────────────────────────────── -->
-        <footer class="bg-white border-t border-gray-100 py-12">
-            <div class="max-w-[1440px] mx-auto px-6 lg:px-12 grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+        <footer class="bg-hero-radial px-[108px] pt-[59px] pb-[132px]">
+            <div class="max-w-[1440px] mx-auto flex justify-between">
                 <!-- Brand -->
                 <div class="col-span-2 md:col-span-1">
-                    <a href="#" class="flex items-center gap-1.5 mb-4">
-                        <span class="w-6 h-6 rounded-md bg-blue-600 flex items-center justify-center">
-                            <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
-                                <path d="M7 1L13 5V13H9V9H5V13H1V5L7 1Z" fill="white" />
+                    <NuxtLink to="/" class="flex items-center text-[#00091A] gap-[5px] mb-[13px]">
+                        <span class="w-6 h-6 flex items-center justify-center">
+                            <svg width="24" height="24" viewBox="0 0 20 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10 2L3 8V18H8V13.5C8 12.119 8.895 11 10 11C11.105 11 12 12.119 12 13.5V18H17V8L10 2Z"
+                                    fill="#00091A" />
+                                <path d="M8 18V13.5C8 12.119 8.895 11 10 11C11.105 11 12 12.119 12 13.5V18"
+                                    fill="#00091A" />
                             </svg>
                         </span>
-                        <span class="text-gray-900 font-bold text-sm">Gable</span>
-                    </a>
-                    <p class="text-[11px] text-gray-400 leading-relaxed max-w-[200px]">
-                        Leasing tools, property managers can use to find and manage tenants—as a growing or as an
-                        individual investor.
+                        <span class="font-extrabold text-2xl leading-[100%] tracking-[-2%]">Gable</span>
+                    </NuxtLink>
+                    <p class="text-[14px] leading-5 text-[#0F1114CC] max-w-[288px] mb-[27px]">
+                        Gable helps landlords, property managers, tenants, and service pros work together in one clean
+                        system — so leasing, rent, maintenance, and documentation stay organized from day one.
                     </p>
                     <div class="flex items-center gap-3 mt-5">
-                        <a href="#"
-                            class="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-blue-100 hover:text-blue-600 transition-colors text-xs">in</a>
-                        <a href="#"
-                            class="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-blue-100 hover:text-blue-600 transition-colors text-xs">f</a>
-                        <a href="#"
-                            class="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-blue-100 hover:text-blue-600 transition-colors text-xs">X</a>
+                        <NuxtLink to="#" class="w-10 h-10 rounded-full bg-[#00091A] text-primary p-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-brand-instagram">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path
+                                    d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4l0 -8" />
+                                <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                                <path d="M16.5 7.5v.01" />
+                            </svg>
+                        </NuxtLink>
+                        <NuxtLink to="#" class="w-10 h-10 rounded-full bg-[#00091A] text-primary p-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-brand-facebook">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
+                            </svg>
+                        </NuxtLink>
+                        <NuxtLink to="#" class="w-10 h-10 rounded-full bg-[#00091A] text-primary p-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-brand-x">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M4 4l11.733 16h4.267l-11.733 -16l-4.267 0" />
+                                <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+                            </svg>
+                        </NuxtLink>
                     </div>
                 </div>
 
-                <!-- Company -->
-                <div>
-                    <p class="text-xs font-bold text-gray-800 mb-4">Company</p>
-                    <ul class="space-y-2.5">
-                        <li v-for="link in ['About Us', 'Contact Us', 'Careers', 'Blog']" :key="link">
-                            <a href="#" class="text-xs text-gray-500 hover:text-blue-600 transition-colors">{{ link
-                                }}</a>
-                        </li>
-                    </ul>
-                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-[112px] mb-10">
+                    <div class="gap-y-[9px] text-[#00091A]">
+                        <p class="text-base leading-5 font-bold">Company</p>
+                        <ul>
+                            <li v-for="link in ['About Us', 'Contact Us', 'Blog']" :key="link">
+                                <NuxtLink to="#" class="text-[14px] leading-[100%]">
+                                    {{ link }}</NuxtLink>
+                            </li>
+                        </ul>
+                    </div>
 
-                <!-- Type of user -->
-                <div>
-                    <p class="text-xs font-bold text-gray-800 mb-4">Type of User</p>
-                    <ul class="space-y-2.5">
-                        <li v-for="link in ['Landlords', 'Tenant', 'Service Pros']" :key="link">
-                            <a href="#" class="text-xs text-gray-500 hover:text-blue-600 transition-colors">{{ link
-                                }}</a>
-                        </li>
-                    </ul>
-                </div>
+                    <div class="gap-y-[9px] text-[#00091A]">
+                        <p class="text-base leading-5 font-bold">Type of User</p>
+                        <ul>
+                            <li v-for="link in ['Landlords', 'Tenant', 'Service Pros']" :key="link">
+                                <NuxtLink to="#" class="text-[14px] leading-[100%]">
+                                    {{ link }}</NuxtLink>
+                            </li>
+                        </ul>
+                    </div>
 
-                <!-- Dashboard + Legal -->
-                <div class="space-y-6">
-                    <div>
-                        <p class="text-xs font-bold text-gray-800 mb-4">Dashboard</p>
-                        <ul class="space-y-2.5">
+                    <div class="gap-y-[9px] text-[#00091A]">
+                        <p class="text-base leading-5 font-bold">Dashboard</p>
+                        <ul>
                             <li v-for="link in ['Landlord', 'Tenant', 'Pro']" :key="link">
-                                <a href="#" class="text-xs text-gray-500 hover:text-blue-600 transition-colors">{{ link
-                                    }}</a>
+                                <NuxtLink to="#" class="text-[14px] leading-[100%]">
+                                    {{ link }}</NuxtLink>
                             </li>
                         </ul>
                     </div>
-                    <div>
-                        <p class="text-xs font-bold text-gray-800 mb-4">Legal</p>
-                        <ul class="space-y-2.5">
+                    <div class="gap-y-[9px] text-[#00091A]">
+                        <p class="text-base leading-5 font-bold">Legal</p>
+                        <ul>
                             <li v-for="link in ['Terms & Conditions', 'Privacy Policy']" :key="link">
-                                <a href="#" class="text-xs text-gray-500 hover:text-blue-600 transition-colors">{{ link
-                                    }}</a>
+                                <NuxtLink to="#" class="text-[14px] leading-[100%]">
+                                    {{ link }}</NuxtLink>
                             </li>
                         </ul>
                     </div>
                 </div>
-            </div>
-
-            <div
-                class="max-w-[1440px] mx-auto px-6 lg:px-12 border-t border-gray-100 pt-6 text-[10px] text-gray-400 text-center">
-                © {{ new Date().getFullYear() }} Gable. All rights reserved.
             </div>
         </footer>
 
