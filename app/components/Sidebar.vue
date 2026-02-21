@@ -1,6 +1,10 @@
 <script setup>
 
-const activeNav = ref('Dashboard')
+const route = useRoute()
+const activeNav = computed(() => {
+    const item = navItems.find(item => item.to === route.path)
+    return item ? item.label : 'Dashboard'
+})
 
 const svg = (body) =>
     `<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${body}</svg>`
@@ -13,7 +17,7 @@ const navItems = [
     },
     {
         label: 'Portfolio',
-        to: '/dashboard',
+        to: '/portfolio',
         icon: svg('<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>'),
     },
     {
@@ -82,7 +86,7 @@ const navItems = [
                 class="h-[42px] flex items-center gap-3 px-4 py-[11px] rounded-[80px] text-[14px] leading-[100%]"
                 :class="item.label === activeNav
                     ? 'text-primary font-bold bg-[linear-gradient(225.01deg,_#3388FF_0%,_#004CE6_100%)] shadow-[0px_4px_8px_-2px_#004CE580]'
-                    : 'text-[#0F1114] font-medium'" @click="activeNav = item.label">
+                    : 'text-[#0F1114] font-medium'">
                 <span class="h-5 w-5" v-html="item.icon" />
                 <span>{{ item.label }}</span>
             </NuxtLink>

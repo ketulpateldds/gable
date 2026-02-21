@@ -111,7 +111,7 @@ const properties = [
 
                     <div class="grid grid-cols-4 gap-4">
                         <div v-for="property in properties" :key="property.address"
-                            class="w-[272px] h-[338px] border border-[#0F11141A] rounded-[24px] flex flex-col">
+                            class="min-w-[272px] h-[338px] border border-[#0F11141A] rounded-[24px] flex flex-col">
                             <div class="relative h-[160px]  shrink-0">
                                 <NuxtImg :src="property.img" :alt="property.address"
                                     class="w-full h-full object-cover rounded-t-[24px]" />
