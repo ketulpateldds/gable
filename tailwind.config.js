@@ -12,6 +12,7 @@ module.exports = {
         "main-container": "1440px",
       },
       fontFamily: {
+        sans: ["Figtree", "sans-serif"],
         figtree: ["Figtree", "sans-serif"],
         playfair: ['"Playfair Display"', "serif"],
       },

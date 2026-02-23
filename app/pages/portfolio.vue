@@ -107,7 +107,7 @@ const activeFilter = ref('ALL')
                             Import
                         </button>
 
-                        <button
+                        <button @click="navigateTo('/add-property')"
                             class="h-10 px-[18px] py-3 rounded-[80px] text-[12px] font-extrabold text-primary flex items-center gap-[10px]"
                             style="background: linear-gradient(225.01deg, #3388FF 0%, #004CE6 100%);">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
