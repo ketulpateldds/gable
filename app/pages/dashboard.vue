@@ -44,20 +44,20 @@ const properties = [
 
         <Sidebar />
 
-        <div class="flex-1 ml-64 flex flex-col min-h-screen">
+        <div class="flex-1 lg:ml-64 flex flex-col min-h-screen transition-all duration-300">
             <Navbar />
 
             <main class="flex-1 px-6 py-[19px]">
 
                 <h1 class="text-xl font-bold text-[#0F1114] leading-[100%] mb-[19px]">Dashboard</h1>
 
-                <div class="grid grid-cols-3 xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 mb-[27px]">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-[27px]">
 
                     <div
                         class="rounded-3xl h-[200px] border border-[#0F11141A] shadow-sm flex overflow-hidden min-h-[130px]">
                         <NuxtImg src="/assets/dashboard/dashboard1.png" alt="Properties"
-                            class="w-40 h-full object-cover shrink-0" />
-                        <div class="flex flex-col justify-between px-6 pt-[18px] pb-6">
+                            class="w-32 sm:w-36 xl:w-40 h-full object-cover shrink-0" />
+                        <div class="flex flex-col justify-between px-5 xl:px-6 pt-[18px] pb-6">
                             <div class="flex-1">
                                 <h3 class="text-xl font-bold text-[#0F1114] leading-7 mb-[1px]">Properties</h3>
                                 <p class="text-[14px] text-[#0F111466] leading-[18px]">View and manage your
@@ -74,8 +74,8 @@ const properties = [
                     <div
                         class="rounded-3xl h-[200px] border border-[#0F11141A] shadow-sm flex overflow-hidden min-h-[130px]">
                         <NuxtImg src="/assets/dashboard/dashboard2.png" alt="Properties"
-                            class="w-40 h-full object-cover shrink-0" />
-                        <div class="flex flex-col justify-between px-6 pt-[18px] pb-6">
+                            class="w-32 sm:w-36 xl:w-40 h-full object-cover shrink-0" />
+                        <div class="flex flex-col justify-between px-5 xl:px-6 pt-[18px] pb-6">
                             <div class="flex-1">
                                 <h3 class="text-xl font-bold text-[#0F1114] leading-7 mb-[1px]">Tenants</h3>
                                 <p class="text-[14px] text-[#0F111466] leading-[18px]">Active renters and
@@ -109,7 +109,7 @@ const properties = [
                 <section>
                     <h2 class="text-xl font-bold leading-[100%] text-[#0F1114] mb-[19px]">🔥 Hot Properties</h2>
 
-                    <div class="grid grid-cols-4 gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                         <div v-for="property in properties" :key="property.address"
                             class="min-w-[272px] h-[338px] border border-[#0F11141A] rounded-[24px] flex flex-col">
                             <div class="relative h-[160px]  shrink-0">

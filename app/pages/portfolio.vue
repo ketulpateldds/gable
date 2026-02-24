@@ -81,16 +81,16 @@ const activeFilter = ref('ALL')
     <div class="flex min-h-screen bg-primary">
         <Sidebar aria-label="Sidebar Navigation" />
 
-        <div class="flex-1 ml-64 flex flex-col min-h-screen">
+        <div class="flex-1 lg:ml-64 flex flex-col min-h-screen">
             <Navbar />
 
-            <main class="relative flex-1 px-6 pt-[19px] pb-12">
+            <main class="relative flex-1 px-4 sm:px-6 pt-[19px] pb-12">
 
-                <div class="flex items-center justify-between mb-[19px]">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-[26px] sm:mb-[19px]">
                     <h1 class="text-xl font-bold text-[#0F1114] leading-[100%]">Portfolio</h1>
 
-                    <div class="absolute right-6 top-[11px] flex items-center gap-2">
-                        <div class="relative w-[344px]">
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+                        <div class="relative w-full sm:w-[344px]">
                             <div class="absolute inset-y-0 left-2 top-2 h-6 w-6 flex items-center pointer-events-none">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F111466"
                                     stroke-width="2">
@@ -102,36 +102,39 @@ const activeFilter = ref('ALL')
                                 class="w-full h-10 border border-[#0F11141A] rounded-[80px] pl-[38px] pr-4 text-[12px] font-semibold text-[#0F1114] placeholder:text-[#0F111466] leading-[100%] tracking-[-2%]" />
                         </div>
 
-                        <button
-                            class="h-10 px-6 rounded-[80px] border border-[#0F1114] text-[12px] font-extrabold text-[#0F1114] leading-[100%] tracking-[-2%] uppercase">
-                            Import
-                        </button>
+                        <div class="flex items-center gap-2">
+                            <button
+                                class="flex-1 sm:flex-none h-10 px-6 rounded-[80px] border border-[#0F1114] text-[12px] font-extrabold text-[#0F1114] leading-[100%] tracking-[-2%] uppercase hover:bg-slate-50 transition-colors">
+                                Import
+                            </button>
 
-                        <button @click="navigateTo('/add-property')"
-                            class="h-10 px-[18px] py-3 rounded-[80px] text-[12px] font-extrabold text-primary flex items-center gap-[10px]"
-                            style="background: linear-gradient(225.01deg, #3388FF 0%, #004CE6 100%);">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="3">
-                                <path d="M12 5v14M5 12h14" />
-                            </svg>
-                            <span class="uppercase tracking-[-2%] leading-[100%]">Add Property</span>
-                        </button>
+                            <button @click="navigateTo('/add-property')"
+                                class="flex-1 sm:flex-none h-10 px-[18px] py-3 rounded-[80px] text-[12px] font-extrabold text-primary flex items-center justify-center gap-[10px] whitespace-nowrap hover:opacity-90 transition-opacity"
+                                style="background: linear-gradient(225.01deg, #3388FF 0%, #004CE6 100%);">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3">
+                                    <path d="M12 5v14M5 12h14" />
+                                </svg>
+                                <span class="uppercase tracking-[-2%] leading-[100%]">Add Property</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <div class="flex items-center gap-1 mb-6">
+                <div
+                    class="flex items-center gap-1 mb-6 overflow-x-auto scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0 scroll-smooth">
                     <button v-for="filter in ['ALL', 'OCCUPIED', 'VACANT']" :key="filter" @click="activeFilter = filter"
                         :class="[
-                            'h-8 px-4 rounded-[80px] text-[12px] text-center leading-[100%] uppercase tracking-[-2%]',
-                            activeFilter === filter ? 'bg-[#0F1114] font-bold text-primary shadow-md' : 'bg-primary border border-[#0F11141A] font-semibold text-[#0F1114]'
+                            'h-8 px-4 rounded-[80px] text-[12px] text-center leading-[100%] uppercase tracking-[-2%] whitespace-nowrap transition-all',
+                            activeFilter === filter ? 'bg-[#0F1114] font-bold text-primary shadow-md' : 'bg-primary border border-[#0F11141A] font-semibold text-[#0F1114] hover:bg-slate-50'
                         ]">
                         {{ filter }}
                     </button>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                     <div v-for="(property, index) in properties" :key="index"
-                        class="min-w-[272px] h-[338px] border border-[#0F11141A] rounded-[24px] flex flex-col overflow-hidden hover:shadow-lg transition-shadow">
+                        class="min-w-0 h-[338px] border border-[#0F11141A] rounded-[24px] flex flex-col overflow-hidden hover:shadow-lg transition-all">
                         <div class="relative h-[160px] shrink-0">
                             <NuxtImg :src="property.img" :alt="property.address" class="w-full h-full object-cover" />
                             <button

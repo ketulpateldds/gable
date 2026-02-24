@@ -1,6 +1,12 @@
 <script setup>
-
+const { isSidebarOpen, closeSidebar } = useSidebar()
 const route = useRoute()
+
+// Close sidebar when route changes on mobile
+watch(() => route.path, () => {
+    closeSidebar()
+})
+
 const activeNav = computed(() => {
     const item = navItems.find(item => item.to === route.path)
     return item ? item.label : 'Dashboard'
@@ -27,7 +33,7 @@ const navItems = [
     },
     {
         label: 'Listings',
-        to: '/dashboard',
+        to: '/listings',
         icon: svg('<line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="3" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="3" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="3" cy="18" r="1" fill="currentColor" stroke="none"/>'),
     },
     {
@@ -79,17 +85,35 @@ const navItems = [
 </script>
 
 <template>
-    <aside
-        class="fixed top-0 left-0 bottom-0 z-50 w-[256px] bg-primary border-r border-[#0F11141A] flex flex-col overflow-y-auto shrink-0">
-        <nav class="flex flex-col gap-2 py-[25px] px-6 flex-1">
-            <NuxtLink v-for="item in navItems" :key="item.label" :to="item.to"
-                class="h-[42px] flex items-center gap-3 px-4 py-[11px] rounded-[80px] text-[14px] leading-[100%]"
-                :class="item.label === activeNav
-                    ? 'text-primary font-bold bg-[linear-gradient(225.01deg,_#3388FF_0%,_#004CE6_100%)] shadow-[0px_4px_8px_-2px_#004CE580]'
-                    : 'text-[#0F1114] font-medium'">
-                <span class="h-5 w-5" v-html="item.icon" />
-                <span>{{ item.label }}</span>
-            </NuxtLink>
-        </nav>
-    </aside>
+    <div>
+        <!-- Backdrop for mobile -->
+        <div v-if="isSidebarOpen" @click="closeSidebar"
+            class="fixed inset-0 bg-[#0F11144D] z-40 lg:hidden transition-opacity"></div>
+
+        <aside
+            class="fixed top-0 left-0 bottom-0 z-50 w-[256px] bg-primary border-r border-[#0F11141A] flex flex-col overflow-y-auto shrink-0 scrollbar-hide transition-transform duration-300 transform lg:translate-x-0"
+            :class="isSidebarOpen ? 'translate-x-0' : '-translate-x-full'">
+
+            <div class="flex items-center justify-between p-6 lg:hidden">
+                <span class="text-[#0F1114] font-extrabold text-[20px]">Menu</span>
+                <button @click="closeSidebar" class="p-1 text-[#0F1114]">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <nav class="flex flex-col gap-2 py-[25px] px-6 flex-1">
+                <NuxtLink v-for="item in navItems" :key="item.label" :to="item.to"
+                    class="h-[42px] flex items-center gap-3 px-4 py-[11px] rounded-[80px] text-[14px] leading-[100%]"
+                    :class="item.label === activeNav
+                        ? 'text-primary font-bold bg-[linear-gradient(225.01deg,_#3388FF_0%,_#004CE6_100%)] shadow-[0px_4px_8px_-2px_#004CE580]'
+                        : 'text-[#0F1114] font-medium'">
+                    <span class="h-5 w-5" v-html="item.icon" />
+                    <span>{{ item.label }}</span>
+                </NuxtLink>
+            </nav>
+        </aside>
+    </div>
 </template>

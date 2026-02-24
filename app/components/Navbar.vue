@@ -1,8 +1,20 @@
+<script setup>
+const { toggleSidebar } = useSidebar()
+</script>
+
 <template>
     <header
-        class="sticky top-0 z-40 h-16 bg-primary border-b border-[#0F11141A] flex items-center justify-between px-[22px] py-3 shrink-0">
+        class="sticky top-0 z-40 h-16 bg-primary border-b border-[#0F11141A] flex items-center justify-between px-4 lg:px-[22px] py-3 shrink-0">
 
-        <div class="flex items-center gap-8">
+        <div class="flex items-center gap-4 lg:gap-8">
+            <button @click="toggleSidebar" class="lg:hidden p-1 text-[#0F1114]">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+
             <NuxtLink to="/dashboard" class="flex items-center gap-2">
                 <span class="w-6 h-6 flex items-center justify-center">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -14,7 +26,7 @@
                 <span class="text-[#0F1114] font-extrabold text-[20px] tracking-[-2%] leading-[100%]">Gable</span>
             </NuxtLink>
 
-            <div class="relative w-[463px]">
+            <div class="relative hidden sm:block w-[300px] lg:w-[463px]">
                 <div
                     class="absolute inset-y-0 left-2 top-2 w-6 h-6 flex items-center justify-center pointer-events-none">
                     <svg class="text-slate-400" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -46,7 +58,7 @@
                         <circle cx="12" cy="7" r="4" />
                     </svg>
                 </div>
-                <div class="flex flex-col mr-[18px]">
+                <div class="hidden sm:flex flex-col mr-[18px]">
                     <span class="text-[12px] font-bold text-[#0F1114] leading-[100%] tracking-[-2%]">Username</span>
                     <span
                         class="text-[10px] text-[#0F111466] font-semibold leading-[100%] tracking-[-2%]">Landlord</span>
