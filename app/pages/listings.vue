@@ -137,7 +137,7 @@ onUnmounted(() => {
     <div class="flex min-h-screen bg-primary font-sans overflow-x-hidden">
         <Sidebar />
 
-        <div class="flex-1 lg:ml-64 flex flex-col min-h-screen min-w-0 transition-all duration-300">
+        <div class="flex-1 lg:ml-64 flex flex-col min-h-screen lg:h-[120vh] min-w-0 transition-all duration-300">
             <Navbar />
 
             <main class="flex-1 px-6 py-[19px] flex flex-col min-h-0">
@@ -261,7 +261,7 @@ onUnmounted(() => {
                         </div>
 
                         <div
-                            class="flex-1 overflow-y-auto scrollbar-hide grid grid-cols-1 md:grid-cols-2 xl:grid-cols-1 gap-6 content-start">
+                            class="flex-1 overflow-y-auto overflow-x-hidden scrollbar-hide grid grid-cols-1 md:grid-cols-2 xl:grid-cols-1 gap-6 content-start pb-4">
                             <div v-for="property in properties" :key="property.id" @click="openDetail(property)"
                                 class="flex flex-col group cursor-pointer">
                                 <div class="relative h-[160px] rounded-[16px] overflow-hidden mb-3">
@@ -389,7 +389,7 @@ onUnmounted(() => {
                 </div>
             </main>
         </div>
-        
+
         <ListingDetailModal :is-open="isDetailOpen" :property="selectedProperty" @close="isDetailOpen = false" />
     </div>
 </template>

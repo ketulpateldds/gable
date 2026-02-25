@@ -1,5 +1,7 @@
 <script setup>
-defineProps({
+import { watch, onUnmounted } from 'vue'
+
+const props = defineProps({
     isOpen: {
         type: Boolean,
         required: true
@@ -7,6 +9,18 @@ defineProps({
 })
 
 defineEmits(['close'])
+
+watch(() => props.isOpen, (newVal) => {
+    if (newVal) {
+        document.body.style.overflow = 'hidden'
+    } else {
+        document.body.style.overflow = ''
+    }
+})
+
+onUnmounted(() => {
+    document.body.style.overflow = ''
+})
 </script>
 
 <template>
@@ -52,15 +66,12 @@ defineEmits(['close'])
                                 <button
                                     class="h-8 px-[14px] py-2 bg-[#0F1114] text-white rounded-[16px] flex items-center gap-[6px] text-[12px] font-bold uppercase leading-[100%] tracking-[-2%]">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        class="icon icon-tabler icons-tabler-outline icon-tabler-file-upload">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-                                        <path
-                                            d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
-                                        <path d="M12 11v6" />
-                                        <path d="M9.5 13.5l2.5 -2.5l2.5 2.5" />
+                                        fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M15 22h3a2 2 0 0 0 2-2V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h3" />
+                                        <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                                        <path d="M12 12v10" />
+                                        <path d="m9 15 3-3 3 3" />
                                     </svg>
                                     CHOOSE FILE
                                 </button>
@@ -295,7 +306,7 @@ defineEmits(['close'])
                                 <label
                                     class="block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px]">NOTES</label>
                                 <textarea placeholder="Add internal notes (access, preferences, etc.)"
-                                    class="w-full h-[108px] px-5 py-[15px] rounded-xl border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] placeholder:text-[#0F111466] resize-none focus:outline-none leading-4 tracking-[-2%]"></textarea>
+                                    class="w-full h-[108px] px-5 py-[15px] rounded-xl border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] placeholder:text-[#0F111499] resize-none focus:outline-none leading-4 tracking-[-2%]"></textarea>
                             </div>
                         </div>
 

@@ -1,5 +1,7 @@
 <script setup>
-defineProps({
+import { watch, onUnmounted } from 'vue'
+
+const props = defineProps({
     isOpen: {
         type: Boolean,
         required: true
@@ -7,6 +9,18 @@ defineProps({
 })
 
 defineEmits(['close'])
+
+watch(() => props.isOpen, (newVal) => {
+    if (newVal) {
+        document.body.style.overflow = 'hidden'
+    } else {
+        document.body.style.overflow = ''
+    }
+})
+
+onUnmounted(() => {
+    document.body.style.overflow = ''
+})
 </script>
 
 <template>
