@@ -110,17 +110,16 @@ onUnmounted(() => {
                                 </div>
                             </div>
 
-                            <!-- Row 2: PROPERTY, PARTY -->
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-[18px]">
                                 <div>
                                     <label
-                                        class="block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[6px] ml-1">PROPERTY</label>
+                                        class="block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px] ml-1">PROPERTY</label>
                                     <div class="relative">
                                         <select
-                                            class="w-full h-11 px-5 rounded-[80px] border border-[#0F11141A] text-[12px] font-bold text-[#0F1114] appearance-none uppercase leading-[100%] tracking-[-2%] focus:outline-none bg-white">
+                                            class="w-full h-11 px-5 rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] appearance-none uppercase leading-[100%] tracking-[-2%] focus:outline-none bg-white">
                                             <option>123 OAK ST • UNIT 4</option>
                                         </select>
-                                        <svg class="absolute right-5 top-1/2 -translate-y-1/2 text-[#0F1114] pointer-events-none"
+                                        <svg class="absolute right-[14px] top-1/2 -translate-y-1/2 text-[#0F1114] pointer-events-none"
                                             width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                             <polyline points="6 9 12 15 18 9"></polyline>
@@ -129,30 +128,29 @@ onUnmounted(() => {
                                 </div>
                                 <div>
                                     <label
-                                        class="block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[6px] ml-1">PARTY
+                                        class="block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px] ml-1">PARTY
                                         (TENANT/VENDOR/OWNER)</label>
                                     <input type="text" placeholder="JORDAN TENANT"
-                                        class="w-full h-11 px-5 rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] leading-[100%] tracking-[-2%] focus:outline-none bg-white">
+                                        class="w-full h-11 px-5 rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] focus:outline-none">
                                 </div>
                             </div>
 
-                            <!-- Row 3: AMOUNT, CATEGORY, PAYMENT METHOD -->
-                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-[18px]">
                                 <div>
                                     <label
-                                        class="block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[6px] ml-1">AMOUNT</label>
+                                        class="block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px] ml-1">AMOUNT</label>
                                     <input type="text" placeholder="83.00"
-                                        class="w-full h-11 px-5 rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] leading-[100%] tracking-[-2%] focus:outline-none bg-white">
+                                        class="w-full h-11 px-5 rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] placeholder:text-[#0F111466] leading-[100%] tracking-[-2%] focus:outline-none">
                                 </div>
                                 <div>
                                     <label
-                                        class="block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[6px] ml-1">CATEGORY</label>
+                                        class="block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px] ml-1">CATEGORY</label>
                                     <div class="relative">
                                         <select
-                                            class="w-full h-11 px-5 rounded-[80px] border border-[#0F11141A] text-[12px] font-bold text-[#0F1114] appearance-none uppercase leading-[100%] tracking-[-2%] focus:outline-none bg-white">
+                                            class="w-full h-11 px-5 rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] appearance-none uppercase leading-[100%] tracking-[-2%] focus:outline-none">
                                             <option>RENT</option>
                                         </select>
-                                        <svg class="absolute right-5 top-1/2 -translate-y-1/2 text-[#0F1114] pointer-events-none"
+                                        <svg class="absolute right-4 top-1/2 -translate-y-1/2 text-[#0F1114] pointer-events-none"
                                             width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                             <polyline points="6 9 12 15 18 9"></polyline>
@@ -161,14 +159,14 @@ onUnmounted(() => {
                                 </div>
                                 <div>
                                     <label
-                                        class="block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[6px] ml-1">PAYMENT
+                                        class="block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px] ml-1">PAYMENT
                                         METHOD</label>
                                     <div class="relative">
                                         <select
-                                            class="w-full h-11 px-5 rounded-[80px] border border-[#0F11141A] text-[12px] font-bold text-[#0F1114] appearance-none uppercase leading-[100%] tracking-[-2%] focus:outline-none bg-white">
+                                            class="w-full h-11 px-5 rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] appearance-none uppercase leading-[100%] tracking-[-2%] focus:outline-none bg-white">
                                             <option>ACH</option>
                                         </select>
-                                        <svg class="absolute right-5 top-1/2 -translate-y-1/2 text-[#0F1114] pointer-events-none"
+                                        <svg class="absolute right-4 top-1/2 -translate-y-1/2 text-[#0F1114] pointer-events-none"
                                             width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                             <polyline points="6 9 12 15 18 9"></polyline>
@@ -177,31 +175,29 @@ onUnmounted(() => {
                                 </div>
                             </div>
 
-                            <!-- Row 4: MEMO -->
                             <div>
                                 <label
-                                    class="block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[6px] ml-1">MEMO</label>
+                                    class="block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px] ml-1">MEMO</label>
                                 <input type="text" placeholder="JANUARY RENT • UNIT 4"
-                                    class="w-full h-11 px-5 rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] leading-[100%] tracking-[-2%] focus:outline-none bg-white">
+                                    class="w-[188px] h-11 pl-5 pr-8 rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] leading-[100%] tracking-[-2%] focus:outline-none bg-white">
                             </div>
 
-                            <!-- Row 5: NOTES -->
                             <div>
                                 <label
-                                    class="block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[6px] ml-1">NOTES</label>
+                                    class="block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px] ml-1">NOTES</label>
                                 <textarea placeholder="Optional notes for your records..." rows="4"
-                                    class="w-full px-5 py-4 rounded-[32px] border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] placeholder:text-[#0F111466] leading-5 tracking-[-2%] focus:outline-none bg-white resize-none"></textarea>
+                                    class="w-full h-[110px] px-5 py-[15px] rounded-[12px] border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] placeholder:text-[#0F111466] leading-[100%] tracking-[-2%] focus:outline-none bg-white resize-none"></textarea>
                             </div>
                         </div>
 
-                        <div class="flex items-center justify-end gap-2 mt-8">
+                        <div class="flex items-center justify-end gap-2 mt-6">
                             <button @click="$emit('close')"
-                                class="h-11 px-8 rounded-[80px] border border-[#0F1114] text-[12px] font-extrabold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] hover:bg-slate-50 transition-colors">
+                                class="h-10 px-5 rounded-[80px] border border-[#0F1114] text-[12px] font-extrabold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] hover:bg-slate-50 transition-colors">
                                 CANCEL
                             </button>
                             <button
-                                class="h-11 px-8 rounded-[80px] text-white text-[12px] font-extrabold uppercase leading-[100%] tracking-[-2%] hover:opacity-95 transition-opacity bg-blue-600"
-                                style="background: linear-gradient(225.01deg, #3388FF 0%, #004CE5 100%);">
+                                class="h-10 px-5 rounded-[80px] text-primary text-[12px] font-extrabold uppercase leading-[100%] tracking-[-2%] hover:opacity-95 transition-opacity"
+                                style="background: linear-gradient(225.01deg, #3388FF 0%, #004CE6 100%);">
                                 SAVE
                             </button>
                         </div>
