@@ -23,7 +23,7 @@ const { toggleSidebar } = useSidebar()
                         <path d="M8 18V13.5C8 12.119 8.895 11 10 11C11.105 11 12 12.119 12 13.5V18" fill="#EBF2FF" />
                     </svg>
                 </span>
-                <span class="text-[#0F1114] font-extrabold text-[20px] tracking-[-2%] leading-[100%]">Gable</span>
+                <span class="text-[#0F1114] font-extrabold text-[20px] tracking-[-2%] leading-[100%]">Blueporch</span>
             </NuxtLink>
 
             <div class="relative hidden sm:block w-[300px] lg:w-[463px]">

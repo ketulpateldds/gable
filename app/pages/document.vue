@@ -57,6 +57,16 @@ const documents = [
 ]
 
 const isUploadModalOpen = ref(false);
+const isFileDetailsModalOpen = ref(false);
+
+const fileDetailsForm = ref({
+    selectedFile: 'Lease - Unit 4.pdf',
+    fileType: 'DOCUMENT',
+    property: '123 OAK ST · UNIT 4',
+    tags: 'LEASE, 2026',
+    description: '',
+    visibility: 'TEAM',
+});
 </script>
 
 <template>
@@ -75,7 +85,7 @@ const isUploadModalOpen = ref(false);
                             documents, photos, leases, and receipts.</p>
                     </div>
                     <div class="flex items-center gap-2 flex-wrap">
-                        <button
+                        <button @click="isFileDetailsModalOpen = true"
                             class="h-10 pl-[18px] pr-[19px] rounded-[80px] border border-[#0F1114] flex items-center gap-[10px] text-[12px] font-extrabold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] hover:bg-slate-50 transition-colors whitespace-nowrap">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F1114"
                                 stroke-width="2.5">
@@ -290,8 +300,10 @@ const isUploadModalOpen = ref(false);
         </div>
 
         <!-- Upload Modal -->
-        <div v-if="isUploadModalOpen" class="fixed top-[135px] right-6 z-10">
-            <div class="bg-primary rounded-[24px] border border-[#0F11141A] w-[408px] p-[25px] pt-[21px] overflow-hidden"
+        <div v-if="isUploadModalOpen"
+            class="fixed inset-0 sm:inset-auto sm:top-[135px] sm:right-6 flex sm:block items-end sm:items-stretch justify-center z-10 sm:z-10 bg-black/30 sm:bg-transparent px-0 sm:px-0 pb-0 sm:pb-0"
+            @click.self="isUploadModalOpen = false">
+            <div class="bg-primary rounded-t-[24px] sm:rounded-[24px] border border-[#0F11141A] w-full sm:w-[408px] p-[25px] pt-[21px] overflow-hidden"
                 style="box-shadow: 0px 0px 60px -30px #00000099;">
 
                 <h2 class="text-[16px] font-bold text-[#0F1114] leading-[100%] mb-[5px]">Upload files</h2>
@@ -333,97 +345,91 @@ const isUploadModalOpen = ref(false);
             </div>
         </div>
 
-        <!-- New Folder Modal -->
-        <div class="fixed inset-0 flex items-center justify-center bg-black/20 z-[1000]">
-            <div class="bg-white rounded-2xl shadow-2xl w-[648px] overflow-hidden">
+        <!-- File Details Modal -->
+        <div v-if="isFileDetailsModalOpen"
+            class="fixed inset-0 flex items-end sm:items-center justify-center bg-black/50 z-[1000]"
+            @click.self="isFileDetailsModalOpen = false">
+            <div
+                class="bg-primary rounded-t-[32px] sm:rounded-[32px] w-full sm:w-[648px] p-5 sm:p-6 overflow-hidden max-h-[90vh] overflow-y-auto">
 
-                <!-- Header -->
-                <div class="flex items-center justify-between px-6 pt-5 pb-4">
-                    <h2 class="text-[17px] font-bold text-gray-900">File details</h2>
-                    <button type="button" class="text-gray-400 hover:text-gray-600 text-xl leading-none">
-                        ✕
+                <div class="flex items-center justify-between mb-[9px]">
+                    <h2 class="text-[20px] font-bold text-[#0F1114] leading-[100%]">File details</h2>
+                    <button type="button" @click="isFileDetailsModalOpen = false"
+                        class="border border-[#0F11141A] rounded-[80px] w-10 h-10 p-2 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
                     </button>
                 </div>
 
-                <hr class="border-gray-200" />
-
-                <!-- Body -->
-                <div class="px-6 py-5 grid grid-cols-2 gap-x-8 gap-y-5">
-
-                    <!-- Selected File -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-[18px] gap-y-4 mb-6">
                     <div>
                         <label
-                            class="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Selected
-                            File</label>
-                        <div class="border border-gray-200 rounded-lg px-3 py-2 text-[13px] text-gray-800 bg-white">
-                            Lease - Unit 4.pdf
-                        </div>
+                            class="ml-1 block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px]">SELECTED
+                            FILE</label>
+                        <input v-model="fileDetailsForm.selectedFile" type="text"
+                            class="w-full border border-[#0F11141A] rounded-[80px] px-5 h-11 text-[12px] font-bold text-[#0F1114] leading-[100%] tracking-[-2%] focus:outline-none" />
                     </div>
 
-                    <!-- File Type -->
                     <div>
                         <label
-                            class="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">File
-                            Type</label>
-                        <div class="border border-gray-200 rounded-lg px-3 py-2 text-[13px] text-gray-800 bg-white">
-                            DOCUMENT
-                        </div>
+                            class="ml-1 block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px]">FILE
+                            TYPE</label>
+                        <input v-model="fileDetailsForm.fileType" type="text"
+                            class="w-full border border-[#0F11141A] rounded-[80px] px-5 h-11 text-[12px] font-semibold text-[#0F1114] leading-[100%] tracking-[-2%] focus:outline-none" />
                     </div>
 
-                    <!-- Property -->
                     <div>
                         <label
-                            class="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Property</label>
-                        <div class="border border-gray-200 rounded-lg px-3 py-2 text-[13px] text-gray-800 bg-white">
-                            123 OAK ST - UNIT 4
-                        </div>
+                            class="ml-1 block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px]">PROPERTY</label>
+                        <input v-model="fileDetailsForm.property" type="text"
+                            class="w-full border border-[#0F11141A] rounded-[80px] px-5 h-11 text-[12px] font-semibold text-[#0F1114] leading-[100%] tracking-[-2%] focus:outline-none" />
                     </div>
 
-                    <!-- Tags -->
                     <div>
                         <label
-                            class="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Tags</label>
-                        <div class="border border-gray-200 rounded-lg px-3 py-2 text-[13px] text-gray-800 bg-white">
-                            LEASE, 2026
-                        </div>
+                            class="ml-1 block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px]">TAGS</label>
+                        <input v-model="fileDetailsForm.tags" type="text"
+                            class="w-full border border-[#0F11141A] rounded-[80px] px-5 h-11 text-[12px] font-semibold text-[#0F1114] leading-[100%] tracking-[-2%] focus:outline-none" />
                     </div>
 
-                    <!-- Description -->
                     <div>
                         <label
-                            class="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Description</label>
-                        <div
-                            class="border border-gray-200 rounded-lg px-3 py-2 text-[13px] text-gray-400 bg-white h-[72px] flex items-start">
-                            Signed lease
-                        </div>
+                            class="ml-1 block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px]">DESCRIPTION</label>
+                        <textarea v-model="fileDetailsForm.description" rows="3" placeholder="Signed lease"
+                            class="w-full h-[110px] border border-[#0F11141A] rounded-[12px] px-5 py-[15px] text-[12px] font-semibold text-[#0F1114] placeholder:text-[#0F111466] leading-[100%] tracking-[-2%] focus:outline-none resize-none"></textarea>
                     </div>
 
-                    <!-- Visibility -->
                     <div>
                         <label
-                            class="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Visibility</label>
-                        <div
-                            class="border border-gray-200 rounded-lg px-3 py-2 text-[13px] text-gray-800 bg-white flex items-center justify-between">
-                            <span>TEAM</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-400" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path fill-rule="evenodd"
-                                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                                    clip-rule="evenodd" />
+                            class="ml-1 block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px]">VISIBILITY</label>
+                        <div class="relative">
+                            <select v-model="fileDetailsForm.visibility"
+                                class="w-full border border-[#0F11141A] rounded-[80px] px-5 h-11 text-[12px] font-semibold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] focus:outline-none appearance-none cursor-pointer">
+                                <option value="TEAM">TEAM</option>
+                                <option value="PRIVATE">PRIVATE</option>
+                                <option value="PUBLIC">PUBLIC</option>
+                            </select>
+                            <svg class="pointer-events-none absolute right-[14px] top-1/2 -translate-y-1/2"
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="#0F1114" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
                             </svg>
                         </div>
                     </div>
-
                 </div>
 
-                <!-- Footer -->
-                <div class="flex justify-end gap-3 px-6 py-4">
-                    <button type="button"
-                        class="px-6 py-2 rounded-full border border-gray-300 text-[13px] font-semibold text-gray-700 bg-white">
+                <div class="flex items-center justify-end gap-2">
+                    <button type="button" @click="isFileDetailsModalOpen = false"
+                        class="h-10 px-5 rounded-[80px] border border-[#0F11141A] text-[12px] font-extrabold text-[#0F1114] uppercase tracking-[-2%] leading-[100%]">
                         CANCEL
                     </button>
                     <button type="button"
-                        class="px-6 py-2 rounded-full bg-blue-500 text-[13px] font-semibold text-white">
+                        class="h-10 px-5 rounded-[80px] text-[12px] font-extrabold text-primary uppercase tracking-[-2%] leading-[100%]"
+                        style="background: linear-gradient(225.01deg, #3388FF 0%, #004CE6 100%);">
                         SAVE
                     </button>
                 </div>
