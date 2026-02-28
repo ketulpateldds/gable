@@ -1,6 +1,7 @@
 <script setup>
 const activeTab = ref('ALL')
 const tabs = ['ALL', 'MOVE IN', 'MOVE OUT', 'SCHEDULED', 'COMP...']
+const isNewInspectionModalOpen = ref(false)
 
 const inspections = [
     {
@@ -90,7 +91,7 @@ function statusColor(status) {
                             class="h-[38px] px-5 rounded-[80px] border border-[#0F111433] text-[12px] font-extrabold uppercase tracking-[-0.02em] text-[#0F1114]">
                             TEMPLATES
                         </button>
-                        <button
+                        <button @click="isNewInspectionModalOpen = true"
                             class="h-[38px] pl-4 pr-5 rounded-[80px] bg-[#004CE5] text-white text-[12px] font-extrabold uppercase tracking-[-0.02em] flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
@@ -315,5 +316,6 @@ function statusColor(status) {
 
             </main>
         </div>
+        <NewInspectionModal :open="isNewInspectionModalOpen" @close="isNewInspectionModalOpen = false" />
     </div>
 </template>
