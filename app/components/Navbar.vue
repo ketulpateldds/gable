@@ -23,10 +23,11 @@ const { toggleSidebar } = useSidebar()
                         <path d="M8 18V13.5C8 12.119 8.895 11 10 11C11.105 11 12 12.119 12 13.5V18" fill="#EBF2FF" />
                     </svg>
                 </span>
-                <span class="text-[#0F1114] font-extrabold text-[20px] tracking-[-2%] leading-[100%]">Blueporch</span>
+                <span
+                    class="text-[#0F1114] font-extrabold text-[20px] tracking-[-2%] leading-[100%] hidden md:block">Blueporch</span>
             </NuxtLink>
 
-            <div class="relative hidden sm:block w-[300px] lg:w-[463px]">
+            <div class="relative hidden sm:block w-[150px] md:w-[300px] lg:w-[463px]">
                 <div
                     class="absolute inset-y-0 left-2 top-2 w-6 h-6 flex items-center justify-center pointer-events-none">
                     <svg class="text-slate-400" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -40,9 +41,9 @@ const { toggleSidebar } = useSidebar()
             </div>
         </div>
 
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-1 sm:gap-2">
             <button
-                class="relative h-10 w-10 rounded-full border border-[#0F11141A] flex items-center justify-center cursor-pointer group">
+                class="relative h-10 w-10 rounded-full border border-[#0F11141A] flex items-center justify-center cursor-pointer group shrink-0">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F1114" stroke-width="2">
                     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
                     <path d="M13.73 21a2 2 0 0 1-3.46 0" />
@@ -51,19 +52,20 @@ const { toggleSidebar } = useSidebar()
             </button>
 
             <div
-                class="h-10 flex items-center gap-2 pl-1 pr-3 py-1 border border-[#0F11141A] rounded-[80px] cursor-pointer">
+                class="h-10 flex items-center gap-2 pl-1 pr-2 sm:pr-3 py-1 border border-[#0F11141A] rounded-[80px] cursor-pointer shrink-0">
                 <div class="w-8 h-8 bg-[#F2F6FF] rounded-full flex items-center justify-center text-[#004CE5]">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                         <circle cx="12" cy="7" r="4" />
                     </svg>
                 </div>
-                <div class="hidden sm:flex flex-col mr-[18px]">
+                <div class="hidden sm:flex flex-col sm:mr-2 lg:mr-[18px]">
                     <span class="text-[12px] font-bold text-[#0F1114] leading-[100%] tracking-[-2%]">Username</span>
                     <span
                         class="text-[10px] text-[#0F111466] font-semibold leading-[100%] tracking-[-2%]">Landlord</span>
                 </div>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0F1114" stroke-width="2.5">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0F1114" stroke-width="2.5"
+                    class="shrink-0">
                     <polyline points="6 9 12 15 18 9" />
                 </svg>
             </div>

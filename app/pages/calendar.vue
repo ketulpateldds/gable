@@ -3,7 +3,7 @@ const activeTab = ref('ALL')
 const tabs = ['ALL', 'INSPECTIONS', 'MAINTENANCE', 'LEASING', 'REMINDERS']
 
 // Dynamic Calendar Logic
-const currentDate = ref(new Date(2026, 1, 1)) // Start at February 2026 for consistency
+const currentDate = ref(new Date()) // Start at February 2026 for consistency
 
 const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
@@ -73,10 +73,10 @@ const goToToday = () => {
 
 // Mock Events Data
 const eventsData = [
-    { date: '2026-02-06', title: 'Unit 4...', color: '#3388FF' },
-    { date: '2026-02-11', title: 'Plumbi...', color: '#FF9933' },
-    { date: '2026-02-19', title: 'Lease...', color: '#33FF99' },
-    { date: '2026-02-24', title: 'Send...', color: '#FF3333' }
+    { date: '2026-02-06', title: 'Unit 4...', color: '#004CE5', borderColor: '#004CE51A', bgColor: '#F2F6FF' },
+    { date: '2026-02-11', title: 'Plumbing', color: '#A16600', borderColor: '#E599171A', bgColor: '#FFF9F2' },
+    { date: '2026-02-19', title: 'Lease...', color: '#21A635', borderColor: '#21A6351A', bgColor: '#F2FFF4' },
+    { date: '2026-02-24', title: 'Send...', color: '#CC2929', borderColor: '#CC29291A', bgColor: '#FFF2F2' }
 ]
 
 const getEventsForDate = (year, month, day) => {
@@ -96,6 +96,21 @@ const upcomingEvents = [
         subtitle: 'Owner'
     }
 ]
+
+const isAddEventModalOpen = ref(false)
+
+const openAddEventModal = () => {
+    isAddEventModalOpen.value = true
+}
+
+const closeAddEventModal = () => {
+    isAddEventModalOpen.value = false
+}
+
+const handleSaveEvent = (eventData) => {
+    console.log('Saving event:', eventData)
+    // Add logic here to save the event to the eventsData array if needed
+}
 </script>
 
 <template>
@@ -105,131 +120,156 @@ const upcomingEvents = [
         <div class="flex-1 lg:ml-64 flex flex-col min-h-screen min-w-0 transition-all duration-300">
             <Navbar />
 
-            <main class="flex-1 p-6 lg:p-10 overflow-y-auto">
-                <div class="max-w-[1400px] mx-auto flex flex-col gap-10">
-                    <!-- Top Header -->
-                    <div class="flex flex-col gap-1">
-                        <div class="flex items-center justify-between">
-                            <h1 class="text-[28px] font-bold text-[#0F1114] leading-tight">Calendar</h1>
-                            <div class="flex items-center gap-3">
-                                <button @click="goToToday"
-                                    class="h-[42px] px-8 rounded-full border border-[#0F11141A] bg-white text-[13px] font-bold uppercase tracking-tight text-[#0F1114] hover:bg-[#F9FAFB] transition-colors">
-                                    TODAY
-                                </button>
-                                <button
-                                    class="h-[42px] pl-5 pr-6 rounded-full text-white text-[13px] font-bold uppercase tracking-tight flex items-center gap-2 shadow-[0px_4px_12px_rgba(0,76,230,0.25)] transition-transform hover:scale-[1.02]"
-                                    style="background: linear-gradient(225.01deg, #3388FF 0%, #004CE6 100%);">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <line x1="12" y1="5" x2="12" y2="19" />
-                                        <line x1="5" y1="12" x2="19" y2="12" />
-                                    </svg>
-                                    ADD EVENT
-                                </button>
-                            </div>
+            <main class="flex-1 px-6 pt-[19px] pb-[31px] overflow-y-auto">
+                <div class="max-w-[1400px] mx-auto">
+
+                    <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between mb-5">
+                        <div>
+                            <h1 class="text-[20px] font-bold text-[#0F1114] leading-[100%] mb-1">Calendar</h1>
+                            <p class="text-[12px] font-medium text-[#0F111499] leading-4 tracking-[-2%]">
+                                Track inspections, maintenance, lease renewals, and reminders.
+                            </p>
                         </div>
-                        <p class="text-[14px] font-medium text-[#0F111466] leading-none">
-                            Track inspections, maintenance, lease renewals, and reminders.
-                        </p>
+
+                        <div class="flex items-center gap-2 mt-[2px]">
+                            <button @click="goToToday"
+                                class="h-10 px-5 rounded-[80px] border border-[#0F1114] text-[12px] font-extrabold uppercase leading-[100%] tracking-[-2%] text-[#0F1114]">
+                                TODAY
+                            </button>
+                            <button @click="openAddEventModal"
+                                class="h-10 pl-[18px] pr-[22px] rounded-[80px] text-primary text-[12px] font-extrabold uppercase leading-[100%] tracking-[-2%] flex items-center gap-[10px]"
+                                style="background: linear-gradient(225.01deg, #3388FF 0%, #004CE5 100%);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <line x1="12" y1="5" x2="12" y2="19" />
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                </svg>
+                                ADD EVENT
+                            </button>
+                        </div>
                     </div>
 
-                    <!-- Search & Filters Row -->
-                    <div class="flex items-center gap-5">
+                    <div class="flex flex-col md:flex-row items-stretch md:items-center gap-2 mb-6">
                         <div class="relative flex-1 group">
                             <div
-                                class="absolute left-6 top-1/2 -translate-y-1/2 text-[#0F111433] group-focus-within:text-[#004CE6] transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                class="absolute left-2 top-1/2 -translate-y-1/2 w-6 h-6 flex items-center justify-center p-1 text-[#0F111466]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round">
                                     <circle cx="11" cy="11" r="8" />
                                     <path d="m21 21-4.3-4.3" />
                                 </svg>
                             </div>
                             <input type="text" placeholder="Search: property, tenant, title.."
-                                class="w-full h-[52px] pl-[56px] pr-6 rounded-full border border-[#0F11140D] bg-white text-[14px] font-medium text-[#0F1114] outline-none placeholder:text-[#0F111433] focus:border-[#004CE633] transition-all shadow-sm" />
+                                class="w-full h-10 pl-[38px] pr-6 rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] outline-none placeholder:text-[#0F111466] leading-[100%] tracking-[-2%]" />
                         </div>
-                        <div class="flex items-center gap-2">
+                        <div class="flex items-center gap-1 overflow-x-auto scrollbar-hide pb-2 md:pb-0">
                             <button v-for="tab in tabs" :key="tab" @click="activeTab = tab"
-                                class="h-[44px] px-6 rounded-full text-[13px] font-bold uppercase tracking-tight transition-all"
-                                :class="activeTab === tab ? 'bg-[#0F1114] text-white' : 'bg-white border border-[#0F11141A] text-[#0F1114] hover:bg-[#F9FAFB]'">
+                                class="h-8 px-4 rounded-[80px] text-[12px] uppercase leading-[100%] tracking-[-2%] transition-all whitespace-nowrap"
+                                :class="activeTab === tab ? 'bg-[#0F1114] font-bold text-primary' : 'bg-white border border-[#0F11141A] text-[#0F1114] font-semibold'">
                                 {{ tab }}
                             </button>
                         </div>
                     </div>
 
-                    <div class="flex flex-col lg:flex-row gap-8">
-                        <!-- Main Calendar -->
-                        <div class="flex-1 flex flex-col gap-5">
-                            <h3 class="text-[18px] font-bold text-[#0F1114]">Month</h3>
-                            <div class="bg-white border border-[#0F11140D] rounded-[32px] p-8 shadow-sm">
-                                <div class="flex items-center justify-between mb-8">
-                                    <div class="flex items-center gap-3">
+                    <div class="flex flex-col lg:flex-row gap-4 items-start">
+                        <div
+                            class="flex flex-col border border-[#0F11141A] rounded-[24px] w-full lg:w-[752px] py-[21px] overflow-hidden">
+
+                            <h3
+                                class="text-[16px] font-bold text-[#0F1114] leading-[100%] px-[24px] pb-5 border-b border-[#0F11141A] mb-4">
+                                Month</h3>
+
+                            <div class="px-6">
+                                <div class="flex items-center justify-between gap-2 mb-[13px]">
+                                    <div class="flex items-center gap-1">
                                         <button @click="prevMonth"
-                                            class="w-10 h-10 flex items-center justify-center rounded-full border border-[#0F11140D] text-[#0F1114] hover:bg-[#F9FAFB] transition-all">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                            class="w-8 h-8 flex items-center justify-center p-[6px] rounded-full border border-[#0F11141A] text-[#0F1114] hover:bg-[#F9FAFB] transition-all">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                                                 stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="m15 18-6-6 6-6" />
                                             </svg>
                                         </button>
                                         <button @click="nextMonth"
-                                            class="w-10 h-10 flex items-center justify-center rounded-full border border-[#0F11140D] text-[#0F1114] hover:bg-[#F9FAFB] transition-all">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                            class="w-8 h-8 flex items-center justify-center p-[6px] rounded-full border border-[#0F11141A] text-[#0F1114] hover:bg-[#F9FAFB] transition-all">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                                                 stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="m9 18 6-6-6-6" />
                                             </svg>
                                         </button>
                                     </div>
-                                    <h2 class="text-[20px] font-bold text-[#0F1114]">{{ monthYearString }}</h2>
+
+                                    <h2 class="text-[12px] sm:text-[16px] font-bold text-[#0F1114] leading-[100%]">
+                                        {{ monthYearString }}</h2>
+
                                     <button
-                                        class="h-10 px-6 rounded-full border border-[#0F11141A] text-[13px] font-bold uppercase tracking-tight text-[#0F1114] hover:bg-[#F9FAFB]">
+                                        class="h-8 px-4 rounded-[80px] border border-[#0F11141A] text-[10px] sm:text-[12px] font-semibold uppercase leading-[100%] tracking-[-2%] text-[#0F1114] hover:bg-[#F9FAFB]">
                                         TOGGLE LIST
                                     </button>
                                 </div>
 
-                                <div class="grid grid-cols-7 gap-3">
-                                    <!-- Weekday Headers -->
-                                    <div v-for="day in daysOfWeek" :key="day"
-                                        class="h-8 flex items-center justify-start px-2">
-                                        <span class="text-[13px] font-bold text-[#0F111466]">{{ day }}</span>
+                                <div class="grid grid-cols-7 gap-1 sm:gap-2 mb-[5px] ml-1">
+                                    <div v-for="day in daysOfWeek" :key="day" class="text-center sm:text-left">
+                                        <span
+                                            class="text-[10px] sm:text-[12px] font-bold text-[#0F111499] leading-[100%]">{{
+                                                day
+                                            }}</span>
                                     </div>
-                                    <!-- Day Cells -->
+                                </div>
+
+                                <div class="grid grid-cols-7 gap-1 sm:gap-2 mb-[13px]">
                                     <div v-for="(item, index) in calendarDays" :key="index"
-                                        class="aspect-[1.1] p-3 rounded-[24px] border border-[#0F111408] bg-white flex flex-col gap-1 transition-all hover:shadow-md cursor-pointer"
-                                        :class="!item.currentMonth ? 'opacity-20 pointer-events-none' : 'shadow-[0px_2px_8px_rgba(15,17,20,0.02)]'">
-                                        <span class="text-[14px] font-bold text-[#0F1114]">{{ item.date }}</span>
-                                        <div v-if="item.events" class="mt-auto flex flex-col gap-1 pb-1">
+                                        class="min-h-[60px] sm:h-[92px] p-1.5 sm:p-3 sm:pr-[11px] rounded-[8px] sm:rounded-[12px] border border-[#0F11141A] flex flex-col gap-1 cursor-pointer overflow-hidden"
+                                        :class="[!item.currentMonth ? 'opacity-20 pointer-events-none' : 'shadow-[0px_2px_8px_rgba(15,17,20,0.02)]', item.events?.length ? 'bg-[#F9FAFB]' : '']">
+
+                                        <span
+                                            class="text-[12px] sm:text-[14px] font-extrabold text-[#0F1114] leading-[100%]">
+                                            {{ item.date }}
+                                        </span>
+
+                                        <div v-if="item.events && item.events.length > 0"
+                                            class="flex flex-col gap-1 pb-1">
                                             <div v-for="(event, eIdx) in item.events" :key="eIdx"
-                                                class="px-3 py-1.5 rounded-full text-[11px] font-bold truncate leading-none"
+                                                class="px-1 sm:px-3 py-1 sm:py-1.5 h-auto sm:h-[26px] rounded-[60px] text-[8px] sm:text-[12px] font-bold truncate leading-[100%] tracking-[-2%]"
                                                 :style="{
-                                                    backgroundColor: event.color + '1A',
+                                                    backgroundColor: event.bgColor,
+                                                    border: `1px solid ${event.borderColor}`,
                                                     color: event.color
                                                 }">
-                                                {{ event.title }}
+                                                <span class="hidden sm:inline">{{ event.title }}</span>
+                                                <div class="sm:hidden w-1.5 h-1.5 rounded-full mx-auto"
+                                                    :style="{ backgroundColor: event.color }"></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                <p class="text-[12px] font-bold text-[#0F111499] leading-4 tracking-[-2%]">Tip: Click a
+                                    day to add an event on that date. Events are demo data stored in-memory.</p>
                             </div>
                         </div>
 
-                        <!-- Upcoming Bar -->
-                        <div class="w-full lg:w-[360px] flex flex-col gap-5">
-                            <h3 class="text-[18px] font-bold text-[#0F1114]">Upcoming</h3>
-                            <div class="bg-white border border-[#0F11140D] rounded-[32px] p-8 shadow-sm h-full">
-                                <div class="flex flex-col gap-4">
+                        <div
+                            class="w-full lg:w-[368px] flex flex-col border border-[#0F11141A] rounded-[24px] pt-[21px] p-[25px] h-fit">
+
+                            <h3 class="text-[16px] font-bold text-[#0F1114] leading-[100%] mb-5">Upcoming</h3>
+
+                            <div class="bg-white rounded-[12px]">
+                                <div class="flex flex-col gap-2">
                                     <div v-for="(event, idx) in upcomingEvents" :key="idx"
-                                        class="p-6 rounded-[24px] border border-[#0F11140D] hover:bg-[#F9FAFB] transition-all cursor-pointer group hover:shadow-sm">
+                                        class="px-[17px] pt-[13px] pb-[15px] rounded-[12px] border border-[#0F11141A] cursor-pointer group">
+
                                         <h4
-                                            class="text-[16px] font-bold text-[#0F1114] mb-2 group-hover:text-[#004CE6] transition-colors leading-tight">
+                                            class="text-[16px] font-bold text-[#0F1114] mb-[6px] leading-5 tracking-[-2%]">
                                             {{ event.title }}
                                         </h4>
-                                        <p class="text-[12px] font-medium text-[#0F111466] mb-1">
+                                        <p class="text-[12px] font-semibold text-[#0F111499] leading-[100%] mb-[6px]">
                                             {{ event.date }}
                                         </p>
-                                        <p class="text-[12px] font-semibold text-[#0F111433] uppercase tracking-wide">
+                                        <p class="text-[12px] font-bold text-[#0F111499] leading-[100%]">
                                             {{ event.subtitle }}
                                         </p>
                                     </div>
@@ -240,16 +280,7 @@ const upcomingEvents = [
                 </div>
             </main>
         </div>
+
+        <AddEventModal :is-open="isAddEventModalOpen" @close="closeAddEventModal" @save="handleSaveEvent" />
     </div>
 </template>
-
-<style scoped>
-.scrollbar-hide::-webkit-scrollbar {
-    display: none;
-}
-
-.scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-</style>
