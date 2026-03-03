@@ -247,7 +247,7 @@ watch(() => props.open, (val) => {
                                 </button>
                             </div>
 
-                            <div class="flex flex-col gap-3 px-4 sm:px-[25px] mb-[5px]">
+                            <div class="flex flex-col gap-3 px-4 sm:px-[24px]">
                                 <div v-for="(opt, i) in dateOptions" :key="i"
                                     class="rounded-[12px] border border-[#0F11141A] pt-[21px] pl-4 sm:pl-[25px] pr-4 sm:pr-[23px] pb-5 relative">
 
@@ -270,7 +270,7 @@ watch(() => props.open, (val) => {
                                                 class="ml-1 block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px]">DATE
                                                 (MM/DD/YYYY)</label>
                                             <div
-                                                class="flex items-center justify-between h-11 pl-5 pr-[14px] py-3 rounded-[80px] border border-[#0F11141A]">
+                                                class="flex items-center justify-between h-11 pl-5 pr-[14px] py-3 rounded-[80px] border border-[#0F11141A] mb-[5px]">
                                                 <input v-model="opt.date" type="text" placeholder="MM/DD/YYYY"
                                                     class="flex-1 text-[12px] font-semibold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] outline-none" />
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -282,6 +282,8 @@ watch(() => props.open, (val) => {
                                                     <line x1="3" y1="10" x2="21" y2="10" />
                                                 </svg>
                                             </div>
+                                            <p class="ml-1 text-[12px] text-[#0F111499] tracking-[-2%] font-bold">
+                                                Calendar</p>
                                         </div>
 
                                         <div>
@@ -292,7 +294,7 @@ watch(() => props.open, (val) => {
                                                 <label
                                                     v-for="(tw, key) in [{ label: '8AM - 12PM', key: 'am' }, { label: '12PM - 4PM', key: 'mid' }, { label: '4PM - 8PM', key: 'pm' }]"
                                                     :key="tw.key"
-                                                    class="border border-[#0F11141A] rounded-[80px] bg-[#0F111405] px-3 sm:px-4 py-[9px] flex items-center gap-2 sm:gap-[8px] text-[12px] font-semibold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] cursor-pointer whitespace-nowrap">
+                                                    class="border border-[#0F11141A] rounded-[80px] bg-[#0F111405] px-3 sm:pl-[15px] sm:pr-[14px] py-[9px] flex items-center gap-2 text-[12px] font-semibold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] cursor-pointer whitespace-nowrap">
                                                     <input type="checkbox" v-model="opt.windows[tw.key]"
                                                         class="w-[12px] h-[12px] accent-[#004CE5] cursor-pointer" />
                                                     {{ tw.label }}
@@ -300,7 +302,6 @@ watch(() => props.open, (val) => {
                                             </div>
                                         </div>
                                     </div>
-                                    <p class="ml-1 text-[12px] text-[#0F111499] tracking-[-2%] font-bold">Calendar</p>
                                 </div>
                             </div>
 
