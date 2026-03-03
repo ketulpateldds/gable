@@ -51,10 +51,10 @@ const propertyTypes = ['SINGLE INDIVIDUAL', 'CONDO', 'APARTMENT', 'TOWN HOME', '
     <div class="flex min-h-screen bg-primary">
         <Sidebar />
 
-        <div class="flex-1 ml-64 flex flex-col min-h-screen">
+        <div class="flex-1 lg:ml-64 flex flex-col min-h-screen transition-all duration-300">
             <Navbar />
 
-            <div class="px-6 pt-[19px] pb-5 flex items-center justify-between">
+            <div class="px-4 sm:px-6 pt-[19px] pb-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div class="flex items-center gap-4">
                     <NuxtLink to="/dashboard"
                         class="w-10 h-10 my-[2px] rounded-full flex items-center justify-center border border-[#0F11141A]">
@@ -73,19 +73,19 @@ const propertyTypes = ['SINGLE INDIVIDUAL', 'CONDO', 'APARTMENT', 'TOWN HOME', '
                             listing for your portfolio.</p>
                     </div>
                 </div>
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-2 w-full sm:w-auto">
                     <button
-                        class="h-10 px-6 rounded-[80px] border border-[#0F1114] text-[12px] font-extrabold text-[#0F1114] uppercase leading-[100%] tracking-[-2%]">Save
+                        class="h-10 px-6 rounded-[80px] border border-[#0F1114] text-[12px] font-extrabold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] flex-1 sm:flex-initial text-center justify-center">Save
                         Draft</button>
                     <button
-                        class="h-10 px-6 rounded-[80px] text-primary text-[12px] font-extrabold uppercase leading-[100%] tracking-[-2%]"
+                        class="h-10 px-6 rounded-[80px] text-primary text-[12px] font-extrabold uppercase leading-[100%] tracking-[-2%] flex-1 sm:flex-initial text-center justify-center"
                         style="background: linear-gradient(225.01deg, #3388FF 0%, #004CE6 100%);">Add
                         Property</button>
                 </div>
             </div>
 
-            <main class="flex-1 px-6 flex gap-[30px] pb-32 items-start">
-                <div class="flex-1 max-w-[800px]">
+            <main class="flex-1 px-4 sm:px-6 flex flex-col lg:flex-row gap-[30px] pb-32 items-start">
+                <div class="flex-1 w-full lg:max-w-[800px]">
                     <form class="flex flex-col gap-x-4 gap-y-[14px]">
                         <FormSection title="Rental Property Address">
                             <FormInput v-model="propertyData.address" label="Street Address"
@@ -327,8 +327,7 @@ const propertyTypes = ['SINGLE INDIVIDUAL', 'CONDO', 'APARTMENT', 'TOWN HOME', '
                     </form>
                 </div>
 
-                <!-- Right Sidebar Summary -->
-                <div class="w-[340px] shrink-0 h-[408px] sticky top-24">
+                <div class="w-full lg:w-[340px] shrink-0 h-auto lg:h-[408px] lg:sticky lg:top-24 mt-4 lg:mt-0">
                     <div class="bg-white border border-[#0F11141A] rounded-3xl h-full flex flex-col">
                         <div class="flex items-center justify-between pt-[21px] pb-5 px-[25px]">
                             <h3 class="text-base font-bold text-[#0F1114] leading-[100%]">Summary</h3>

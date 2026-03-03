@@ -227,13 +227,4 @@ onUnmounted(() => {
 .slide-leave-to {
     transform: translateX(100%);
 }
-
-.scrollbar-hide::-webkit-scrollbar {
-    display: none;
-}
-
-.scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
 </style>
