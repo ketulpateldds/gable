@@ -1,6 +1,7 @@
 <script setup>
 const searchQuery = ref('')
 const messageText = ref('')
+const showChat = ref(false)
 
 const threads = ref([
     {
@@ -33,6 +34,11 @@ const activeThread = computed(() => threads.value.find(t => t.active))
 
 const selectThread = (threadId) => {
     threads.value.forEach(t => t.active = t.id === threadId)
+    showChat.value = true
+}
+
+const goBack = () => {
+    showChat.value = false
 }
 
 const chatMessages = ref([
@@ -68,8 +74,11 @@ const participants = [
 
                 <div class="flex-1 border border-[#0F11141A] rounded-[24px] flex overflow-hidden bg-primary">
 
-
-                    <div class="w-[272px] border-r border-[#0F11141A] flex flex-col shrink-0">
+                    <!-- Thread Directory (hidden on mobile when chat is open) -->
+                    <div class="border-r border-[#0F11141A] flex flex-col shrink-0 transition-all duration-300" :class="[
+                        'w-full lg:w-[272px]',
+                        showChat ? 'hidden lg:flex' : 'flex'
+                    ]">
                         <div class="pt-[22px] pl-[21px] pr-6 pb-4 border-b border-[#0F11141A] mb-4">
                             <h2 class="ml-[3px] text-[16px] font-bold text-[#0F1114] mb-[13px] leading-[100%]">Directory
                             </h2>
@@ -113,10 +122,20 @@ const participants = [
                         </div>
                     </div>
 
-                    <!-- Chat Area -->
-                    <div class="flex-1 flex flex-col min-w-0">
+                    <!-- Chat Area (hidden on mobile when directory is shown) -->
+                    <div class="flex-1 flex flex-col min-w-0" :class="showChat ? 'flex' : 'hidden lg:flex'">
 
                         <div class="p-4 pt-[13px] shrink-0">
+                            <!-- Back button (mobile only) -->
+                            <button @click="goBack"
+                                class="lg:hidden flex items-center gap-1 text-[12px] font-bold text-[#004CE5] mb-3">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M15 18l-6-6 6-6" />
+                                </svg>
+                                Back
+                            </button>
+
                             <h2 class="text-[16px] font-bold text-[#0F1114] leading-[100%] mb-[1px]">{{
                                 activeThread?.name }}</h2>
 
@@ -124,7 +143,7 @@ const participants = [
                                 you and landlord are now connected on Messenger! • Jan 28
                             </p>
 
-                            <div class="flex items-center gap-2">
+                            <div class="flex items-center gap-2 flex-wrap">
                                 <div v-for="p in participants" :key="p.name"
                                     class="flex items-center gap-[7px] pt-2 pb-[9px] pl-[9px] pr-[11px] border border-[#0F11141A] rounded-[10px]">
                                     <div

@@ -42,7 +42,7 @@ const { toggleSidebar } = useSidebar()
         </div>
 
         <div class="flex items-center gap-1 sm:gap-2">
-            <button
+            <button @click="navigateTo('/notifications')"
                 class="relative h-10 w-10 rounded-full border border-[#0F11141A] flex items-center justify-center cursor-pointer group shrink-0">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F1114" stroke-width="2">
                     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
