@@ -129,8 +129,8 @@ onUnmounted(() => {
                                     class="ml-1 block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px]">DATE
                                     OF BIRTH</label>
                                 <div class="relative">
-                                    <input type="text" placeholder="DD-MM-YYYY"
-                                        class="w-full h-11 pl-5 pr-10 rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] placeholder:text-[#0F111466] uppercase leading-[100%] tracking-[-2%] focus:outline-none" />
+                                    <input type="date"
+                                        class="w-full h-11 px-5 rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] focus:outline-none" />
                                     <svg class="absolute right-4 top-1/2 -translate-y-1/2 text-[#0F1114] pointer-events-none"
                                         xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -263,8 +263,8 @@ onUnmounted(() => {
                                     class="ml-1 block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px]">LEASE
                                     START</label>
                                 <div class="relative">
-                                    <input type="text" placeholder="19-02-2026"
-                                        class="w-full h-11 pl-5 pr-10 py-[15px] rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] placeholder:text-[#0F111466] text-[#0F111480] uppercase leading-[100%] tracking-[-2%] focus:outline-none" />
+                                    <input type="date"
+                                        class="w-full h-11 px-5 py-[15px] rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] focus:outline-none" />
                                     <svg class="absolute right-4 top-1/2 -translate-y-1/2 text-[#0F1114] pointer-events-none"
                                         xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -281,8 +281,8 @@ onUnmounted(() => {
                                     class="ml-1 block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px]">LEASE
                                     END</label>
                                 <div class="relative">
-                                    <input type="text" placeholder="19-02-2027"
-                                        class="w-full h-11 pl-5 pr-10 py-[15px] rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] placeholder:text-[#0F111466] text-[#0F111480] uppercase leading-[100%] tracking-[-2%] focus:outline-none" />
+                                    <input type="date"
+                                        class="w-full h-11 px-5 py-[15px] rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] focus:outline-none" />
                                     <svg class="absolute right-4 top-1/2 -translate-y-1/2 text-[#0F1114] pointer-events-none"
                                         xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <div>
+    <div class="border border-[#0F11141A] rounded-[24px]">
         <div class="pt-[21px] pb-6 h-fit">
             <h2
                 class="px-6 text-[16px] font-bold text-[#0F1114] leading-[100%] pb-5 border-b border-[#0F11141A] mb-[22px]">

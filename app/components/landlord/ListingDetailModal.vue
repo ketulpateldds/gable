@@ -43,10 +43,13 @@ const initMap = async () => {
             const customIcon = L.divIcon({
                 className: 'custom-map-marker',
                 html: `
-                        <div class="bg-[#0F1114] rounded-full h-[14px] w-[14px] border-2 border-white shadow-sm"></div>
-                    `,
-                iconSize: [14, 14],
-                iconAnchor: [7, 7]
+                    <div class="bg-[#CEDAF2] border border-[#004CE580] rounded-[8px] h-8 w-8 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                        style="box-shadow: 0px 4px 8px -2px #004CE54D;">
+                        <span class="text-[#004CE5] font-bold text-[14px] leading-[100%]">$</span>
+                    </div>
+                `,
+                iconSize: [32, 32],
+                iconAnchor: [16, 16]
             })
 
             L.marker(coords, { icon: customIcon }).addTo(modalMap.value)
@@ -380,10 +383,6 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-#modal-map {
-    filter: grayscale(1) contrast(1.2) brightness(1.05);
-}
-
 :deep(.custom-map-marker) {
     background: none !important;
     border: none !important;

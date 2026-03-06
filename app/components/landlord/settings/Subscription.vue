@@ -18,7 +18,7 @@ const billingHistory = ref([
 </script>
 
 <template>
-    <div>
+    <div class="border border-[#0F11141A] rounded-[24px]">
         <div
             class="px-6 py-[14px] border-b border-[#0F11141A] flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-0">
             <h2 class="text-[16px] font-bold text-[#0F1114] leading-[100%]">Subscription</h2>
@@ -124,8 +124,8 @@ const billingHistory = ref([
                         </div>
                     </div>
                     <div class="relative w-full sm:w-[134px]">
-                        <input type="text" value="28-02-2026" readonly
-                            class="w-full pl-[21px] pr-[15px] py-[11px] rounded-[80px] border border-[#0F11141A] text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] outline-none cursor-pointer" />
+                        <input type="date" value="2026-02-28"
+                            class="w-full px-[21px] py-[11px] rounded-[80px] border border-[#0F11141A] text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] outline-none cursor-pointer" />
                         <div class="absolute right-[15px] top-1/2 -translate-y-1/2 pointer-events-none">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0F1114"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

@@ -4,6 +4,7 @@ import Sidebar from '~/components/landlord/Sidebar.vue'
 import Navbar from '~/components/landlord/Navbar.vue'
 import InviteModal from '~/components/landlord/InviteModal.vue'
 import AddTenantModal from '~/components/landlord/AddTenantModal.vue'
+import MoveInModal from '~/components/landlord/MoveInModal.vue'
 
 definePageMeta({
     path: '/tenants',
@@ -11,6 +12,7 @@ definePageMeta({
 
 const isInviteModalOpen = ref(false)
 const isAddModalOpen = ref(false)
+const isMoveInModalOpen = ref(false)
 
 const tenants = [
     { id: 1, initials: 'JL', name: 'Jordan Lee', email: 'jordan@email.com', property: '55 Crystal Falls Dr', unit: 'Main', status: '', lease: 'Nov 1, 2025 → Oct 31, 2026', balance: '$125 due', balanceColor: 'text-[#D92D20]' },
@@ -51,7 +53,7 @@ const tenants = [
                             </svg>
                             INVITE
                         </button>
-                        <button
+                        <button @click="isMoveInModalOpen = true"
                             class="flex-1 sm:flex-none h-10 px-6 rounded-[80px] bg-[#0F1114] text-primary text-[12px] font-extrabold uppercase leading-[100%] tracking-[-2%] hover:bg-[#0F1114EE] transition-colors">MOVE
                             IN</button>
                         <button @click="isAddModalOpen = true"
@@ -395,5 +397,8 @@ const tenants = [
 
         <!-- Add Tenant Modal -->
         <AddTenantModal :is-open="isAddModalOpen" @close="isAddModalOpen = false" />
+
+        <!-- Move In Modal -->
+        <MoveInModal :is-open="isMoveInModalOpen" @close="isMoveInModalOpen = false" />
     </div>
 </template>

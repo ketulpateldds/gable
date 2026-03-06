@@ -20,7 +20,7 @@ const bankAccounts = ref([
 </script>
 
 <template>
-    <div>
+    <div class="border border-[#0F11141A] rounded-[24px]">
         <div class="px-6 py-[14px] border-b border-[#0F11141A] flex items-center justify-between">
             <h2 class="text-[16px] font-bold text-[#0F1114] leading-[100%]">Online Payments</h2>
             <div class="flex items-center gap-2">
@@ -153,9 +153,9 @@ const bankAccounts = ref([
                         class="ml-1 block text-[12px] font-bold text-[#0F1114] uppercase tracking-[-2%] leading-[100%] mb-[5px]">DATE
                         OF BIRTH</label>
                     <div class="relative">
-                        <input v-model="dob" type="date" placeholder="DD-MM-YYYY"
-                            class="w-full py-[14px] px-5 rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] placeholder:text-[#0F111466] appearance-none outline-none cursor-pointer bg-white">
-                        <!-- <div class="absolute right-[18px] top-1/2 -translate-y-1/2 pointer-events-none">
+                        <input v-model="dob" type="date"
+                            class="w-full py-[14px] px-5 rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] outline-none cursor-pointer bg-white">
+                        <div class="absolute right-[18px] top-1/2 -translate-y-1/2 pointer-events-none">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F1114"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
@@ -163,7 +163,7 @@ const bankAccounts = ref([
                                 <line x1="8" y1="2" x2="8" y2="6"></line>
                                 <line x1="3" y1="10" x2="21" y2="10"></line>
                             </svg>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
 

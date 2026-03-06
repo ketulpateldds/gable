@@ -41,7 +41,7 @@ const closeChangePassword = () => {
 </script>
 
 <template>
-    <div>
+    <div class="border border-[#0F11141A] rounded-[24px]">
         <!-- Change Password View -->
         <div class="pt-[15px] pb-[25px] h-fit" v-if="showChangePassword">
             <div class="px-[14px] pb-[13px] border-b border-[#0F11141A] mb-8 flex items-center gap-3">

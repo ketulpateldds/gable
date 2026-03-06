@@ -8,3 +8,14 @@
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+/* Hide native date picker icon and show custom SVG */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  -webkit-appearance: none;
+  cursor: pointer;
+  position: absolute;
+  right: 16px;
+  width: 20px;
+  height: 20px;
+}
