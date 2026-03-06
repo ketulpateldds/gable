@@ -1,4 +1,11 @@
 <script setup>
+import Navbar from '~/components/landlord/Navbar.vue';
+import Sidebar from '~/components/landlord/Sidebar.vue';
+
+definePageMeta({
+    path: '/dashboard',
+})
+
 const properties = [
     {
         address: '123 Oak St',
@@ -41,7 +48,6 @@ const properties = [
 
 <template>
     <div class="flex min-h-screen bg-primary">
-
         <Sidebar />
 
         <div class="flex-1 lg:ml-64 flex flex-col min-h-screen transition-all duration-300">

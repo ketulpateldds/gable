@@ -1,4 +1,13 @@
 <script setup>
+import InspectionTemplatesModal from '~/components/landlord/InspectionTemplatesModal.vue'
+import Navbar from '~/components/landlord/Navbar.vue'
+import NewInspectionModal from '~/components/landlord/NewInspectionModal.vue'
+import Sidebar from '~/components/landlord/Sidebar.vue'
+
+definePageMeta({
+    path: '/inspections',
+})
+
 const activeTab = ref('ALL')
 const tabs = ['ALL', 'MOVE-IN', 'MOVE-OUT', 'SCHEDULED', 'COMPLETED', 'CANCELLED']
 const isNewInspectionModalOpen = ref(false)

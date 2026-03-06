@@ -1,7 +1,11 @@
 <script setup>
-import Sidebar from '@/components/Sidebar.vue'
-import Navbar from '@/components/Navbar.vue'
-import AddTransactionModal from '@/components/AddTransactionModal.vue'
+import Sidebar from '@/components/landlord/Sidebar.vue'
+import Navbar from '@/components/landlord/Navbar.vue'
+import AddTransactionModal from '@/components/landlord/AddTransactionModal.vue'
+
+definePageMeta({
+    path: '/accounting',
+})
 
 const activeTab = ref('accounting')
 const isAddTransactionOpen = ref(false)

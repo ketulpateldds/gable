@@ -1,4 +1,17 @@
 <script setup>
+import Navbar from '~/components/landlord/Navbar.vue'
+import AccountSetting from '~/components/landlord/settings/AccountSetting.vue'
+import AdditionalSetting from '~/components/landlord/settings/AdditionalSetting.vue'
+import DeleteAccount from '~/components/landlord/settings/DeleteAccount.vue'
+import OnlinePayment from '~/components/landlord/settings/OnlinePayment.vue'
+import Subscription from '~/components/landlord/settings/Subscription.vue'
+import TeamManagement from '~/components/landlord/settings/TeamManagement.vue'
+import Sidebar from '~/components/landlord/Sidebar.vue'
+
+definePageMeta({
+    path: '/settings',
+})
+
 const activeSection = ref('Account Settings')
 
 const navSections = [
@@ -96,12 +109,12 @@ const selectSection = (label) => {
 
                     <!-- Right Content Panel -->
                     <div class="flex-1 min-w-0 border border-[#0F11141A] rounded-[24px] self-start">
-                        <SettingsAccountSetting v-if="activeSection === 'Account Settings'" />
-                        <SettingsSubscription v-if="activeSection === 'Subscription'" />
-                        <SettingsOnlinePayment v-if="activeSection === 'Online payments'" />
-                        <SettingsTeamManagement v-if="activeSection === 'Team management'" />
-                        <SettingsAdditionalSetting v-if="activeSection === 'Additional settings'" />
-                        <SettingsDeleteAccount v-if="activeSection === 'Delete Account'" />
+                        <AccountSetting v-if="activeSection === 'Account Settings'" />
+                        <Subscription v-if="activeSection === 'Subscription'" />
+                        <OnlinePayment v-if="activeSection === 'Online payments'" />
+                        <TeamManagement v-if="activeSection === 'Team management'" />
+                        <AdditionalSetting v-if="activeSection === 'Additional settings'" />
+                        <DeleteAccount v-if="activeSection === 'Delete Account'" />
                     </div>
 
                 </div>

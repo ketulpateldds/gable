@@ -1,4 +1,12 @@
 <script setup>
+import Navbar from '~/components/landlord/Navbar.vue'
+import NewRequestModal from '~/components/landlord/NewRequestModal.vue'
+import Sidebar from '~/components/landlord/Sidebar.vue'
+
+definePageMeta({
+    path: '/maintenance',
+})
+
 const showNewRequest = ref(false)
 const stats = [
     { label: 'OPEN REQUESTS', value: '3', sub: 'Not completed or closed' },

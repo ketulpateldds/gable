@@ -1,9 +1,13 @@
 <script setup>
 import { ref } from 'vue'
-import Sidebar from '~/components/Sidebar.vue'
-import Navbar from '~/components/Navbar.vue'
-import InviteModal from '~/components/InviteModal.vue'
-import AddTenantModal from '~/components/AddTenantModal.vue'
+import Sidebar from '~/components/landlord/Sidebar.vue'
+import Navbar from '~/components/landlord/Navbar.vue'
+import InviteModal from '~/components/landlord/InviteModal.vue'
+import AddTenantModal from '~/components/landlord/AddTenantModal.vue'
+
+definePageMeta({
+    path: '/tenants',
+})
 
 const isInviteModalOpen = ref(false)
 const isAddModalOpen = ref(false)

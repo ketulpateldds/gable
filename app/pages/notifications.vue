@@ -1,5 +1,7 @@
 <script setup>
 import { ref } from 'vue'
+import Navbar from '~/components/landlord/Navbar.vue';
+import Sidebar from '~/components/landlord/Sidebar.vue';
 
 const notifications = ref([
     {
@@ -81,7 +83,7 @@ const notifications = ref([
                                 class="px-5 py-[13px] rounded-[80px] border border-[#0F1114] text-[12px] font-extrabold text-[#0F1114] uppercase tracking-[-2%] leading-[100%] whitespace-nowrap">
                                 MARK ALL AS READ
                             </button>
-                            <NuxtLink to="/settings "
+                            <NuxtLink to="/settings"
                                 class="px-5 py-[13px] rounded-[80px] flex items-center justify-center text-primary text-[12px] font-extrabold uppercase tracking-[-2%] leading-[100%] hover:opacity-90 transition-opacity whitespace-nowrap"
                                 style="background: linear-gradient(225.01deg, #3388FF 0%, #004CE5 100%);">
                                 NOTIFICATION SETTINGS

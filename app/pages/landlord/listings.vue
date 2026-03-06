@@ -1,8 +1,12 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue'
-import Sidebar from '@/components/Sidebar.vue'
-import Navbar from '@/components/Navbar.vue'
-import ListingDetailModal from '@/components/ListingDetailModal.vue'
+import Sidebar from '@/components/landlord/Sidebar.vue'
+import Navbar from '@/components/landlord/Navbar.vue'
+import ListingDetailModal from '@/components/landlord/ListingDetailModal.vue'
+
+definePageMeta({
+    path: '/listings',
+})
 
 const isDetailOpen = ref(false)
 const selectedProperty = ref(null)

@@ -1,8 +1,12 @@
 <script setup>
-import Sidebar from '@/components/Sidebar.vue'
-import Navbar from '@/components/Navbar.vue'
-import NewApplicationModal from '@/components/NewApplicationModal.vue'
-import InviteApplicantModal from '@/components/InviteApplicantModal.vue'
+import Sidebar from '@/components/landlord/Sidebar.vue'
+import Navbar from '@/components/landlord/Navbar.vue'
+import NewApplicationModal from '@/components/landlord/NewApplicationModal.vue'
+import InviteApplicantModal from '@/components/landlord/InviteApplicantModal.vue'
+
+definePageMeta({
+    path: '/applications',
+})
 
 const isNewAppOpen = ref(false)
 const isInviteOpen = ref(false)

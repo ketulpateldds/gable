@@ -1,4 +1,11 @@
 <script setup>
+import Navbar from '~/components/landlord/Navbar.vue'
+import Sidebar from '~/components/landlord/Sidebar.vue'
+
+definePageMeta({
+    path: '/messages',
+})
+
 const searchQuery = ref('')
 const messageText = ref('')
 const showChat = ref(false)

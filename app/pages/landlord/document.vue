@@ -1,6 +1,10 @@
 <script setup>
-import Sidebar from '@/components/Sidebar.vue'
-import Navbar from '@/components/Navbar.vue'
+import Sidebar from '@/components/landlord/Sidebar.vue'
+import Navbar from '@/components/landlord/Navbar.vue'
+
+definePageMeta({
+    path: '/document',
+})
 
 const activeTab = ref('all')
 const searchQuery = ref('')

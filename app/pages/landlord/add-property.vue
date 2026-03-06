@@ -1,4 +1,11 @@
 <script setup>
+import Navbar from '~/components/landlord/Navbar.vue';
+import Sidebar from '~/components/landlord/Sidebar.vue';
+
+definePageMeta({
+    path: '/add-property',
+})
+
 const propertyData = reactive({
     address: '',
     unit: '',

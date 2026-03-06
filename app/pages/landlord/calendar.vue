@@ -1,4 +1,12 @@
 <script setup>
+import AddEventModal from '~/components/landlord/AddEventModal.vue'
+import Navbar from '~/components/landlord/Navbar.vue'
+import Sidebar from '~/components/landlord/Sidebar.vue'
+
+definePageMeta({
+    path: '/calendar',
+})
+
 const activeTab = ref('ALL')
 const tabs = ['ALL', 'INSPECTIONS', 'MAINTENANCE', 'LEASING', 'REMINDERS']
 
