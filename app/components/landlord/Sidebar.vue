@@ -8,6 +8,7 @@ watch(() => route.path, () => {
 })
 
 const activeNav = computed(() => {
+    if (route.path === '/add-property' || route.path === '/view-unit') return 'Portfolio'
     const item = navItems.find(item => item.to === route.path)
     return item ? item.label : 'Dashboard'
 })
