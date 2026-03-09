@@ -154,9 +154,10 @@ onUnmounted(() => {
                     <div class="flex gap-2">
                         <button
                             class="h-10 px-6 rounded-[80px] border border-[#0F1114] text-[12px] font-extrabold text-[#0F1114] leading-[100%] uppercase tracking-[-2%]">SHARE</button>
-                        <button
+                        <button @click="navigateTo('/create-listing')"
                             class="h-10 px-6 rounded-[80px] text-[12px] font-extrabold text-primary leading-[100%] uppercase tracking-[-2%]"
-                            style="background: linear-gradient(225.01deg, #3388FF 0%, #004CE6 100%);">SAVE</button>
+                            style="background: linear-gradient(225.01deg, #3388FF 0%, #004CE6 100%);">Create
+                            Listing</button>
                     </div>
                 </div>
 
