@@ -1,10 +1,13 @@
 <script setup>
 import Navbar from '~/components/landlord/Navbar.vue';
+import NewPropertyModel from '~/components/landlord/NewPropertyModel.vue';
 import Sidebar from '~/components/landlord/Sidebar.vue';
 
 definePageMeta({
     path: '/create-listing',
 })
+
+const isNewPropertyModalOpen = ref(false);
 
 const amenities = ref([
     'BUSINESS CENTER', 'CLUBHOUSE', 'BASKETBALL COURT', 'BBQ', 'ELEVATOR', 'GATED ENTRY',
@@ -48,8 +51,6 @@ const handleAddCustomFeature = () => {
         customFeature.value = ''
     }
 }
-
-const customAppliance = ref('')
 
 </script>
 
@@ -122,7 +123,7 @@ const customAppliance = ref('')
                                     </svg>
                                 </div>
 
-                                <div
+                                <div @click="isNewPropertyModalOpen = true"
                                     class="ml-[6px] flex items-center gap-[6px] text-[12px] font-extrabold text-[#004CE5] uppercase leading-[100%] tracking-[-2%]">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                                         fill="none" stroke="#004CE5" stroke-width="3" stroke-linecap="round"
@@ -414,7 +415,7 @@ const customAppliance = ref('')
                                     Upload one image</p>
                             </div>
 
-                            <div class="w-[246px] h-[120px] border border-[#0F11141A] rounded-[12px] flex items-center justify-center"
+                            <div class="w-full sm:w-[246px] h-[180px] sm:h-[120px] border border-[#0F11141A] rounded-[12px] flex items-center justify-center"
                                 style="background: linear-gradient(102.96deg, #FAFAFA 0.31%, rgba(250, 250, 250, 0) 99.69%);">
                                 <span
                                     class="text-[12px] font-semibold text-[#0F111499] leading-[100%] tracking-[-2%]">No
@@ -459,7 +460,7 @@ const customAppliance = ref('')
                                     Add multiple photos</p>
                             </div>
 
-                            <div class="w-[246px] h-[120px] border border-[#0F11141A] rounded-[12px] flex items-center justify-center"
+                            <div class="w-full sm:w-[246px] h-[180px] sm:h-[120px] border border-[#0F11141A] rounded-[12px] flex items-center justify-center"
                                 style="background: linear-gradient(102.96deg, #FAFAFA 0.31%, rgba(250, 250, 250, 0) 99.69%);">
                                 <span
                                     class="text-[12px] font-semibold text-[#0F111499] leading-[100%] tracking-[-2%]">No
@@ -519,11 +520,150 @@ const customAppliance = ref('')
 
                     <div class="w-full border border-[#0F11141A] rounded-[24px] mb-4 overflow-hidden">
                         <div class="px-6 pt-[21px] pb-[20px] border-b border-[#0F11141A]">
+                            <h2 class="text-base font-bold text-[#0F1114] leading-[100%] mb-[1px]">Lease Details</h2>
+                            <p class="text-[12px] font-medium text-[#0F111499] leading-4 tracking-[-2%]">Provide the key
+                                lease terms along with any important additional details renters should know.</p>
+                        </div>
+
+                        <div
+                            class="p-6 pt-[22px] border-b border-[#0F11141A] grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-[14px]">
+                            <div class="col-span-1">
+                                <label
+                                    class="ml-1 block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px]">Monthly
+                                    Rent
+                                </label>
+                                <input type="text" placeholder="$ Amount"
+                                    class="w-full px-5 py-[14px] rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] uppercase tracking-[-2%] leading-[100%] placeholder:text-[#0F111466] outline-none" />
+                            </div>
+
+                            <div class="col-span-1">
+                                <label
+                                    class="ml-1 block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px]">Security
+                                    deposit
+                                </label>
+                                <input type="text" placeholder="$ Amount"
+                                    class="w-full px-5 py-[14px] rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] uppercase tracking-[-2%] leading-[100%] placeholder:text-[#0F111466] outline-none" />
+                            </div>
+
+                            <div class="col-span-1">
+                                <label
+                                    class="ml-1 block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px]">Amount
+                                    refundable
+                                </label>
+                                <input type="text" placeholder="$ Amount"
+                                    class="w-full px-5 py-[14px] rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] uppercase tracking-[-2%] leading-[100%] placeholder:text-[#0F111466] outline-none" />
+                            </div>
+
+                            <div class="col-span-1">
+                                <label
+                                    class="ml-1 block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px]">Date
+                                    available
+                                </label>
+                                <div class="relative">
+                                    <input type="date"
+                                        class="w-full h-11 px-5 py-[15px] rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] focus:outline-none" />
+                                    <svg class="absolute right-4 top-1/2 -translate-y-1/2 text-[#0F1114] pointer-events-none"
+                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div class="col-span-1">
+                                <label
+                                    class="ml-1 block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px]">Min
+                                    lease durationMin lease duration
+                                </label>
+                                <div class="relative mb-[9px]">
+                                    <select
+                                        class="w-full h-11 px-5 py-[15px] rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold leading-[100%] tracking-[-2%] text-[#0F1114] appearance-none focus:outline-none bg-white">
+                                        <option>12 Months</option>
+                                    </select>
+                                    <svg class="absolute right-3 top-1/2 -translate-y-1/2 text-[#0F1114] pointer-events-none"
+                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="m6 9 6 6 6-6" />
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div class="col-span-1">
+                                <label
+                                    class="ml-1 block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px]">Max
+                                    lease duration
+                                </label>
+                                <div class="relative mb-[9px]">
+                                    <select
+                                        class="w-full h-11 px-5 py-[15px] rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold leading-[100%] tracking-[-2%] text-[#0F1114] appearance-none focus:outline-none bg-white">
+                                        <option>12 Months</option>
+                                    </select>
+                                    <svg class="absolute right-3 top-1/2 -translate-y-1/2 text-[#0F1114] pointer-events-none"
+                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="m6 9 6 6 6-6" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="px-6 pt-[22px] pb-[25px]">
+                            <p
+                                class="ml-[3px] text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[6px]">
+                                Additional lease details</p>
+
+                            <div class="border border-[#0F11141A] rounded-[12px] overflow-hidden">
+                                <div
+                                    class="px-5 py-[14px] flex flex-wrap items-center gap-[13px] border-b border-[#0F11141A] bg-[#FAFAFA66]">
+                                    <div class="flex flex-wrap items-center gap-[15px]">
+
+                                        <button
+                                            class="text-[14px] font-semibold text-[#0F1114CC] uppercase leading-[100%] tracking-[-2%]">
+                                            B
+                                        </button>
+                                        <button
+                                            class="text-[14px] font-semibold text-[#0F1114CC] uppercase leading-[100%] tracking-[-2%]">
+                                            /
+                                        </button>
+                                        <button class="text-[#0F1114] hover:bg-[#0F11140D] transition-colors">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <line x1="10" y1="6" x2="21" y2="6"></line>
+                                                <line x1="10" y1="12" x2="21" y2="12"></line>
+                                                <line x1="10" y1="18" x2="21" y2="18"></line>
+                                                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <button
+                                        class="text-[14px] font-extrabold text-[#004CE5] leading-[100%] tracking-[-2%]">
+                                        Insert Template
+                                    </button>
+                                </div>
+
+                                <textarea
+                                    placeholder="Example: Bright, updated home with great natural light and easy access to transit. In-unit laundry, parking, and a spacious yard."
+                                    class="block w-full h-[76px] px-4 py-[14px] text-[12px] font-semibold text-[#0F111499] leading-[100%] tracking-[-2%] outline-none resize-none placeholder:text-[#0F111466]"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full border border-[#0F11141A] rounded-[24px] mb-4 overflow-hidden">
+                        <div class="px-6 pt-[21px] pb-[20px] border-b border-[#0F11141A]">
                             <h2 class="text-base font-bold text-[#0F1114] leading-[100%]">Pets</h2>
                         </div>
 
                         <div class="p-6">
-                            <div class="flex items-center gap-2 mb-[14px]">
+                            <div class="flex flex-wrap sm:flex-nowrap items-center gap-2 mb-[14px]">
                                 <label v-for="pet in petOptions" :key="pet"
                                     class="flex items-center gap-2 px-4 py-[9px] bg-[#0F111405] rounded-[80px] border border-[#0F11141A] cursor-pointer transition-all">
                                     <input type="checkbox" class="hidden" v-model="selectedPet" />
@@ -541,7 +681,7 @@ const customAppliance = ref('')
                                 </label>
                             </div>
 
-                            <div class="mb-[14px] grid grid-cols-2 gap-4">
+                            <div class="mb-[14px] grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
                                     <label
                                         class="ml-1 block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px]">Pets
@@ -555,7 +695,7 @@ const customAppliance = ref('')
                                 <label
                                     class="ml-1 block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px]">Editor</label>
                                 <textarea placeholder="Here you can add pet policy and other details if necessary."
-                                    class="block w-full h-[120px] px-[17px] py-[14px] text-[12px] font-semibold text-[#0F111499] leading-[100%] tracking-[-2%] outline-none resize-none placeholder:text-[#0F111466]"></textarea>
+                                    class="block w-full h-[120px] border border-[#0F11141A] rounded-[12px] px-[17px] py-[14px] text-[12px] font-semibold text-[#0F111499] leading-[100%] tracking-[-2%] outline-none resize-none placeholder:text-[#0F111466]"></textarea>
                             </div>
                         </div>
                     </div>
@@ -643,7 +783,7 @@ const customAppliance = ref('')
                         </div>
                     </div>
 
-                    <div class="w-full border border-[#0F11141A] rounded-[24px] mb-4 overflow-hidden">
+                    <div class="w-full border border-[#0F11141A] rounded-[24px] mb-10 overflow-hidden">
                         <div class="px-6 pt-[21px] pb-[20px] border-b border-[#0F11141A]">
                             <h2 class="text-base font-bold text-[#0F1114] leading-[100%] mb-[1px]">Syndication Options
                             </h2>
@@ -677,6 +817,8 @@ const customAppliance = ref('')
                     </div>
 
                 </div>
+
+                <NewPropertyModel :is-open="isNewPropertyModalOpen" @close="isNewPropertyModalOpen = false" />
             </main>
         </div>
     </div>
