@@ -62,8 +62,8 @@ const dashboardCards = [
         <div class="flex-1 lg:ml-64 flex flex-col min-h-screen min-w-0 transition-all duration-300">
             <Navbar />
 
-            <main class="flex-1 px-6 pt-[19px] pb-10 flex flex-col">
-                
+            <main class="flex-1 px-4 sm:px-6 pt-[19px] pb-10 flex flex-col">
+
                 <div class="mb-5">
                     <h1 class="text-[20px] font-bold text-[#0F1114] leading-[100%] mb-[4px]">Dashboard</h1>
                     <p class="text-[12px] text-[#0F111499] font-medium leading-4 tracking-[-2%]">Quick view of your

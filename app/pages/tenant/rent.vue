@@ -2,57 +2,6 @@
 import Navbar from '@/components/landlord/Navbar.vue'
 import Sidebar from '~/components/tenant/Sidebar.vue'
 
-const dashboardCards = [
-    {
-        title: "Outstanding Leases",
-        description: "Lease items needing review or signature.",
-        value: "2 pending",
-        subText: "Updated today",
-        action: {
-            label: "View Leases",
-            link: "/tenant/dashboard"
-        },
-        status: {
-            label: "2",
-            paddingTop: '4px',
-            paddingBottom: '4px',
-            paddingX: '6px'
-        },
-    },
-    {
-        title: "Service Providers",
-        description: "Vendors assigned to your unit / building.",
-        value: "4 active",
-        subText: "Plumbing, Electrical...",
-        action: {
-            label: "Request Service",
-            link: "/tenant/dashboard"
-        },
-        status: {
-            label: "4",
-            paddingTop: '4px',
-            paddingBottom: '4px',
-            paddingX: '6px'
-        },
-    },
-    {
-        title: "Inspection",
-        description: "Upcoming or recent inspection status.",
-        value: "Feb 2",
-        subText: "2:00 PM",
-        action: {
-            label: "Details",
-            link: "/tenant/dashboard"
-        },
-        status: {
-            label: "SCHEDULED",
-            paddingTop: '6px',
-            paddingBottom: '7px',
-            paddingX: '12px'
-        },
-    }
-];
-
 const payments = [
     {
         status: "Due",
@@ -125,7 +74,7 @@ const payments = [
         <div class="flex-1 lg:ml-64 flex flex-col min-h-screen min-w-0 transition-all duration-300">
             <Navbar />
 
-            <main class="flex-1 px-6 pt-[19px] pb-10 flex flex-col">
+            <main class="flex-1 px-4 sm:px-6 pt-[19px] pb-10 flex flex-col">
 
                 <div class="mb-5">
                     <h1 class="text-[20px] font-bold text-[#0F1114] leading-[100%] mb-[4px]">Rent</h1>
@@ -197,7 +146,7 @@ const payments = [
                 </div>
 
                 <div class="border border-[#0F11141A] rounded-[24px]">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between p-6 gap-4">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between p-4 sm:p-6 gap-4">
                         <div class="relative w-full md:w-[344px]">
                             <svg class="absolute left-2 top-1/2 -translate-y-1/2 text-[#0F111466]"
                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
@@ -277,7 +226,7 @@ const payments = [
                                 <tr v-for="(payment, i) in payments" :key="i"
                                     class="border-b border-[#0F11141A] last:border-b-0 hover:bg-[#F9FAFB] transition-colors">
                                     <td
-                                        class="pl-6 pr-1 pt-[17px] pb-4 text-[14px] font-semibold leading-[100%] tracking-[-2%] whitespace-nowrap">
+                                        class="pl-6 pr-1 pt-[17px] pb-4 text-[12px] font-bold leading-[100%] tracking-[-2%] whitespace-nowrap">
                                         <div class="inline-flex items-center gap-[7px] px-3 py-[5px] rounded-full border"
                                             :style="{
                                                 backgroundColor: payment.bgColor,
