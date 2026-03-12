@@ -1,6 +1,9 @@
 <script setup>
 import Navbar from '@/components/landlord/Navbar.vue'
 import Sidebar from '~/components/tenant/Sidebar.vue';
+
+const selectedBeds = ref('ANY');
+const selectedBaths = ref('ANY');
 </script>
 
 <template>
@@ -79,9 +82,40 @@ import Sidebar from '~/components/tenant/Sidebar.vue';
                             </div>
 
                             <div class="col-span-1">
+                                <div class="grid grid-cols-2 gap-8">
+                                    <div>
+                                        <label
+                                            class="ml-1 block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px]">Beds</label>
+                                        <div class="flex flex-wrap gap-[6px]">
+                                            <button v-for="bed in ['ANY', 'STUDIO', '1', '2', '3', '4', '5+']"
+                                                :key="bed" @click="selectedBeds = bed" :class="selectedBeds === bed
+                                                    ? 'border-[#004CE5] text-[#004CE5] bg-[#F2F6FF]'
+                                                    : 'border-[#0F11141A] text-[#0F1114] bg-[#0F111405]'"
+                                                class="px-4 py-[9px] rounded-[80px] border text-[12px] font-bold uppercase leading-[100%] tracking-[-2%] cursor-pointer transition-colors">
+                                                {{ bed }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label
+                                            class="ml-1 block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px]">Baths</label>
+                                        <div class="flex flex-wrap gap-[6px]">
+                                            <button v-for="bath in ['ANY', '1', '2', '3', '4', '5+']" :key="bath"
+                                                @click="selectedBaths = bath" :class="selectedBaths === bath
+                                                    ? 'border-[#004CE5] text-[#004CE5] bg-[#F2F6FF]'
+                                                    : 'border-[#0F11141A] text-[#0F1114] bg-[#0F111405]'"
+                                                class="px-4 py-[9px] rounded-[80px] border text-[12px] font-bold uppercase leading-[100%] tracking-[-2%] cursor-pointer transition-colors">
+                                                {{ bath }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-span-1">
                                 <label
                                     class="ml-1 block text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] mb-[5px]">Min
-                                    per monthMin per month
+                                    per month
                                 </label>
                                 <input type="text" placeholder="$ amount"
                                     class="w-full px-5 py-[14px] rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold text-[#0F1114] uppercase tracking-[-2%] leading-[100%] placeholder:text-[#0F111466] outline-none" />
