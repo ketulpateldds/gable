@@ -1,69 +1,10 @@
 <script setup>
 import Navbar from '@/components/landlord/Navbar.vue'
 import Sidebar from '~/components/tenant/Sidebar.vue'
+import AddRequestModal from '~/components/tenant/AddRequestModal.vue'
+import { ref } from 'vue'
 
-const payments = [
-    {
-        status: "Due",
-        bgColor: "#FFF9F2",
-        borderColor: '#E599171A',
-        textColor: '#A16600',
-        dueDate: "2026-02-01",
-        category: "Rent",
-        property: "Gable Apartments • Unit 3",
-        contact: "Property Manager",
-        total: "$1,250.00",
-        balance: "$1,250.00",
-    },
-    {
-        status: "Scheduled",
-        bgColor: "#F2F6FF",
-        borderColor: '#004CE51A',
-        textColor: '#004CE5',
-        dueDate: "2026-02-01",
-        category: "Auto-pay",
-        property: "Gable Apartments • Unit 3",
-        contact: "Property Manager",
-        total: "$1,250.00",
-        balance: "$1,250.00",
-    },
-    {
-        status: "Paid",
-        bgColor: "#F2FFF4",
-        borderColor: '#21A6351A',
-        textColor: '#21A635',
-        dueDate: "2026-01-01",
-        category: "Rent",
-        property: "Gable Apartments • Unit 3",
-        contact: "Property Manager",
-        total: "$1,250.00",
-        balance: "$0.00",
-    },
-    {
-        status: "Paid",
-        bgColor: "#F2FFF4",
-        borderColor: '#21A6351A',
-        textColor: '#21A635',
-        dueDate: "2025-12-01",
-        category: "Rent",
-        property: "Gable Apartments • Unit 3",
-        contact: "Property Manager",
-        total: "$1,250.00",
-        balance: "$0.00",
-    },
-    {
-        status: "Due",
-        bgColor: "#FFF9F2",
-        borderColor: '#E599171A',
-        textColor: '#A16600',
-        dueDate: "2026-02-10",
-        category: "Late fee",
-        property: "Gable Apartments • Unit 3",
-        contact: "Property Manager",
-        total: "$50.00",
-        balance: "$50.00",
-    }
-];
+const isAddRequestModalOpen = ref(false)
 
 const getStatusColors = (color) => {
     if (color === "High") {
@@ -148,6 +89,7 @@ const requests = [
                     </div>
                     <div>
                         <button
+                            @click="isAddRequestModalOpen = true"
                             class="pl-[18px] pr-[21px] py-[13px] text-[12px] font-extrabold text-primary rounded-[80px] flex items-center gap-[10px] uppercase leading-[100%] tracking-[-2%]"
                             style="background: linear-gradient(225.01deg, #3388FF 0%, #004CE6 100%);">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
@@ -257,5 +199,7 @@ const requests = [
             </main>
 
         </div>
+
+        <AddRequestModal :isOpen="isAddRequestModalOpen" @close="isAddRequestModalOpen = false" />
     </div>
 </template>

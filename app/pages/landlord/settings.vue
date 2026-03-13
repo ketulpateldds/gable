@@ -1,12 +1,12 @@
 <script setup>
 import Navbar from '~/components/landlord/Navbar.vue'
-import AccountSetting from '~/components/landlord/settings/AccountSetting.vue'
-import AdditionalSetting from '~/components/landlord/settings/AdditionalSetting.vue'
-import DeleteAccount from '~/components/landlord/settings/DeleteAccount.vue'
-import Notification from '~/components/landlord/settings/Notification.vue'
-import OnlinePayment from '~/components/landlord/settings/OnlinePayment.vue'
-import Subscription from '~/components/landlord/settings/Subscription.vue'
-import TeamManagement from '~/components/landlord/settings/TeamManagement.vue'
+import AccountSetting from '~/components/settings/AccountSetting.vue'
+import AdditionalSetting from '~/components/settings/AdditionalSetting.vue'
+import DeleteAccount from '~/components/settings/DeleteAccount.vue'
+import Notification from '~/components/settings/Notification.vue'
+import OnlinePayment from '~/components/settings/OnlinePayment.vue'
+import Subscription from '~/components/settings/Subscription.vue'
+import TeamManagement from '~/components/settings/TeamManagement.vue'
 import Sidebar from '~/components/landlord/Sidebar.vue'
 
 definePageMeta({
