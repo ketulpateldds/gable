@@ -1,109 +1,152 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed, reactive } from 'vue'
+
+const props = defineProps({
+    role: {
+        type: String,
+        default: 'landlord', // 'landlord' | 'tenant'
+        validator: (v) => ['landlord', 'tenant'].includes(v)
+    }
+})
 
 const frequency = ref('INSTANTLY')
+const frequencies = ['INSTANTLY', 'HOURLY', 'DAILY']
+const unsubscribe = ref(false)
 
-const sections = ref([
+// ─── All Notification Sections ──────────────────────────────────────────────
+const allSections = reactive([
     {
         title: 'Security',
+        role: 'both',
         settings: [
             { id: 'login', label: 'Notification about all Login activity.', email: true, feed: false, sms: false }
         ]
     },
     {
         title: 'Subscription',
+        role: 'both',
         settings: [
             { id: 'sub', label: 'Notification about upcoming subscription renewal.', email: false, feed: false, sms: false }
         ]
     },
     {
-        title: 'New Leads',
+        title: 'New Matches',
+        role: 'tenant',
         settings: [
-            {
-                id: 'leads', label: 'Notifications about new leads.', email: false, feed: false, sms: false,
-                hasFrequency: true,
-            }
+            { id: 'matches', label: 'Daily notification about new listings matching your search criteria.', email: false, feed: false, sms: false }
+        ]
+    },
+    {
+        title: 'New Leads',
+        role: 'landlord',
+        settings: [
+            { id: 'leads', label: 'Notifications about new leads.', email: false, feed: false, sms: false, hasFrequency: true }
         ]
     },
     {
         title: 'Communication',
+        role: 'both',
         settings: [
             { id: 'msgs', label: 'Notification about new messages.', email: false, feed: false, sms: false }
         ]
     },
     {
-        title: 'Rental Application',
+        title: 'Application',
+        role: 'tenant',
         settings: [
-            { id: 'app', label: 'Notifications about new applications submitted by tenants.', email: false, feed: false, sms: false },
-            { id: 'app', label: 'Notify when tenants did not submit applications.', email: false, feed: false, sms: false },
-            { id: 'app', label: 'Notify when tenants paid application fees.', email: false, feed: false, sms: false },
+            { id: 'msgs', label: 'Notifications when your landlord updates an application status.', email: false, feed: false, sms: false }
+        ]
+    },
+    {
+        title: 'Rental Application',
+        role: 'landlord',
+        settings: [
+            { id: 'app_submitted', label: 'Notifications about new applications submitted by tenants.', email: false, feed: false, sms: false },
+            { id: 'app_not_submitted', label: 'Notify when tenants did not submit applications.', email: false, feed: false, sms: false },
+            { id: 'app_fee_paid', label: 'Notify when tenants paid application fees.', email: false, feed: false, sms: false },
         ]
     },
     {
         title: 'Online Payments',
+        role: 'landlord',
         settings: [
-            { id: 'app', label: 'Notification about online payments made.', email: false, feed: false, sms: false },
-            { id: 'app', label: 'Notify when online payment is initiated.', email: false, feed: false, sms: false },
-            { id: 'app', label: 'Notify when online payment is successfully cleared.', email: false, feed: false, sms: false },
-            { id: 'app', label: 'Notify when online payment is failed.', email: false, feed: false, sms: false },
+            { id: 'payment_made', label: 'Notification about online payments made.', email: false, feed: false, sms: false },
+            { id: 'payment_initiated', label: 'Notify when online payment is initiated.', email: false, feed: false, sms: false },
+            { id: 'payment_cleared', label: 'Notify when online payment is successfully cleared.', email: false, feed: false, sms: false },
+            { id: 'payment_failed', label: 'Notify when online payment is failed.', email: false, feed: false, sms: false },
         ]
     },
     {
         title: 'Tasks Assigned',
+        role: 'landlord',
         settings: [
-            { id: 'app', label: 'Notifications about assigned notes/tasks.', email: false, feed: false, sms: false }
+            { id: 'tasks_assigned', label: 'Notifications about assigned notes/tasks.', email: false, feed: false, sms: false }
         ]
     },
     {
         title: 'Connection Updates',
+        role: 'landlord',
         settings: [
-            { id: 'app', label: 'Notifications about approved or declined connections.', email: false, feed: false, sms: false }
+            { id: 'connections', label: 'Notifications about approved or declined connections.', email: false, feed: false, sms: false }
         ]
     },
     {
         title: 'Properties',
+        role: 'landlord',
         settings: [
-            {
-                id: 'rental_reports_property_insurance', label: 'Notifications about rental reports and property insurance expiration.', email: false, feed: false, sms: false
-            },
-            {
-                id: 'rental_report_ready', label: 'Notify when rental report is ready.', email: false, feed: false, sms: false
-            },
-            {
-                id: 'property_insurance_expired', label: 'Notify when property insurance expired.', email: false, feed: false, sms: false
-            }
+            { id: 'rental_reports_property_insurance', label: 'Notifications about rental reports and property insurance expiration.', email: false, feed: false, sms: false },
+            { id: 'rental_report_ready', label: 'Notify when rental report is ready.', email: false, feed: false, sms: false },
+            { id: 'property_insurance_expired', label: 'Notify when property insurance expired.', email: false, feed: false, sms: false }
         ]
     },
     {
         title: 'Listings',
+        role: 'landlord',
         settings: [
-            {
-                id: 'listing_questions_tour_requests', label: 'Notify about new questions and tour requests from potential tenants.', email: false, feed: false, sms: false
-            },
-            {
-                id: 'listings_declined', label: 'Notify about your listings declined by listing services.', email: false, feed: false, sms: false
-            }
+            { id: 'listing_questions_tour_requests', label: 'Notifications about listings declined by listing services, listings new questions and tour requests.', email: false, feed: false, sms: false },
+            { id: 'listing_questions_tour_requests', label: 'Notify about new questions and tour requests from potential tenants.', email: false, feed: false, sms: false },
+            { id: 'listings_declined', label: 'Notify about your listings declined by listing services.', email: false, feed: false, sms: false }
         ]
     },
     {
-        title: 'Utility setups',
+        title: 'Listings',
+        role: 'tenant',
         settings: [
-            {
-                id: 'tenant_activated_utilities', label: 'Notification when the tenant activated utilities for the lease.', email: false, feed: false, sms: false
-            }
+            { id: 'listing_questions_tour_requests', label: 'Notifications regarding changes to favorited and invited listings.', email: false, feed: false, sms: false },
+        ]
+    },
+    {
+        title: 'Utility Setups',
+        role: 'landlord',
+        settings: [
+            { id: 'tenant_activated_utilities', label: 'Notification when the tenant activated utilities for the lease.', email: false, feed: false, sms: false }
+        ]
+    },
+    {
+        title: 'Utility Setups',
+        role: 'tenant',
+        settings: [
+            { id: 'tenant_activated_utilities', label: 'Notifications when utilities activated/disabled, purchases and utility setup.', email: false, feed: false, sms: false },
+            { id: 'tenant_activated_utilities', label: 'Notify when utilities are enabled/disabled by landlord', email: false, feed: false, sms: false },
+            { id: 'tenant_activated_utilities', label: 'Notify when utilities are not activated before lease start', email: false, feed: false, sms: false },
+            { id: 'tenant_activated_utilities', label: 'Notify when internet purchase requested', email: false, feed: false, sms: false },
+            { id: 'tenant_activated_utilities', label: 'Notify when landlord updated utility information', email: false, feed: false, sms: false },
         ]
     },
     {
         title: 'Invoices',
+        role: 'both',
         settings: [
             { id: 'property_general_invoices', label: 'Notification about property and general invoices.', email: false, feed: false, sms: false },
             { id: 'invoice_posted', label: 'Notify when invoice is posted.', email: false, feed: false, sms: false },
             { id: 'rent_invoice_due', label: 'Notify when rent invoice is due.', email: false, feed: false, sms: false },
-            { id: 'rent_invoice_overdue', label: 'Notify when rent invoice is overdue.', email: false, feed: false, sms: false }
+            { id: 'rent_invoice_overdue', label: 'Notify when rent invoice is overdue.', email: false, feed: false, sms: false },
+            { id: 'rent_invoice_overdue', label: 'Notify when late fee is posted', email: false, feed: false, sms: false },
         ]
     },
     {
         title: 'Lease',
+        role: 'landlord',
         settings: [
             { id: 'lease_updates_notices_insurance', label: 'Notifications about lease updates, notices, and insurance.', email: false, feed: false, sms: false },
             { id: 'lease_expired', label: 'Notify when lease is expired', email: false, feed: false, sms: false },
@@ -113,7 +156,36 @@ const sections = ref([
         ]
     },
     {
+        title: 'Lease',
+        role: 'tenant',
+        settings: [
+            { id: 'lease_expired', label: 'Notify when lease is shared', email: false, feed: false, sms: false },
+            { id: 'renters_insurance_provided', label: 'Notify when signature/insurance required', email: false, feed: false, sms: false },
+            { id: 'renters_insurance_expired', label: 'Notify when renters insurance expired', email: false, feed: false, sms: false },
+            { id: 'lease_notice_agreement_signed', label: 'Notify when insurance requested', email: false, feed: false, sms: false }
+        ]
+    },
+    {
+        title: 'Rent reporting',
+        role: 'tenant',
+        settings: [
+            { id: 'move_in_checklist', label: 'Notify about reporting to credit bureaus enabled/disabled', email: false, feed: false, sms: false },
+            { id: 'move_in_checklist', label: 'Notify a day before when auto pay initiated', email: false, feed: false, sms: false },
+            { id: 'move_out_reminder', label: 'Notify about failed/successfully payment', email: false, feed: false, sms: false }
+        ]
+    },
+    {
+        title: 'Move-In / Move-Out',
+        role: 'tenant',
+        settings: [
+            { id: 'move_in_checklist', label: 'Notify when inspection is required to submit', email: false, feed: false, sms: false },
+            { id: 'move_in_checklist', label: 'Notify when inspection invitation to submit is about to expire', email: false, feed: false, sms: false },
+            { id: 'move_out_reminder', label: 'Notify when inspection is completed by landlord', email: false, feed: false, sms: false }
+        ]
+    },
+    {
         title: 'Maintenance Requests',
+        role: 'both',
         settings: [
             { id: 'maintenance_request_updates', label: 'Notifications about request updates.', email: false, feed: false, sms: false },
             { id: 'new_request', label: 'Notify about new request.', email: false, feed: false, sms: false },
@@ -123,7 +195,8 @@ const sections = ref([
         ]
     },
     {
-        title: 'Job invitations',
+        title: 'Job Invitations',
+        role: 'landlord',
         settings: [
             { id: 'job_invitation_updates', label: 'Notifications about job invitations updates.', email: false, feed: false, sms: false },
             { id: 'bidding_request_received', label: 'Notify about bidding request received.', email: false, feed: false, sms: false },
@@ -134,15 +207,17 @@ const sections = ref([
     },
     {
         title: 'Tips and Offers',
+        role: 'both',
         settings: [
             { id: 'tips_offers_promos_updates', label: 'Text messages with promos, feature updates, and recommendations.', email: true, feed: false, sms: false }
         ]
     }
 ])
 
-const frequencies = ['INSTANTLY', 'HOURLY', 'DAILY']
-
-const unsubscribe = ref(false)
+// ─── Computed merged sections based on role ──────────────────────────────────
+const sections = computed(() => {
+    return allSections.filter(section => section.role === 'both' || section.role === props.role)
+})
 
 const toggleCheckbox = (setting, type) => {
     setting[type] = !setting[type]

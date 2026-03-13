@@ -115,7 +115,7 @@ const selectSection = (label) => {
                         <OnlinePayment v-if="activeSection === 'Online payments'" />
                         <TeamManagement v-if="activeSection === 'Team management'" />
                         <AdditionalSetting v-if="activeSection === 'Additional settings'" />
-                        <Notification v-if="activeSection === 'Notifications'" />
+                        <Notification v-if="activeSection === 'Notifications'" role="landlord" />
                         <DeleteAccount v-if="activeSection === 'Delete Account'" />
                     </div>
 

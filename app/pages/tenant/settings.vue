@@ -45,7 +45,7 @@ const tabs = [
                 <div class="px-4 sm:px-6">
                     <AccountSetting v-if="activeTab === 'Account Settings'" class="max-w-[848px]" />
                     <OnlinePaymentTenant v-if="activeTab === 'Online Payment'" class="max-w-[656px]" />
-                    <Notification v-if="activeTab === 'Notifications'" class="max-w-[656px]" />
+                    <Notification v-if="activeTab === 'Notifications'" class="max-w-[656px]" role="tenant" />
                 </div>
             </main>
         </div>
