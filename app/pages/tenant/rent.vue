@@ -158,9 +158,10 @@ const payments = [
                             <input type="text" placeholder="Search: name, unit, property, phone, email..."
                                 class="w-full h-10 pl-[38px] pr-4 rounded-[80px] border border-[#0F11141A] text-[12px] placeholder:text-[#0F111466] leading-[100%] tracking-[-2%] text-[#0F1114] focus:outline-none" />
                         </div>
-                        <div class="flex items-center gap-2 overflow-x-auto pb-1 md:pb-0 scrollbar-hide">
+                        <div
+                            class="flex items-center gap-1 w-full md:w-auto overflow-x-auto pb-1 md:pb-0 shrink-0 scrollbar-hide">
                             <div
-                                class="relative flex items-center rounded-[80px] border border-[#0F11141A] overflow-hidden whitespace-nowrap">
+                                class="relative flex items-center rounded-[80px] border border-[#0F11141A] overflow-hidden whitespace-nowrap shrink-0">
                                 <input type="date"
                                     class="w-full pl-5 pr-8 py-[9px] text-[12px] font-semibold text-[#0F1114] uppercase leading-[100%] tracking-[-0.02em] focus:outline-none bg-transparent appearance-none cursor-pointer" />
                                 <span class="absolute right-[15px] pointer-events-none flex items-center">

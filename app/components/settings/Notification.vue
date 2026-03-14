@@ -4,7 +4,7 @@ import { ref, computed, reactive } from 'vue'
 const props = defineProps({
     role: {
         type: String,
-        default: 'landlord', // 'landlord' | 'tenant'
+        default: 'landlord',
         validator: (v) => ['landlord', 'tenant'].includes(v)
     }
 })
