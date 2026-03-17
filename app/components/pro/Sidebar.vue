@@ -1,23 +1,28 @@
-<script setup>
+<script setup lang="ts">
 const { isSidebarOpen, closeSidebar } = useSidebar()
 const route = useRoute()
 
-// Close sidebar when route changes on mobile
 watch(() => route.path, () => {
     closeSidebar()
 })
 
-const activeNav = computed(() => {
+interface NavItem {
+    label: string
+    to: string
+    icon: string
+}
+
+const activeNav = computed<string>(() => {
     if (route.path === '/add-property' || route.path === '/view-unit' || route.path === '/add-unit') return 'Portfolio'
     if (route.path === '/create-listing') return 'Listings'
     const item = navItems.find(item => item.to === route.path)
     return item ? item.label : 'Dashboard'
 })
 
-const svg = (body, viewBox = "0 0 24 24") =>
+const svg = (body: string, viewBox: string = "0 0 24 24"): string =>
     `<svg width="18" height="18" viewBox="${viewBox}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${body}</svg>`
 
-const navItems = [
+const navItems: NavItem[] = [
     {
         label: 'Dashboard',
         to: '/pro/dashboard',
@@ -71,6 +76,7 @@ const navItems = [
             class="fixed top-0 left-0 bottom-0 z-50 w-[256px] bg-primary border-r border-[#0F11141A] flex flex-col overflow-y-auto shrink-0 scrollbar-hide transition-transform duration-300 transform lg:translate-x-0"
             :class="isSidebarOpen ? 'translate-x-0' : '-translate-x-full'">
 
+            <!-- Mobile Header -->
             <div class="flex items-center justify-between p-6 lg:hidden">
                 <span class="text-[#0F1114] font-extrabold text-[20px]">Menu</span>
                 <button @click="closeSidebar" class="p-1 text-[#0F1114]">
@@ -82,6 +88,7 @@ const navItems = [
                 </button>
             </div>
 
+            <!-- Logo -->
             <div class="hidden lg:flex items-center gap-[6px] px-[38px] pt-[20px] pb-5">
                 <div class="w-6 h-6 flex items-center justify-center overflow-hidden shrink-0">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -100,6 +107,7 @@ const navItems = [
                 <span class="text-[#0F1114] font-extrabold text-[20px] tracking-[-2%] leading-[100%]">Blueporch</span>
             </div>
 
+            <!-- Navigation -->
             <nav class="flex flex-col gap-2 py-[25px] lg:pt-0 px-6 flex-1">
                 <NuxtLink v-for="item in navItems" :key="item.label" :to="item.to"
                     class="h-[42px] flex items-center gap-3 px-4 py-[11px] rounded-[80px] text-[14px] leading-[100%]"

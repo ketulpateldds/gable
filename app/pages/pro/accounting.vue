@@ -1,8 +1,22 @@
-<script setup>
+<script setup lang="ts">
 import Navbar from '@/components/landlord/Navbar.vue'
 import Sidebar from '~/components/pro/Sidebar.vue';
 
-const payments = [
+interface Payment {
+    status: string;
+    bgColor: string;
+    borderColor: string;
+    textColor: string;
+    dueDate: string;
+    category: string;
+    invoice: string;
+    contact: string;
+    email: string;
+    total: string;
+    balance: string;
+}
+
+const payments: Payment[] = [
     {
         status: "Due",
         bgColor: "#FFF9F2",
@@ -56,7 +70,6 @@ const payments = [
         balance: "$0",
     }
 ];
-
 </script>
 
 <template>
@@ -68,6 +81,7 @@ const payments = [
 
             <main class="flex-1 px-4 sm:px-6 pt-[19px] pb-10 flex flex-col">
 
+                <!-- Header -->
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
                     <div>
                         <h1 class="text-[20px] font-bold text-[#0F1114] leading-[100%] mb-[4px]">Requests</h1>
@@ -78,16 +92,18 @@ const payments = [
                             class="pl-[18px] pr-[21px] py-[13px] text-[12px] font-extrabold text-primary rounded-[80px] flex items-center gap-[10px] uppercase leading-[100%] tracking-[-2%]"
                             style="background: linear-gradient(225.01deg, #3388FF 0%, #004CE6 100%);">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                                fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-plus">
+                                fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                stroke-linejoin="round" class="icon icon-tabler icons-tabler-plus">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path
-                                    d="M12 4a1 1 0 0 1 1 1v6h6a1 1 0 0 1 0 2h-6v6a1 1 0 0 1 -2 0v-6h-6a1 1 0 0 1 0 -2h6v-6a1 1 0 0 1 1 -1" />
+                                <path d="M12 5l0 14" />
+                                <path d="M5 12l14 0" />
                             </svg>
                             Add Request
                         </button>
                     </div>
                 </div>
 
+                <!-- Stats Cards -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
                     <div class="border border-[#0F11141A] rounded-[12px] px-[17px] pt-[14px] pb-[15px]">
                         <p
@@ -123,6 +139,7 @@ const payments = [
                     </div>
                 </div>
 
+                <!-- Table -->
                 <div class="border border-[#0F11141A] rounded-[24px]">
                     <div class="flex flex-col md:flex-row md:items-center justify-between p-4 sm:p-6 gap-4">
                         <div class="relative w-full md:w-[344px]">
@@ -134,7 +151,7 @@ const payments = [
                                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                             </svg>
                             <input type="text" placeholder="Search Here"
-                                class="w-full h-10 pl-[38px] pr-4 rounded-[80px] border border-[#0F11141A] text-[12px] placeholder:text-[#0F111466] leading-[100%] tracking-[-2%] text-[#0F1114] focus:outline-none" />
+                                class="w-full h-10 pl-[38px] pr-4 rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold placeholder:text-[#0F111466] leading-[100%] tracking-[-2%] text-[#0F1114] focus:outline-none" />
                         </div>
                         <div
                             class="flex items-center gap-1 w-full md:w-auto overflow-x-auto pb-1 md:pb-0 shrink-0 scrollbar-hide">

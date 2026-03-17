@@ -1,9 +1,9 @@
-<script setup>
+<script setup lang="ts">
 import Navbar from '@/components/landlord/Navbar.vue'
 import AddRequestModal from '~/components/pro/AddRequestModal.vue';
 import Sidebar from '~/components/pro/Sidebar.vue';
 
-const isAddRequestModalOpen = ref(false)
+const isAddRequestModalOpen = ref < boolean > (false)
 
 </script>
 
@@ -16,6 +16,7 @@ const isAddRequestModalOpen = ref(false)
 
             <main class="flex-1 px-4 sm:px-6 pt-[19px] pb-10 flex flex-col">
 
+                <!-- Header -->
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-0 mb-3">
                     <div>
                         <h1 class="text-[20px] font-bold text-[#0F1114] leading-[100%] mb-[4px]">Dashboard</h1>
@@ -25,17 +26,18 @@ const isAddRequestModalOpen = ref(false)
                     <button @click="isAddRequestModalOpen = true"
                         class="pl-[18px] py-3 pr-[21px] text-white text-[12px] font-extrabold uppercase tracking-[-2%] leading-[100%] rounded-[80px] flex items-center gap-[10px] w-fit"
                         style="background: linear-gradient(225.01deg, #3388FF 0%, #004CE6 100%);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                            class="icon icon-tabler icons-tabler-outline icon-tabler-plus">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-plus">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M12 5v14" />
-                            <path d="M5 12h14" />
+                            <path d="M12 5l0 14" />
+                            <path d="M5 12l14 0" />
                         </svg>
                         Add Request
                     </button>
                 </div>
 
+                <!-- Filters -->
                 <div class="flex flex-wrap items-center gap-2 sm:gap-1 mb-6">
                     <button
                         class="bg-[#0F1114] rounded-[80px] py-[10px] px-[17px] text-white text-[12px] font-bold uppercase tracking-[-2%] leading-[100%]">
@@ -47,7 +49,9 @@ const isAddRequestModalOpen = ref(false)
                     </button>
                 </div>
 
+                <!-- Content -->
                 <div class="flex flex-col xl:flex-row gap-4">
+                    <!-- Outstanding Balance -->
                     <div
                         class="flex flex-col w-full xl:w-[656px] h-fit border border-[#0F11141A] rounded-[24px] p-4 sm:p-[25px]">
 
@@ -163,6 +167,7 @@ const isAddRequestModalOpen = ref(false)
                         </div>
                     </div>
 
+                    <!-- Upcoming Appointments -->
                     <div
                         class="flex flex-col w-full h-fit xl:w-[464px] border border-[#0F11141A] rounded-[24px] p-4 sm:p-[25px]">
                         <div class="flex items-center justify-between mb-3">
@@ -249,6 +254,7 @@ const isAddRequestModalOpen = ref(false)
 
             </main>
 
+            <!-- Add Request Modal -->
             <AddRequestModal :isOpen="isAddRequestModalOpen" @close="isAddRequestModalOpen = false" />
 
         </div>

@@ -1,11 +1,17 @@
-<script setup>
+<script setup lang="ts">
 import Navbar from '@/components/landlord/Navbar.vue'
 import Sidebar from '~/components/pro/Sidebar.vue';
 import AddContactModal from '~/components/pro/AddContactModal.vue';
 
-const isModalOpen = ref(false);
+interface Contact {
+    name: string
+    phone: string
+    email: string
+}
 
-const contacts = [
+const isModalOpen = ref<boolean>(false);
+
+const contacts: Contact[] = [
     {
         name: "Alex Rivera",
         phone: "(555) 987-6543",
@@ -18,12 +24,20 @@ const contacts = [
     },
 ];
 
-const getInitials = (name) => {
+const getInitials = (name: string): string => {
     if (!name) return "";
     const parts = name.split(" ").filter(p => p.length > 0);
     if (parts.length === 0) return "";
-    if (parts.length === 1) return parts[0].substring(0, 2).toUpperCase();
-    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+
+    const first = parts[0];
+    if (!first) return "";
+
+    if (parts.length === 1) return first.substring(0, 2).toUpperCase();
+
+    const last = parts[parts.length - 1];
+    if (!last) return first.charAt(0).toUpperCase();
+
+    return (first.charAt(0) + last.charAt(0)).toUpperCase();
 };
 
 </script>
@@ -37,6 +51,7 @@ const getInitials = (name) => {
 
             <main class="flex-1 px-6 pt-[19px] pb-10 flex flex-col">
 
+                <!-- Header -->
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
                     <div>
                         <h1 class="text-[20px] font-bold text-[#0F1114] leading-[100%] mb-[4px]">Contacts</h1>
@@ -52,10 +67,11 @@ const getInitials = (name) => {
                             style="background: linear-gradient(225.01deg, #3388FF 0%, #004CE6 100%);">
                             <div class="w-4 h-4 flex items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                                    fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-plus">
-                                    <path stroke="2" d="M0 0h24v24H0z" fill="none" />
-                                    <path
-                                        d="M12 4a1 1 0 0 1 1 1v6h6a1 1 0 0 1 0 2h-6v6a1 1 0 0 1 -2 0v-6h-6a1 1 0 0 1 0 -2h6v-6a1 1 0 0 1 1 -1" />
+                                    fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="icon icon-tabler icons-tabler-plus">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M12 5l0 14" />
+                                    <path d="M5 12l14 0" />
                                 </svg>
                             </div>
                             Add new contact
@@ -63,6 +79,7 @@ const getInitials = (name) => {
                     </div>
                 </div>
 
+                <!-- Table -->
                 <div class="border border-[#0F11141A] rounded-[24px] overflow-x-auto">
                     <table class="w-full min-w-[900px]">
                         <thead>
@@ -146,6 +163,7 @@ const getInitials = (name) => {
 
         </div>
 
+        <!-- Add Contact Modal -->
         <AddContactModal :isOpen="isModalOpen" @close="isModalOpen = false" />
     </div>
 </template>

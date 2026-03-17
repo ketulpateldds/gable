@@ -1,12 +1,34 @@
-<script setup>
+<script setup lang="ts">
 import Navbar from '~/components/landlord/Navbar.vue'
 import Sidebar from '~/components/pro/Sidebar.vue'
 
-const searchQuery = ref('')
-const messageText = ref('')
-const showChat = ref(false)
+interface Thread {
+    id: number;
+    name: string;
+    lastMessage: string;
+    time: string;
+    initial: string;
+    active: boolean;
+}
 
-const threads = ref([
+interface ChatMessage {
+    sender: string;
+    time: string;
+    text: string;
+    isSelf: boolean;
+}
+
+interface Participant {
+    name: string;
+    role: string;
+    initial: string;
+}
+
+const searchQuery = ref<string>('')
+const messageText = ref<string>('')
+const showChat = ref<boolean>(false)
+
+const threads = ref<Thread[]>([
     {
         id: 1,
         name: 'Landlord',
@@ -33,18 +55,18 @@ const threads = ref([
     }
 ])
 
-const activeThread = computed(() => threads.value.find(t => t.active))
+const activeThread = computed<Thread | undefined>(() => threads.value.find(t => t.active))
 
-const selectThread = (threadId) => {
+const selectThread = (threadId: number): void => {
     threads.value.forEach(t => t.active = t.id === threadId)
     showChat.value = true
 }
 
-const goBack = () => {
+const goBack = (): void => {
     showChat.value = false
 }
 
-const chatMessages = ref([
+const chatMessages = ref<ChatMessage[]>([
     {
         sender: 'Property Manager',
         time: '09:10am',
@@ -53,7 +75,7 @@ const chatMessages = ref([
     }
 ])
 
-const participants = [
+const participants: Participant[] = [
     { name: 'Landlord', role: 'Landlord', initial: 'L' },
     { name: 'Pro', role: 'Pro', initial: 'PM' }
 ]
@@ -223,7 +245,10 @@ const participants = [
                         </div>
                     </div>
                 </div>
+
             </main>
+
         </div>
+
     </div>
 </template>
