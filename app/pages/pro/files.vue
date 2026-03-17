@@ -67,17 +67,23 @@ import Sidebar from '~/components/pro/Sidebar.vue';
                             <input type="text" placeholder="Search: name, property, tag..."
                                 class="w-full py-3 pl-[38px] pr-4 rounded-[80px] border border-[#0F11141A] font-semibold text-[12px] placeholder:text-[#0F111466] leading-[100%] tracking-[-2%] text-[#0F1114] focus:outline-none" />
                         </div>
-                        <button
-                            class="pl-5 pr-[15px] py-[9px] rounded-[80px] border border-[#0F11141A] text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] flex items-center gap-[14px] whitespace-nowrap shrink-0">
-                            File Type
-                            <div class="h-5 w-5 flex items-center justify-center">
+                        <div class="relative flex items-center">
+                            <select
+                                class="pl-5 pr-[28px] py-[11px] rounded-[80px] border border-[#0F11141A] text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] appearance-none cursor-pointer focus:outline-none shrink-0">
+                                <option value="" disabled selected>File Type</option>
+                                <option value="all">All Files</option>
+                                <option value="images">Images</option>
+                                <option value="documents">Documents</option>
+                            </select>
+                            <div
+                                class="absolute right-[15px] pointer-events-none h-5 w-5 flex items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" class="text-[#0F1114]">
                                     <polyline points="6 9 12 15 18 9"></polyline>
                                 </svg>
                             </div>
-                        </button>
+                        </div>
                     </div>
 
                     <div class="overflow-x-auto">
