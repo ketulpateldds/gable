@@ -1,11 +1,6 @@
 <script setup lang="ts">
-const navLinks = [
-    { to: '/', label: 'Home' },
-    { to: '/pricing', label: 'Pricing' },
-    { to: '/how-it-works', label: 'How It Works' },
-    { to: '/listings', label: 'Listings' },
-    { to: '/tenant-management', label: 'Tenant Management' },
-]
+import Footer from '~/components/Footer.vue';
+import Navbar from '~/components/Navbar.vue';
 
 const features = [
     {
@@ -83,41 +78,7 @@ const listings = [
     <div class="min-h-screen bg-white font-figtree">
 
         <section class="bg-hero-radial">
-            <!-- ─── NAVBAR ─────────────────────────────────────────────────────── -->
-            <nav class="py-6">
-                <div
-                    class="max-w-[1440px] mx-auto pl-[106px] pr-[108px] flex items-center justify-between font-figtree h-auto">
-                    <NuxtLink to="/" class="flex items-center gap-2">
-                        <span class="w-6 h-6 flex items-center justify-center">
-                            <svg width="24" height="24" viewBox="0 0 20 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M10 2L3 8V18H8V13.5C8 12.119 8.895 11 10 11C11.105 11 12 12.119 12 13.5V18H17V8L10 2Z"
-                                    fill="#1A56DB" />
-                                <path d="M8 18V13.5C8 12.119 8.895 11 10 11C11.105 11 12 12.119 12 13.5V18"
-                                    fill="#EBF2FF" />
-                            </svg>
-                        </span>
-                        <span
-                            class="text-[#00091A] font-extrabold text-2xl tracking-[-0.02em] leading-none">Gable</span>
-                    </NuxtLink>
-
-                    <div
-                        class="flex items-center h-[46px] rounded-[80px] bg-primary shadow-[0px_0px_40px_-20px_#0F1B3380] p-1 gap-1">
-                        <NuxtLink v-for="link in navLinks" :key="link.to" :to="link.to"
-                            class="h-[38px] px-4 flex items-center rounded-[80px] text-[12px] font-bold uppercase tracking-[-0.02em] leading-none text-[#00091A] transition-colors hover:text-[#004CE5]"
-                            exact-active-class="!bg-[#004CE5] !text-white !font-semibold hover:!text-white">
-                            {{ link.label }}
-                        </NuxtLink>
-                    </div>
-
-                    <!-- CTA -->
-                    <NuxtLink to="/signin"
-                        class="flex items-center justify-center w-[92px] h-10 border border-[#004CE5] text-[#004CE5] text-[12px] font-extrabold leading-none tracking-[-0.02em] uppercase rounded-[80px]">
-                        Sign In
-                    </NuxtLink>
-                </div>
-            </nav>
+            <Navbar />
 
             <!-- ─── HERO ───────────────────────────────────────────────────────── -->
             <div class="max-w-[1440px] mx-auto px-[108px] pt-[61px] pb-[138px] flex items-center justify-between">
@@ -367,105 +328,7 @@ const listings = [
             </div>
         </section>
 
-        <!-- ─── FOOTER ─────────────────────────────────────────────────────── -->
-        <footer class="bg-hero-radial px-[108px] pt-[59px] pb-[132px]">
-            <div class="max-w-[1440px] mx-auto flex justify-between">
-                <!-- Brand -->
-                <div class="col-span-2 md:col-span-1">
-                    <NuxtLink to="/" class="flex items-center text-[#00091A] gap-[5px] mb-[13px]">
-                        <span class="w-6 h-6 flex items-center justify-center">
-                            <svg width="24" height="24" viewBox="0 0 20 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M10 2L3 8V18H8V13.5C8 12.119 8.895 11 10 11C11.105 11 12 12.119 12 13.5V18H17V8L10 2Z"
-                                    fill="#00091A" />
-                                <path d="M8 18V13.5C8 12.119 8.895 11 10 11C11.105 11 12 12.119 12 13.5V18"
-                                    fill="#00091A" />
-                            </svg>
-                        </span>
-                        <span class="font-extrabold text-2xl leading-[100%] tracking-[-2%]">Gable</span>
-                    </NuxtLink>
-                    <p class="text-[14px] leading-5 text-[#0F1114CC] max-w-[288px] mb-[27px]">
-                        Gable helps landlords, property managers, tenants, and service pros work together in one clean
-                        system — so leasing, rent, maintenance, and documentation stay organized from day one.
-                    </p>
-                    <div class="flex items-center gap-3 mt-5">
-                        <NuxtLink to="#" class="w-10 h-10 rounded-full bg-[#00091A] text-primary p-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-brand-instagram">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path
-                                    d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4l0 -8" />
-                                <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                                <path d="M16.5 7.5v.01" />
-                            </svg>
-                        </NuxtLink>
-                        <NuxtLink to="#" class="w-10 h-10 rounded-full bg-[#00091A] text-primary p-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-brand-facebook">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
-                            </svg>
-                        </NuxtLink>
-                        <NuxtLink to="#" class="w-10 h-10 rounded-full bg-[#00091A] text-primary p-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-brand-x">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M4 4l11.733 16h4.267l-11.733 -16l-4.267 0" />
-                                <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
-                            </svg>
-                        </NuxtLink>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-[112px] mb-10">
-                    <div class="gap-y-[9px] text-[#00091A]">
-                        <p class="text-base leading-5 font-bold">Company</p>
-                        <ul>
-                            <li v-for="link in ['About Us', 'Contact Us', 'Blog']" :key="link">
-                                <NuxtLink to="#" class="text-[14px] leading-[100%]">
-                                    {{ link }}</NuxtLink>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="gap-y-[9px] text-[#00091A]">
-                        <p class="text-base leading-5 font-bold">Type of User</p>
-                        <ul>
-                            <li v-for="link in ['Landlords', 'Tenant', 'Service Pros']" :key="link">
-                                <NuxtLink to="#" class="text-[14px] leading-[100%]">
-                                    {{ link }}</NuxtLink>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="gap-y-[9px] text-[#00091A]">
-                        <p class="text-base leading-5 font-bold">Dashboard</p>
-                        <ul>
-                            <li v-for="link in ['Landlord', 'Tenant', 'Pro']" :key="link">
-                                <NuxtLink to="#" class="text-[14px] leading-[100%]">
-                                    {{ link }}</NuxtLink>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="gap-y-[9px] text-[#00091A]">
-                        <p class="text-base leading-5 font-bold">Legal</p>
-                        <ul>
-                            <li v-for="link in ['Terms & Conditions', 'Privacy Policy']" :key="link">
-                                <NuxtLink to="#" class="text-[14px] leading-[100%]">
-                                    {{ link }}</NuxtLink>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        <Footer />
 
     </div>
 </template>
