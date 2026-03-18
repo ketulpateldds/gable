@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 export default {
   content: [
@@ -25,8 +25,33 @@ export default {
         primary: "#FFFFFF",
         textPrimary: "#00091A",
         "background-gradient-end": "#EDF3FA",
+        "neutral-primary": "#0F1114",
+        "brand-blue": "#004CE5",
+        "brand-blue-hover": "#004CE6",
+        status: {
+          success: {
+            bg: "#F2FFF4",
+            border: "#21A6351A",
+            text: "#21A635",
+          },
+          warning: {
+            bg: "#FFF9F2",
+            border: "#E599171A",
+            text: "#A16600",
+          },
+          danger: {
+            bg: "#FFF2F2",
+            border: "#E517171A",
+            text: "#A10000",
+          },
+          info: {
+            bg: "#F2F6FF",
+            border: "#004CE51A",
+            text: "#004CE5",
+          },
+        },
       },
     },
   },
   plugins: [],
-} satisfies Config
+} satisfies Config;

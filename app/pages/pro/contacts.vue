@@ -54,12 +54,12 @@ const getInitials = (name: string): string => {
                 <!-- Header -->
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
                     <div>
-                        <h1 class="text-[20px] font-bold text-[#0F1114] leading-[100%] mb-[4px]">Contacts</h1>
-                        <p class="text-[12px] text-[#0F111499] font-medium leading-4 tracking-[-2%]">Total: 2</p>
+                        <h1 class="text-[20px] font-bold text-neutral-primary leading-[100%] mb-[4px]">Contacts</h1>
+                        <p class="text-[12px] text-neutral-primary/60 font-medium leading-4 tracking-[-2%]">Total: 2</p>
                     </div>
                     <div class="flex flex-wrap items-center gap-2">
                         <button
-                            class="border border-[#0F1114] rounded-[80px] px-[21px] py-[13px] text-[12px] font-extrabold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] whitespace-nowrap">
+                            class="border border-neutral-primary rounded-[80px] px-[21px] py-[13px] text-[12px] font-extrabold text-neutral-primary uppercase leading-[100%] tracking-[-2%] whitespace-nowrap">
                             Import
                         </button>
                         <button @click="isModalOpen = true"
@@ -80,59 +80,59 @@ const getInitials = (name: string): string => {
                 </div>
 
                 <!-- Table -->
-                <div class="border border-[#0F11141A] rounded-[24px] overflow-x-auto">
+                <div class="border border-neutral-primary/10 rounded-[24px] overflow-x-auto">
                     <table class="w-full min-w-[900px]">
                         <thead>
-                            <tr class="h-11 border-y border-[#0F11141A] bg-[#FAFAFA]">
+                            <tr class="h-11 border-y border-neutral-primary/10 bg-[#FAFAFA]">
                                 <th
-                                    class="pl-6 pr-1 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-[#0F1114] leading-[100%] tracking-[-2%] whitespace-nowrap">
+                                    class="pl-6 pr-1 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-neutral-primary leading-[100%] tracking-[-2%] whitespace-nowrap">
                                     Contact Photo</th>
                                 <th
-                                    class="px-1 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-[#0F1114] leading-[100%] tracking-[-2%] whitespace-nowrap">
+                                    class="px-1 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-neutral-primary leading-[100%] tracking-[-2%] whitespace-nowrap">
                                     Name</th>
                                 <th
-                                    class="px-1 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-[#0F1114] leading-[100%] tracking-[-2%] whitespace-nowrap">
+                                    class="px-1 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-neutral-primary leading-[100%] tracking-[-2%] whitespace-nowrap">
                                     Phone Number</th>
                                 <th
-                                    class="px-1 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-[#0F1114] leading-[100%] tracking-[-2%] whitespace-nowrap">
+                                    class="px-1 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-neutral-primary leading-[100%] tracking-[-2%] whitespace-nowrap">
                                     Profile</th>
                                 <th
-                                    class="px-1 pr-6 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-[#0F1114] leading-[100%] tracking-[-2%] whitespace-nowrap w-px">
+                                    class="px-1 pr-6 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-neutral-primary leading-[100%] tracking-[-2%] whitespace-nowrap w-px">
                                     Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="(contact, i) in contacts" :key="i"
-                                class="border-b border-[#0F11141A] last:border-b-0 hover:bg-[#F9FAFB] transition-colors">
+                                class="border-b border-neutral-primary/10 last:border-b-0 hover:bg-[#F9FAFB] transition-colors">
                                 <td class="pl-6 pr-1 py-4 whitespace-nowrap">
                                     <div
-                                        class="border border-[#004CE51A] bg-[#F2F6FF] rounded-[8px] px-[7px] py-[9px] text-[#004CE5] text-center w-fit text-[12px] font-extrabold leading-[100%] tracking-[-2%]">
+                                        class="border border-status-info-border bg-status-info-bg rounded-[8px] px-[7px] py-[9px] text-brand-blue text-center w-fit text-[12px] font-extrabold leading-[100%] tracking-[-2%]">
                                         {{ getInitials(contact.name) }}
                                     </div>
                                 </td>
 
                                 <td class="px-1 py-[15px]">
                                     <div
-                                        class="text-[14px] font-semibold text-[#0F1114] leading-[100%] tracking-[-2%] mb-[2px]">
+                                        class="text-[14px] font-semibold text-neutral-primary leading-[100%] tracking-[-2%] mb-[2px]">
                                         {{ contact.name }}
                                     </div>
                                     <div
-                                        class="text-[12px] font-semibold text-[#0F111499] leading-[100%] tracking-[-2%]">
+                                        class="text-[12px] font-semibold text-neutral-primary/60 leading-[100%] tracking-[-2%]">
                                         {{ contact.email }}
                                     </div>
                                 </td>
 
                                 <td
-                                    class="px-1 py-[21px] text-[14px] font-semibold text-[#0F111499] leading-[100%] tracking-[-2%]">
+                                    class="px-1 py-[21px] text-[14px] font-semibold text-neutral-primary/60 leading-[100%] tracking-[-2%]">
                                     {{ contact.phone }}</td>
 
                                 <td
-                                    class="px-1 py-[24px] text-[14px] font-bold text-[#004CE5] leading-[100%] tracking-[-2%]">
+                                    class="px-1 py-[24px] text-[14px] font-bold text-brand-blue leading-[100%] tracking-[-2%]">
                                     View Profile</td>
 
                                 <td class="px-1 pr-6 py-4 flex items-center gap-1">
                                     <div
-                                        class="border border-[#0F11141A] h-8 w-8 rounded-full text-[#0F1114] flex items-center justify-center">
+                                        class="border border-neutral-primary/10 h-8 w-8 rounded-full text-neutral-primary flex items-center justify-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                             stroke-linecap="round" stroke-linejoin="round"
@@ -143,7 +143,7 @@ const getInitials = (name: string): string => {
                                         </svg>
                                     </div>
                                     <div
-                                        class="border border-[#0F11141A] h-8 w-8 rounded-full text-[#0F1114] flex items-center justify-center">
+                                        class="border border-neutral-primary/10 h-8 w-8 rounded-full text-neutral-primary flex items-center justify-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                             stroke-linecap="round" stroke-linejoin="round"

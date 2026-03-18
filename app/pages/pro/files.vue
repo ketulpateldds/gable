@@ -13,51 +13,54 @@ import Sidebar from '~/components/pro/Sidebar.vue';
 
             <main class="flex-1 px-4 sm:px-6 pt-[19px] pb-10 flex flex-col">
 
-                <h1 class="text-[20px] font-bold text-[#0F1114] leading-[100%] mb-[4px]">Files</h1>
-                <p class="text-[12px] text-[#0F111499] font-medium leading-4 tracking-[-2%] mb-5">Store photos,
+                <h1 class="text-[20px] font-bold text-neutral-primary leading-[100%] mb-[4px]">Files</h1>
+                <p class="text-[12px] text-neutral-primary/60 font-medium leading-4 tracking-[-2%] mb-5">Store photos,
                     documents, and property files in one place.</p>
 
                 <!-- File Type Cards -->
                 <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-4">
-                    <div class="relative border border-[#0F11141A] rounded-[12px] px-[17px] pt-[12px] pb-[14px]">
-                        <p class="absolute top-3 right-[17px] text-[16px] font-bold text-[#0F1114] leading-[100%]">
+                    <div class="relative border border-neutral-primary/10 rounded-[12px] px-[17px] pt-[12px] pb-[14px]">
+                        <p
+                            class="absolute top-3 right-[17px] text-[16px] font-bold text-neutral-primary leading-[100%]">
                             0
                         </p>
 
-                        <h1 class="text-[16px] font-bold text-[#0F1114] uppercase leading-[100%] mb-[9px]">
+                        <h1 class="text-[16px] font-bold text-neutral-primary uppercase leading-[100%] mb-[9px]">
                             All files</h1>
-                        <p class="text-[12px] font-semibold text-[#0F111499] leading-[100%]">
+                        <p class="text-[12px] font-semibold text-neutral-primary/60 leading-[100%]">
                             Across 4 invoices currently due or overdue.</p>
                     </div>
 
-                    <div class="relative border border-[#0F11141A] rounded-[12px] px-[17px] pt-[12px] pb-[14px]">
-                        <p class="absolute top-3 right-[17px] text-[16px] font-bold text-[#0F1114] leading-[100%]">
+                    <div class="relative border border-neutral-primary/10 rounded-[12px] px-[17px] pt-[12px] pb-[14px]">
+                        <p
+                            class="absolute top-3 right-[17px] text-[16px] font-bold text-neutral-primary leading-[100%]">
                             0
                         </p>
 
-                        <h1 class="text-[16px] font-bold text-[#0F1114] uppercase leading-[100%] mb-[9px]">
+                        <h1 class="text-[16px] font-bold text-neutral-primary uppercase leading-[100%] mb-[9px]">
                             Images</h1>
-                        <p class="text-[12px] font-semibold text-[#0F111499] leading-[100%]">
+                        <p class="text-[12px] font-semibold text-neutral-primary/60 leading-[100%]">
                             Photos & screenshots</p>
                     </div>
 
-                    <div class="relative border border-[#0F11141A] rounded-[12px] px-[17px] pt-[12px] pb-[14px]">
-                        <p class="absolute top-3 right-[17px] text-[16px] font-bold text-[#0F1114] leading-[100%]">
+                    <div class="relative border border-neutral-primary/10 rounded-[12px] px-[17px] pt-[12px] pb-[14px]">
+                        <p
+                            class="absolute top-3 right-[17px] text-[16px] font-bold text-neutral-primary leading-[100%]">
                             0
                         </p>
 
-                        <h1 class="text-[16px] font-bold text-[#0F1114] uppercase leading-[100%] mb-[9px]">
+                        <h1 class="text-[16px] font-bold text-neutral-primary uppercase leading-[100%] mb-[9px]">
                             Documents</h1>
-                        <p class="text-[12px] font-semibold text-[#0F111499] leading-[100%]">
+                        <p class="text-[12px] font-semibold text-neutral-primary/60 leading-[100%]">
                             PDFs, invoices, agreements</p>
                     </div>
                 </div>
 
                 <!-- File Table -->
-                <div class="border border-[#0F11141A] rounded-[24px]">
+                <div class="border border-neutral-primary/10 rounded-[24px]">
                     <div class="flex flex-col md:flex-row md:items-center justify-between p-4 sm:p-6 gap-4">
                         <div class="relative w-full md:w-[440px]">
-                            <svg class="absolute left-2 top-1/2 -translate-y-1/2 text-[#0F111466]"
+                            <svg class="absolute left-2 top-1/2 -translate-y-1/2 text-neutral-primary/40"
                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round">
@@ -65,11 +68,11 @@ import Sidebar from '~/components/pro/Sidebar.vue';
                                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                             </svg>
                             <input type="text" placeholder="Search: name, property, tag..."
-                                class="w-full py-3 pl-[38px] pr-4 rounded-[80px] border border-[#0F11141A] font-semibold text-[12px] placeholder:text-[#0F111466] leading-[100%] tracking-[-2%] text-[#0F1114] focus:outline-none" />
+                                class="w-full py-3 pl-[38px] pr-4 rounded-[80px] border border-neutral-primary/10 font-semibold text-[12px] placeholder:text-neutral-primary/40 leading-[100%] tracking-[-2%] text-neutral-primary focus:outline-none" />
                         </div>
                         <div class="relative flex items-center">
                             <select
-                                class="pl-5 pr-[28px] py-[11px] rounded-[80px] border border-[#0F11141A] text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] appearance-none cursor-pointer focus:outline-none shrink-0">
+                                class="pl-5 pr-[28px] py-[11px] rounded-[80px] border border-neutral-primary/10 text-[12px] font-bold text-neutral-primary uppercase leading-[100%] tracking-[-2%] appearance-none cursor-pointer focus:outline-none shrink-0">
                                 <option value="" disabled selected>File Type</option>
                                 <option value="all">All Files</option>
                                 <option value="images">Images</option>
@@ -79,7 +82,7 @@ import Sidebar from '~/components/pro/Sidebar.vue';
                                 class="absolute right-[15px] pointer-events-none h-5 w-5 flex items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="text-[#0F1114]">
+                                    stroke-linejoin="round" class="text-neutral-primary">
                                     <polyline points="6 9 12 15 18 9"></polyline>
                                 </svg>
                             </div>
@@ -89,22 +92,22 @@ import Sidebar from '~/components/pro/Sidebar.vue';
                     <div class="overflow-x-auto">
                         <table class="w-full min-w-[900px]">
                             <thead>
-                                <tr class="h-11 border-y border-[#0F11141A] bg-[#FAFAFA]">
+                                <tr class="h-11 border-y border-neutral-primary/10 bg-[#FAFAFA]">
                                     <th
-                                        class="pl-6 pr-6 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-[#0F1114] leading-[100%] tracking-[-2%] whitespace-nowrap">
+                                        class="pl-6 pr-6 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-neutral-primary leading-[100%] tracking-[-2%] whitespace-nowrap">
                                         Name</th>
                                     <th
-                                        class="pr-6 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-[#0F1114] leading-[100%] tracking-[-2%] whitespace-nowrap">
+                                        class="pr-6 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-neutral-primary leading-[100%] tracking-[-2%] whitespace-nowrap">
                                         File Type</th>
                                     <th
-                                        class="pr-6 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-[#0F1114] leading-[100%] tracking-[-2%] whitespace-nowrap">
+                                        class="pr-6 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-neutral-primary leading-[100%] tracking-[-2%] whitespace-nowrap">
                                         Date</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr class="">
                                     <td colspan="3"
-                                        class="pt-[24px] pb-[23px] text-center text-[14px] font-bold text-[#0F111499] leading-[100%]">
+                                        class="pt-[24px] pb-[23px] text-center text-[14px] font-bold text-neutral-primary/60 leading-[100%]">
                                         No files yet. Upload documents or images to get started.
                                     </td>
                                 </tr>

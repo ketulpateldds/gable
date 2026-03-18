@@ -3,10 +3,10 @@ import Navbar from '@/components/landlord/Navbar.vue'
 import AddRequestModal from '~/components/pro/AddRequestModal.vue';
 import Sidebar from '~/components/pro/Sidebar.vue';
 
-interface StatusColors {
-    bgColor: string;
-    borderColor: string;
-    textColor: string;
+interface StatusClasses {
+    bg: string;
+    border: string;
+    text: string;
 }
 
 interface MaintenanceRequest {
@@ -20,36 +20,36 @@ interface MaintenanceRequest {
 
 const isAddRequestModalOpen = ref<boolean>(false)
 
-const getStatusColors = (color: string): StatusColors | Record<string, never> => {
+const getStatusClasses = (color: string): StatusClasses | Record<string, never> => {
     if (color === "High") {
         return {
-            bgColor: "#FFF2F2",
-            borderColor: "#E517171A",
-            textColor: "#A10000",
+            bg: "bg-status-danger-bg",
+            border: "border-status-danger-border",
+            text: "text-status-danger-text",
         };
     }
 
     if (color === "New") {
         return {
-            bgColor: "#F2F6FF",
-            borderColor: "#004CE51A",
-            textColor: "#004CE5",
+            bg: "bg-status-info-bg",
+            border: "border-status-info-border",
+            text: "text-status-info-text",
         };
     }
 
     if (color === "Waiting" || color === "Medium") {
         return {
-            bgColor: "#FFF9F2",
-            borderColor: "#E599171A",
-            textColor: "#A16600",
+            bg: "bg-status-warning-bg",
+            border: "border-status-warning-border",
+            text: "text-status-warning-text",
         };
     }
 
     if (color === "In Progress" || color === "Low") {
         return {
-            bgColor: "#F2FFF4",
-            borderColor: "#21A6351A",
-            textColor: "#21A635",
+            bg: "bg-status-success-bg",
+            border: "border-status-success-border",
+            text: "text-status-success-text",
         };
     }
 
@@ -97,8 +97,8 @@ const requests: MaintenanceRequest[] = [
                 <!-- Header -->
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
                     <div>
-                        <h1 class="text-[20px] font-bold text-[#0F1114] leading-[100%] mb-[4px]">Requests</h1>
-                        <p class="text-[12px] text-[#0F111499] font-medium leading-4 tracking-[-2%]">Total: 3</p>
+                        <h1 class="text-[20px] font-bold text-neutral-primary leading-[100%] mb-[4px]">Requests</h1>
+                        <p class="text-[12px] text-neutral-primary/60 font-medium leading-4 tracking-[-2%]">Total: 3</p>
                     </div>
                     <div>
                         <button @click="isAddRequestModalOpen = true"
@@ -117,10 +117,10 @@ const requests: MaintenanceRequest[] = [
                 </div>
 
                 <!-- Table -->
-                <div class="border border-[#0F11141A] rounded-[24px]">
+                <div class="border border-neutral-primary/10 rounded-[24px]">
                     <div class="flex flex-col md:flex-row md:items-center justify-between p-4 sm:p-6 gap-4">
                         <div class="relative w-full md:w-[344px]">
-                            <svg class="absolute left-2 top-1/2 -translate-y-1/2 text-[#0F111466]"
+                            <svg class="absolute left-2 top-1/2 -translate-y-1/2 text-neutral-primary/40"
                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round">
@@ -128,15 +128,15 @@ const requests: MaintenanceRequest[] = [
                                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                             </svg>
                             <input type="text" placeholder="Search Here"
-                                class="w-full h-10 pl-[38px] pr-4 rounded-[80px] border border-[#0F11141A] text-[12px] font-semibold placeholder:text-[#0F111466] leading-[100%] tracking-[-2%] text-[#0F1114] focus:outline-none" />
+                                class="w-full h-10 pl-[38px] pr-4 rounded-[80px] border border-neutral-primary/10 text-[12px] font-semibold placeholder:text-neutral-primary/40 leading-[100%] tracking-[-2%] text-neutral-primary focus:outline-none" />
                         </div>
                         <button
-                            class="pl-[21px] pr-[15px] py-[9px] rounded-[80px] border border-[#0F11141A] text-[12px] font-bold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] flex items-center gap-[14px] whitespace-nowrap hover:bg-slate-50 transition-colors">
+                            class="pl-[21px] pr-[15px] py-[9px] rounded-[80px] border border-neutral-primary/10 text-[12px] font-bold text-neutral-primary uppercase leading-[100%] tracking-[-2%] flex items-center gap-[14px] whitespace-nowrap hover:bg-slate-50 transition-colors">
                             Status
                             <div class="h-5 w-5 flex items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="text-[#0F1114]">
+                                    stroke-linejoin="round" class="text-neutral-primary">
                                     <polyline points="6 9 12 15 18 9"></polyline>
                                 </svg>
                             </div>
@@ -146,68 +146,68 @@ const requests: MaintenanceRequest[] = [
                     <div class="overflow-x-auto">
                         <table class="w-full min-w-[900px]">
                             <thead>
-                                <tr class="h-11 border-y border-[#0F11141A] bg-[#FAFAFA]">
+                                <tr class="h-11 border-y border-neutral-primary/10 bg-[#FAFAFA]">
                                     <th
-                                        class="pl-6 pr-6 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-[#0F1114] leading-[100%] tracking-[-2%] whitespace-nowrap">
+                                        class="pl-6 pr-6 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-neutral-primary leading-[100%] tracking-[-2%] whitespace-nowrap">
                                         Status</th>
                                     <th
-                                        class="pr-6 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-[#0F1114] leading-[100%] tracking-[-2%] whitespace-nowrap">
+                                        class="pr-6 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-neutral-primary leading-[100%] tracking-[-2%] whitespace-nowrap">
                                         ID</th>
                                     <th
-                                        class="pr-6 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-[#0F1114] leading-[100%] tracking-[-2%] whitespace-nowrap">
+                                        class="pr-6 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-neutral-primary leading-[100%] tracking-[-2%] whitespace-nowrap">
                                         Category</th>
                                     <th
-                                        class="pr-6 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-[#0F1114] leading-[100%] tracking-[-2%] whitespace-nowrap">
+                                        class="pr-6 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-neutral-primary leading-[100%] tracking-[-2%] whitespace-nowrap">
                                         Property</th>
                                     <th
-                                        class="pr-6 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-[#0F1114] leading-[100%] tracking-[-2%] whitespace-nowrap">
+                                        class="pr-6 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-neutral-primary leading-[100%] tracking-[-2%] whitespace-nowrap">
                                         Status</th>
                                     <th
-                                        class="pr-6 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-[#0F1114] leading-[100%] tracking-[-2%] whitespace-nowrap w-[124px]">
+                                        class="pr-6 pt-[14px] pb-[13px] text-left text-[14px] font-bold text-neutral-primary leading-[100%] tracking-[-2%] whitespace-nowrap w-[124px]">
                                         Client</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="(request, i) in requests" :key="i"
-                                    class="border-b border-[#0F11141A] last:border-b-0 hover:bg-[#F9FAFB] transition-colors">
+                                    class="border-b border-neutral-primary/10 last:border-b-0 hover:bg-[#F9FAFB] transition-colors">
                                     <td
                                         class="pl-6 pr-1 pt-[17px] pb-4 text-[12px] font-bold leading-[100%] tracking-[-2%] whitespace-nowrap">
-                                        <div class="inline-flex items-center gap-[7px] px-3 py-[5px] rounded-full border"
-                                            :style="{
-                                                backgroundColor: getStatusColors(request.status).bgColor,
-                                                borderColor: getStatusColors(request.status).borderColor,
-                                                color: getStatusColors(request.status).textColor
-                                            }">
+                                        <div class="inline-flex items-center gap-[7px] px-3 py-[5px] rounded-full border transition-colors"
+                                            :class="[
+                                                getStatusClasses(request.status).bg,
+                                                getStatusClasses(request.status).border,
+                                                getStatusClasses(request.status).text
+                                            ]">
                                             {{ request.status }}
                                         </div>
                                     </td>
 
                                     <td
-                                        class="px-1 py-[21px] text-[14px] font-semibold text-[#0F111499] leading-[100%] tracking-[-2%]">
+                                        class="px-1 py-[21px] text-[14px] font-semibold text-neutral-primary/60 leading-[100%] tracking-[-2%]">
                                         {{ request.id }}</td>
 
                                     <td
-                                        class="px-1 py-[21px] text-[14px] font-semibold text-[#0F111499] leading-[100%] tracking-[-2%]">
+                                        class="px-1 py-[21px] text-[14px] font-semibold text-neutral-primary/60 leading-[100%] tracking-[-2%]">
                                         {{ request.category }}</td>
 
                                     <td
-                                        class="px-1 py-[21px] text-[14px] font-semibold text-[#0F111499] leading-[100%] tracking-[-2%]">
+                                        class="px-1 py-[21px] text-[14px] font-semibold text-neutral-primary/60 leading-[100%] tracking-[-2%]">
                                         {{ request.property }}</td>
 
                                     <td
                                         class="px-1 pt-[17px] pb-4 text-[12px] font-bold leading-[100%] tracking-[-2%] whitespace-nowrap">
-                                        <div class="inline-flex items-center gap-[7px] px-3 py-[6px] rounded-full border"
-                                            :style="{
-                                                backgroundColor: getStatusColors(request.priority).bgColor,
-                                                borderColor: getStatusColors(request.priority).borderColor,
-                                                color: getStatusColors(request.priority).textColor
-                                            }">
+                                        <div class="inline-flex items-center gap-[7px] px-3 py-[6px] rounded-full border transition-colors"
+                                            :class="[
+                                                getStatusClasses(request.priority).bg,
+                                                getStatusClasses(request.priority).border,
+                                                getStatusClasses(request.priority).text
+                                            ]">
                                             {{ request.priority }}
                                         </div>
                                     </td>
 
                                     <td
-                                        class="px-1 pr-6 py-[21px] text-[14px] font-semibold text-[#0F111499] leading-[100%] tracking-[-2%]">
+                                        class="px-1 pr-6 py-[21px] text-[14px] font-semibold text-neutral-primary/60 leading-[100%] tracking-[-2%]">
                                         {{ request.client }}
                                     </td>
                                 </tr>

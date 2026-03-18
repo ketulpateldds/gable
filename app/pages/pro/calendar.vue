@@ -70,18 +70,19 @@ const goToday = (): void => {
                     <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                         <div class="flex items-center gap-4">
                             <button @click="prevMonth"
-                                class="w-8 h-8 border border-[#0F11141A] rounded-full flex items-center justify-center hover:bg-black/5 transition-colors">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0F1114"
-                                    stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                class="w-8 h-8 border border-neutral-primary/10 rounded-full flex items-center justify-center hover:bg-black/5 transition-colors">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    class="text-neutral-primary" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round">
                                     <path d="m15 18-6-6 6-6" />
                                 </svg>
                             </button>
                             <h1
-                                class="text-[16px] font-bold text-[#0F1114] leading-[100%] tracking-[-1%] px-5 sm:w-auto text-center min-w-[140px]">
+                                class="text-[16px] font-bold text-neutral-primary leading-[100%] tracking-[-1%] px-5 sm:w-auto text-center min-w-[140px]">
                                 {{ monthYearLabel }}
                             </h1>
                             <button @click="nextMonth"
-                                class="w-8 h-8 border border-[#0F11141A] rounded-full flex items-center justify-center hover:bg-black/5 transition-colors">
+                                class="w-8 h-8 border border-neutral-primary/10 rounded-full flex items-center justify-center hover:bg-black/5 transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
                                     stroke-linejoin="round" class="icon icon-tabler icons-tabler-plus">
@@ -92,7 +93,7 @@ const goToday = (): void => {
                             </button>
                         </div>
                         <button @click="goToday"
-                            class="px-[16px] py-[9px] border border-[#0F11141A] rounded-[80px] text-[12px] font-semibold text-[#0F1114] uppercase tracking-[-2%] leading-[100%] hover:bg-black/5 transition-colors">
+                            class="px-[16px] py-[9px] border border-neutral-primary/10 rounded-[80px] text-[12px] font-semibold text-neutral-primary uppercase tracking-[-2%] leading-[100%] hover:bg-black/5 transition-colors">
                             Today
                         </button>
                     </div>
@@ -112,10 +113,10 @@ const goToday = (): void => {
 
                 <!-- Calendar Content Container -->
                 <div
-                    class="flex-1 border border-[#0F11141A] rounded-[24px] p-4 sm:p-[25px] sm:pt-[23px] flex flex-col overflow-hidden">
+                    class="flex-1 border border-neutral-primary/10 rounded-[24px] p-4 sm:p-[25px] sm:pt-[23px] flex flex-col overflow-hidden">
                     <div class="grid grid-cols-7 mb-[5px]">
                         <div v-for="day in daysOfWeek" :key="day"
-                            class="text-center text-[10px] sm:text-[12px] font-bold text-[#0F111499] leading-[100%]">
+                            class="text-center text-[10px] sm:text-[12px] font-bold text-neutral-primary/60 leading-[100%]">
                             {{ day }}
                         </div>
                     </div>
@@ -123,21 +124,23 @@ const goToday = (): void => {
                     <div
                         class="grid grid-cols-7 gap-1 sm:gap-2 mb-4 flex-1 overflow-y-auto sm:overflow-visible pr-1 sm:pr-0">
                         <div v-for="date in calendarDays" :key="date.key"
-                            class="min-h-[80px] sm:min-h-[120px] border border-[#0F11141A] rounded-[8px] sm:rounded-[12px] py-[8px] px-[8px] sm:py-[10px] sm:px-[12px] flex flex-col transition-all hover:border-[#004CE533] hover:shadow-sm"
+                            class="min-h-[80px] sm:min-h-[120px] border border-neutral-primary/10 rounded-[8px] sm:rounded-[12px] py-[8px] px-[8px] sm:py-[10px] sm:px-[12px] flex flex-col transition-all hover:border-brand-blue/20 hover:shadow-sm"
                             :class="{ 'opacity-0 pointer-events-none': !date.day }">
                             <span v-if="date.day"
-                                class="text-[12px] sm:text-[14px] font-extrabold text-[#0F1114] leading-[100%]">{{
+                                class="text-[12px] sm:text-[14px] font-extrabold text-neutral-primary leading-[100%]">{{
                                     date.day }}</span>
                         </div>
                     </div>
 
                     <div
-                        class="mt-auto border border-[#0F11141A] rounded-[12px] p-4 sm:px-6 sm:py-[20px] flex flex-col sm:flex-row items-center justify-between gap-4">
+                        class="mt-auto border border-neutral-primary/10 rounded-[12px] p-4 sm:px-6 sm:py-[20px] flex flex-col sm:flex-row items-center justify-between gap-4">
                         <div class="flex flex-col text-center sm:text-left">
-                            <h3 class="text-[14px] sm:text-[16px] font-bold text-[#0F1114] leading-[100%] mb-[5px]">
+                            <h3
+                                class="text-[14px] sm:text-[16px] font-bold text-neutral-primary leading-[100%] mb-[5px]">
                                 Connect
                                 your Google calendar</h3>
-                            <p class="text-[10px] sm:text-[12px] font-medium text-[#0F111499] leading-4 tracking-[-2%]">
+                            <p
+                                class="text-[10px] sm:text-[12px] font-medium text-neutral-primary/60 leading-4 tracking-[-2%]">
                                 Sync
                                 events so you can stay on top of work and never miss anything.</p>
                         </div>
