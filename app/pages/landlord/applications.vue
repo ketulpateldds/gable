@@ -1,7 +1,6 @@
 <script setup>
 import Sidebar from '@/components/landlord/Sidebar.vue'
 import Navbar from '@/components/landlord/Navbar.vue'
-import NewApplicationModal from '@/components/landlord/NewApplicationModal.vue'
 import InviteApplicantModal from '@/components/landlord/InviteApplicantModal.vue'
 
 definePageMeta({
@@ -157,7 +156,7 @@ const filteredApplicants = computed(() => {
                             class="h-10 px-5 rounded-[80px] bg-[#0F1114] text-[12px] font-extrabold text-primary uppercase leading-[100%] tracking-[-2%] transition-colors whitespace-nowrap">
                             INVITE APPLICANT
                         </button>
-                        <button @click="isNewAppOpen = true"
+                        <button @click="navigateTo('/landlord/new-application')"
                             class="h-10 pl-[18px] pr-[19px] rounded-[80px] text-[12px] font-extrabold text-white uppercase leading-[100%] tracking-[-2%] flex items-center gap-[10px] whitespace-nowrap"
                             style="background: linear-gradient(225.01deg, #3388FF 0%, #004CE5 100%);">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white"
@@ -478,7 +477,6 @@ const filteredApplicants = computed(() => {
             </main>
         </div>
 
-        <NewApplicationModal :is-open="isNewAppOpen" @close="isNewAppOpen = false" />
         <InviteApplicantModal :is-open="isInviteOpen" @close="isInviteOpen = false" />
     </div>
 </template>
