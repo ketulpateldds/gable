@@ -2,10 +2,6 @@
 import Navbar from '~/components/landlord/Navbar.vue';
 import Sidebar from '~/components/landlord/Sidebar.vue';
 
-definePageMeta({
-    path: '/view-unit',
-})
-
 const features = ref([
     'ALARM', 'FURNISHED', 'RENOVATED', 'HARDWOOD FLOORS', 'FIREPLACE', 'WALK-IN CLOSETS', 'BALCONY', 'INTERNET'
 ])
@@ -20,7 +16,7 @@ const features = ref([
                 <div class="mx-auto w-full">
                     <div class="flex flex-col md:flex-row md:items-center justify-between mb-5 gap-4">
                         <div class="flex items-center gap-4">
-                            <NuxtLink to="/portfolio"
+                            <NuxtLink to="/landlord/properties-units"
                                 class="w-10 h-10 rounded-full border border-[#0F11141A] flex items-center justify-center transition-colors shrink-0">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F1114"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

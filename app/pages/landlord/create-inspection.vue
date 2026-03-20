@@ -2,9 +2,6 @@
 import Navbar from '~/components/landlord/Navbar.vue'
 import Sidebar from '~/components/landlord/Sidebar.vue'
 
-definePageMeta({
-    path: '/create-inspection',
-})
 
 // Assignee tabs
 const assigneeTabs = ['Myself', 'Teammates', 'Tenant', 'Manual']

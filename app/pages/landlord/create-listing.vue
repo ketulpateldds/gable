@@ -3,9 +3,6 @@ import Navbar from '~/components/landlord/Navbar.vue';
 import NewPropertyModel from '~/components/landlord/NewPropertyModel.vue';
 import Sidebar from '~/components/landlord/Sidebar.vue';
 
-definePageMeta({
-    path: '/create-listing',
-})
 
 const isNewPropertyModalOpen = ref(false);
 

@@ -2,10 +2,6 @@
 import Navbar from '~/components/landlord/Navbar.vue'
 import Sidebar from '~/components/landlord/Sidebar.vue'
 
-definePageMeta({
-    path: '/move-in-inspection',
-})
-
 // Sections with checklist items
 const sections = ref([
     {

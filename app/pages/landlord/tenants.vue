@@ -6,10 +6,6 @@ import InviteModal from '~/components/landlord/InviteModal.vue'
 import AddTenantModal from '~/components/landlord/AddTenantModal.vue'
 import MoveInModal from '~/components/landlord/MoveInModal.vue'
 
-definePageMeta({
-    path: '/tenants',
-})
-
 const isInviteModalOpen = ref(false)
 const isAddModalOpen = ref(false)
 const isMoveInModalOpen = ref(false)

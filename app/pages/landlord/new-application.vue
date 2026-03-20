@@ -603,47 +603,48 @@ const removeObligation = (id: number) => {
 
                             <div class="border border-neutral-primary/10 rounded-[12px]">
                                 <div class="overflow-x-auto">
-                                <table class="w-full overflow-hidden">
-                                    <thead>
-                                        <tr class="bg-[#FAFAFA] h-11 border-b border-neutral-primary/10">
-                                            <th
-                                                class="text-left text-[14px] font-bold text-neutral-primary leading-[100%] tracking-[-2%] pl-6 px-1 py-[13px]">
-                                                Name of Creditor</th>
-                                            <th
-                                                class="text-left text-[14px] font-bold text-neutral-primary leading-[100%] tracking-[-2%] px-1 py-[13px]">
-                                                Phone</th>
-                                            <th
-                                                class="text-left text-[14px] font-bold text-neutral-primary leading-[100%] tracking-[-2%] px-1 py-[13px]">
-                                                Monthly Payment Amount</th>
-                                            <th
-                                                class="text-left text-[14px] font-bold text-neutral-primary leading-[100%] tracking-[-2%] px-1 pr-6 py-[13px]">
-                                                Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr v-for="obligation in obligations" :key="obligation.id"
-                                            class="border-b border-neutral-primary/10">
-                                            <td class="pl-5 px-1 py-[17px]">
-                                                <input v-model="obligation.creditor" type="text" placeholder=""
-                                                    class="w-[204px] px-4 py-[9px] rounded-[80px] border border-neutral-primary/10 text-[12px] font-semibold text-neutral-primary uppercase leading-[100%] tracking-[-2%] placeholder:text-neutral-primary/40 outline-none" />
-                                            </td>
-                                            <td class="px-1 py-[17px]">
-                                                <input v-model="obligation.phone" type="tel" placeholder=""
-                                                    class="w-[204px] px-4 py-[9px] rounded-[80px] border border-neutral-primary/10 text-[12px] font-semibold text-neutral-primary uppercase leading-[100%] tracking-[-2%] placeholder:text-neutral-primary/40 outline-none" />
-                                            </td>
-                                            <td class="px-1 py-[17px]">
-                                                <input v-model="obligation.monthlyPayment" type="text" placeholder=""
-                                                    class="w-[204px] px-4 py-[9px] rounded-[80px] border border-neutral-primary/10 text-[12px] font-semibold text-neutral-primary uppercase leading-[100%] tracking-[-2%] placeholder:text-neutral-primary/40 outline-none" />
-                                            </td>
-                                            <td class="px-1 pr-5 pt-[17px] pb-[19px] text-center">
-                                                <button @click="removeObligation(obligation.id)"
-                                                    class="w-8 h-8 flex items-center justify-center bg-[#F2F2F2] rounded-full text-neutral-primary hover:text-red-500 transition-colors text-[16px] font-bold leading-none mx-auto">
-                                                    &times;
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                    <table class="w-full overflow-hidden">
+                                        <thead>
+                                            <tr class="bg-[#FAFAFA] h-11 border-b border-neutral-primary/10">
+                                                <th
+                                                    class="text-left text-[14px] font-bold text-neutral-primary leading-[100%] tracking-[-2%] pl-6 px-1 py-[13px]">
+                                                    Name of Creditor</th>
+                                                <th
+                                                    class="text-left text-[14px] font-bold text-neutral-primary leading-[100%] tracking-[-2%] px-1 py-[13px]">
+                                                    Phone</th>
+                                                <th
+                                                    class="text-left text-[14px] font-bold text-neutral-primary leading-[100%] tracking-[-2%] px-1 py-[13px]">
+                                                    Monthly Payment Amount</th>
+                                                <th
+                                                    class="text-left text-[14px] font-bold text-neutral-primary leading-[100%] tracking-[-2%] px-1 pr-6 py-[13px]">
+                                                    Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="obligation in obligations" :key="obligation.id"
+                                                class="border-b border-neutral-primary/10">
+                                                <td class="pl-5 px-1 py-[17px]">
+                                                    <input v-model="obligation.creditor" type="text" placeholder=""
+                                                        class="w-[204px] px-4 py-[9px] rounded-[80px] border border-neutral-primary/10 text-[12px] font-semibold text-neutral-primary uppercase leading-[100%] tracking-[-2%] placeholder:text-neutral-primary/40 outline-none" />
+                                                </td>
+                                                <td class="px-1 py-[17px]">
+                                                    <input v-model="obligation.phone" type="tel" placeholder=""
+                                                        class="w-[204px] px-4 py-[9px] rounded-[80px] border border-neutral-primary/10 text-[12px] font-semibold text-neutral-primary uppercase leading-[100%] tracking-[-2%] placeholder:text-neutral-primary/40 outline-none" />
+                                                </td>
+                                                <td class="px-1 py-[17px]">
+                                                    <input v-model="obligation.monthlyPayment" type="text"
+                                                        placeholder=""
+                                                        class="w-[204px] px-4 py-[9px] rounded-[80px] border border-neutral-primary/10 text-[12px] font-semibold text-neutral-primary uppercase leading-[100%] tracking-[-2%] placeholder:text-neutral-primary/40 outline-none" />
+                                                </td>
+                                                <td class="px-1 pr-5 pt-[17px] pb-[19px] text-center">
+                                                    <button @click="removeObligation(obligation.id)"
+                                                        class="w-8 h-8 flex items-center justify-center bg-[#F2F2F2] rounded-full text-neutral-primary hover:text-red-500 transition-colors text-[16px] font-bold leading-none mx-auto">
+                                                        &times;
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
 
                                 <div class="p-6">
@@ -890,6 +891,6 @@ const removeObligation = (id: number) => {
             </main>
 
         </div>
-        
+
     </div>
 </template>

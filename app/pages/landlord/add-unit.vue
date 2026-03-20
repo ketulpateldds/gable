@@ -2,10 +2,6 @@
 import Navbar from '~/components/landlord/Navbar.vue';
 import Sidebar from '~/components/landlord/Sidebar.vue';
 
-definePageMeta({
-    path: '/add-unit',
-})
-
 const parkingTypes = ref([
     'COVERED', 'DEDICATED SPOT', 'DRIVEWAY', 'GARAGE', 'ON-STREET', 'PRIVATE LOT', 'OTHER', 'NONE'
 ])
@@ -66,7 +62,7 @@ const handleAddCustomFeature = () => {
 
             <div class="px-4 sm:px-6 pt-[19px] pb-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div class="flex items-center gap-4">
-                    <NuxtLink to="/portfolio"
+                    <NuxtLink to="/landlord/properties-units"
                         class="w-10 h-10 rounded-full flex items-center justify-center border border-[#0F11141A]">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="#0F1114" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -84,7 +80,7 @@ const handleAddCustomFeature = () => {
                     </div>
                 </div>
                 <div class="flex items-center gap-2">
-                    <button
+                    <button @click="navigateTo('/landlord/properties-units')"
                         class="px-5 py-[13px] rounded-[80px] border border-[#0F1114] text-[12px] font-extrabold text-[#0F1114] uppercase leading-[100%] tracking-[-2%] flex-1 sm:flex-initial text-center justify-center whitespace-nowrap">
                         CANCEL</button>
                     <button

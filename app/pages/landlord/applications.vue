@@ -3,11 +3,6 @@ import Sidebar from '@/components/landlord/Sidebar.vue'
 import Navbar from '@/components/landlord/Navbar.vue'
 import InviteApplicantModal from '@/components/landlord/InviteApplicantModal.vue'
 
-definePageMeta({
-    path: '/applications',
-})
-
-const isNewAppOpen = ref(false)
 const isInviteOpen = ref(false)
 
 const activeTab = ref('all')

@@ -101,7 +101,7 @@ const units: Unit[] = [
                         <button
                             class="px-5 py-[13px] rounded-[80px] border border-neutral-primary text-[12px] font-extrabold text-neutral-primary uppercase leading-[100%] tracking-[-2%] flex-1 sm:flex-initial text-center justify-center whitespace-nowrap">
                             CANCEL</button>
-                        <button
+                        <button @click="navigateTo('/landlord/add-unit')"
                             class="px-5 py-[14px] rounded-[80px] text-primary text-[12px] font-extrabold uppercase leading-[100%] tracking-[-2%] flex-1 sm:flex-initial text-center justify-center whitespace-nowrap"
                             style="background: linear-gradient(225.01deg, #3388FF 0%, #004CE6 100%);">CREATE</button>
                     </div>
@@ -183,7 +183,7 @@ const units: Unit[] = [
                                     ${{ unit.rent }} Rent
                                 </p>
 
-                                <button
+                                <button @click="navigateTo('/landlord/view-unit')"
                                     class="px-[16px] py-[9px] text-[12px] font-bold text-brand-blue border border-brand-blue rounded-[80px] uppercase leading-[100%] tracking-[-2%]">
                                     VIEW UNIT
                                 </button>

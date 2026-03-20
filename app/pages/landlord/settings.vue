@@ -9,10 +9,6 @@ import Subscription from '~/components/settings/Subscription.vue'
 import TeamManagement from '~/components/settings/TeamManagement.vue'
 import Sidebar from '~/components/landlord/Sidebar.vue'
 
-definePageMeta({
-    path: '/settings',
-})
-
 const activeSection = ref('Account Settings')
 
 const navSections = [

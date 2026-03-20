@@ -2,10 +2,6 @@
 import Navbar from '~/components/landlord/Navbar.vue';
 import Sidebar from '~/components/landlord/Sidebar.vue';
 
-definePageMeta({
-    path: '/add-property',
-})
-
 const propertyType = ref('Multi Units')
 
 const amenities = ref([

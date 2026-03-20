@@ -15,7 +15,7 @@ const { toggleSidebar } = useSidebar()
                 </svg>
             </button>
 
-            <NuxtLink to="/dashboard" class="lg:hidden flex items-center gap-2">
+            <NuxtLink to="/landlord/dashboard" class="lg:hidden flex items-center gap-2">
                 <span class="w-6 h-6 flex items-center justify-center">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
