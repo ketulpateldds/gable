@@ -1,22 +1,19 @@
-<script setup>
-import { onMounted, onUnmounted, ref } from 'vue'
+<script setup lang="ts">
 import Sidebar from '@/components/landlord/Sidebar.vue'
 import Navbar from '@/components/landlord/Navbar.vue'
-import ListingDetailModal from '@/components/landlord/ListingDetailModal.vue'
+import type { Map as LeafletMap } from 'leaflet'
+import type { Property } from '~/types/interfaces';
 
-const isDetailOpen = ref(false)
-const selectedProperty = ref(null)
-
-const openDetail = (property) => {
-    selectedProperty.value = property
-    isDetailOpen.value = true
+interface Filter {
+    label: string;
+    key: string;
 }
 
-const properties = [
+const properties: Property[] = [
     {
         id: '1',
         title: 'Cute Home',
-        address: '123 Main St, City',
+        address: '123 Main St, Oakland, CA',
         price: '$3,200/mo',
         sqft: '1,524 sq ft',
         bedrooms: 3,
@@ -25,10 +22,10 @@ const properties = [
         email: 'leasing@domain.com',
         images: [
             '/assets/listing1.png',
+            '/assets/listing2.png',
+            '/assets/listing3.png',
             '/assets/listing1.png',
-            '/assets/listing1.png',
-            '/assets/listing1.png',
-            '/assets/listing1.png'
+            '/assets/listing2.png'
         ],
         coords: [38.96, -77.34]
     },
@@ -44,10 +41,10 @@ const properties = [
         email: 'leasing@domain.com',
         images: [
             '/assets/listing2.png',
+            '/assets/listing1.png',
+            '/assets/listing3.png',
             '/assets/listing2.png',
-            '/assets/listing2.png',
-            '/assets/listing2.png',
-            '/assets/listing2.png'
+            '/assets/listing1.png'
         ],
         coords: [38.64, -77.33]
     },
@@ -63,24 +60,28 @@ const properties = [
         email: 'leasing@domain.com',
         images: [
             '/assets/listing3.png',
+            '/assets/listing1.png',
+            '/assets/listing2.png',
             '/assets/listing3.png',
-            '/assets/listing3.png',
-            '/assets/listing3.png',
-            '/assets/listing3.png'
+            '/assets/listing1.png'
         ],
         coords: [38.81, -76.75]
     }
 ]
 
-const filters = [
+const goToDetail = (id: string): void => {
+    navigateTo(`/landlord/listings/${id}`)
+}
+
+const filters: Filter[] = [
     { label: 'PRICE', key: 'price' },
     { label: 'BEDS/BATHS', key: 'beds_baths' },
     { label: 'HOME TYPE', key: 'home_type' }
 ]
 
-let map = null
+let map: LeafletMap | null = null
 
-onMounted(async () => {
+onMounted(async (): Promise<void> => {
     if (process.client) {
         const L = await import('leaflet')
         const leafletStyle = document.createElement('link')
@@ -109,14 +110,14 @@ onMounted(async () => {
             iconAnchor: [16, 16]
         })
 
-        const markers = [
-            [38.96, -77.34], // Near Sterling/Reston
-            [38.64, -77.33], // Near Dale City
-            [38.81, -76.75] // Near Upper Marlboro
+        const markers: [number, number][] = [
+            [38.96, -77.34],
+            [38.64, -77.33],
+            [38.81, -76.75]
         ]
 
-        markers.forEach(pos => {
-            L.marker(pos, { icon: customIcon }).addTo(map)
+        markers.forEach((pos: [number, number]) => {
+            L.marker(pos, { icon: customIcon }).addTo(map!)
         })
 
         if (markers.length > 0) {
@@ -126,7 +127,7 @@ onMounted(async () => {
     }
 })
 
-onUnmounted(() => {
+onUnmounted((): void => {
     if (map) {
         map.remove()
     }
@@ -141,6 +142,8 @@ onUnmounted(() => {
             <Navbar />
 
             <main class="flex-1 px-6 py-[19px] flex flex-col min-h-0">
+
+                <!-- Header -->
                 <div class="flex items-center justify-between mb-5">
                     <div>
                         <h1 class="text-[20px] font-bold text-[#0F1114] leading-[100%] mb-[4px]">Listings</h1>
@@ -150,13 +153,14 @@ onUnmounted(() => {
                     <div class="flex gap-2">
                         <button
                             class="h-10 px-6 rounded-[80px] border border-[#0F1114] text-[12px] font-extrabold text-[#0F1114] leading-[100%] uppercase tracking-[-2%]">SHARE</button>
-                        <button @click="navigateTo('/create-listing')"
+                        <button @click="navigateTo('/landlord/create-listing')"
                             class="h-10 px-6 rounded-[80px] text-[12px] font-extrabold text-primary leading-[100%] uppercase tracking-[-2%]"
                             style="background: linear-gradient(225.01deg, #3388FF 0%, #004CE6 100%);">Create
                             Listing</button>
                     </div>
                 </div>
 
+                <!-- Filters -->
                 <div class="flex items-center gap-2 mb-6 flex-wrap">
                     <div class="relative max-w-[425px] w-full">
                         <div class="absolute inset-y-0 left-2 flex items-center pointer-events-none">
@@ -192,6 +196,7 @@ onUnmounted(() => {
                     </div>
                 </div>
 
+                <!-- Map -->
                 <div class="flex flex-col xl:flex-row gap-4 flex-1 overflow-hidden">
                     <div
                         class="w-full xl:flex-[6] h-[382px] border border-[#0F11141A] rounded-[24px] overflow-hidden pt-[22px] p-[25px] flex flex-col bg-primary">
@@ -244,6 +249,7 @@ onUnmounted(() => {
                         </div>
                     </div>
 
+                    <!-- List View -->
                     <div
                         class="w-full xl:flex-[4] border border-[#0F11141A] rounded-3xl flex flex-col min-h-0 pt-[22px] p-[25px]">
                         <div class="flex items-center justify-between mb-5">
@@ -263,7 +269,7 @@ onUnmounted(() => {
 
                         <div
                             class="flex-1 overflow-y-auto overflow-x-hidden scrollbar-hide grid grid-cols-1 md:grid-cols-2 xl:grid-cols-1 gap-6 content-start pb-4">
-                            <div v-for="property in properties" :key="property.id" @click="openDetail(property)"
+                            <div v-for="property in properties" :key="property.id" @click="goToDetail(property.id)"
                                 class="flex flex-col group cursor-pointer">
                                 <div class="relative h-[160px] rounded-[16px] overflow-hidden mb-3">
                                     <NuxtImg :src="property.images[0]" :alt="property.title"
@@ -388,10 +394,11 @@ onUnmounted(() => {
                         </div>
                     </div>
                 </div>
+
             </main>
+
         </div>
 
-        <ListingDetailModal :is-open="isDetailOpen" :property="selectedProperty" @close="isDetailOpen = false" />
     </div>
 </template>
 

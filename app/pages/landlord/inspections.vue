@@ -93,7 +93,7 @@ function statusColor(status) {
                             class="h-10 px-5 rounded-[80px] border border-[#0F1114] text-[12px] font-extrabold uppercase leading-[100%] tracking-[-0.02em] text-[#0F1114]">
                             EXPORT
                         </button>
-                        <button @click="isTemplatesModalOpen = true"
+                        <button @click="navigateTo('/landlord/inspection/template')"
                             class="h-10 px-5 rounded-[80px] border border-[#0F1114] text-[12px] font-extrabold uppercase leading-[100%] tracking-[-0.02em] text-[#0F1114]">
                             TEMPLATES
                         </button>
@@ -332,6 +332,5 @@ function statusColor(status) {
         </div>
 
         <NewInspectionModal :open="isNewInspectionModalOpen" @close="isNewInspectionModalOpen = false" />
-        <InspectionTemplatesModal :isOpen="isTemplatesModalOpen" @close="isTemplatesModalOpen = false" />
     </div>
 </template>

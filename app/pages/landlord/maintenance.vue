@@ -1,9 +1,14 @@
 <script setup>
+import AddServiceProModal from '~/components/landlord/AddServiceProModal.vue'
+import InviteServiceProModal from '~/components/landlord/InviteServiceProModal.vue'
 import Navbar from '~/components/landlord/Navbar.vue'
 import NewRequestModal from '~/components/landlord/NewRequestModal.vue'
 import Sidebar from '~/components/landlord/Sidebar.vue'
 
 const showNewRequest = ref(false)
+const showAddServicePro = ref(false)
+const showInviteServicePro = ref(false)
+
 const stats = [
     { label: 'OPEN REQUESTS', value: '3', sub: 'Not completed or closed' },
     { label: 'WAITING APPROVAL', value: '1', sub: 'Needs owner/manager approval' },
@@ -103,19 +108,28 @@ const quickActions = [
 
             <main class="flex-1 px-6 py-[19px]">
 
-                <div class="flex items-start justify-between mb-5">
+                <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-5">
                     <div>
                         <h1 class="text-[20px] font-bold text-[#0F1114] leading-[100%] mb-[4px]">Maintenance</h1>
                         <p class="text-[12px] font-medium text-[#0F1114CC] leading-4 tracking-[-2%]">Track requests,
                             assign vendors, and manage approvals.</p>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <button
-                            class="h-10 px-5 rounded-[80px] border border-[#0F1114] text-[12px] font-extrabold uppercase tracking-[-2%] text-[#0F1114] leading-[100%]">
-                            RULES
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
+                        <button @click="showInviteServicePro = true"
+                            class="h-10 px-5 rounded-[80px] border border-[#0F1114] text-[12px] font-extrabold uppercase tracking-[-2%] text-[#0F1114] leading-[100%] w-full sm:w-auto text-center justify-center flex items-center">
+                            Invite Service Pro
+                        </button>
+                        <button @click="showAddServicePro = true"
+                            class="h-10 px-5 rounded-[80px] border border-[#0F1114] text-[12px] font-extrabold uppercase tracking-[-2%] text-[#0F1114] leading-[100%] flex items-center justify-center gap-[5px] w-full sm:w-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M12 5v14M5 12h14" />
+                            </svg>
+                            Add Service Pro
                         </button>
                         <button @click="showNewRequest = true"
-                            class="h-10 pl-[18px] pr-5 rounded-[80px] text-primary text-[12px] font-extrabold uppercase tracking-[-2%] leading-[100%] flex items-center gap-[5px]"
+                            class="h-10 pl-[18px] pr-5 rounded-[80px] text-primary text-[12px] font-extrabold uppercase tracking-[-2%] leading-[100%] flex items-center justify-center gap-[5px] w-full sm:w-auto"
                             style="background: linear-gradient(225.01deg, #3388FF 0%, #004CE5 100%);">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
@@ -358,5 +372,7 @@ const quickActions = [
         </div>
     </div>
 
+    <AddServiceProModal :isOpen="showAddServicePro" @close="showAddServicePro = false" />
     <NewRequestModal :open="showNewRequest" @close="showNewRequest = false" />
+    <InviteServiceProModal :isOpen="showInviteServicePro" @close="showInviteServicePro = false" />
 </template>

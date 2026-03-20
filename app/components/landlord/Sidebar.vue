@@ -8,25 +8,27 @@ watch(() => route.path, () => {
 })
 
 const activeNav = computed(() => {
-    if (route.path === '/add-property' || route.path === '/view-unit' || route.path === '/add-unit') return 'Portfolio'
-    if (route.path === '/create-listing') return 'Listings'
+    if (route.path === '/landlord/add-property' || route.path === '/landlord/view-unit' || route.path === '/landlord/add-unit') return 'Portfolio'
+    if (route.path === '/landlord/create-listing' || route.path.startsWith('/landlord/listings/')) return 'Listings'
+    if (route.path === '/landlord/new-application' || route.path === '/landlord/view-application') return 'Applications'
+    if (route.path === '/landlord/inspection-report' || route.path === '/landlord/inspection/template') return 'Maintenance'
     const item = navItems.find(item => item.to === route.path)
     return item ? item.label : 'Dashboard'
 })
 
-const svg = (body) =>
-    `<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${body}</svg>`
+const svg = (body, viewBox = '0 0 24 24') =>
+    `<svg width="18" height="18" viewBox="${viewBox}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0">${body}</svg>`
 
 const navItems = [
     {
         label: 'Dashboard',
         to: '/landlord/dashboard',
-        icon: svg('<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>'),
+        icon: svg('<path fill-rule="evenodd" clip-rule="evenodd" d="M15.8327 17.5H13.3327C12.4118 17.5 11.666 16.7542 11.666 15.8333V11.6667C11.666 10.7458 12.4118 10 13.3327 10H15.8327C16.7535 10 17.4993 10.7458 17.4993 11.6667V15.8333C17.4993 16.7542 16.7535 17.5 15.8327 17.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M15.8327 7.5H13.3327C12.4118 7.5 11.666 6.75417 11.666 5.83333V4.16667C11.666 3.24583 12.4118 2.5 13.3327 2.5H15.8327C16.7535 2.5 17.4993 3.24583 17.4993 4.16667V5.83333C17.4993 6.75417 16.7535 7.5 15.8327 7.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M4.16667 2.5H6.66667C7.5875 2.5 8.33333 3.24583 8.33333 4.16667V8.33333C8.33333 9.25417 7.5875 10 6.66667 10H4.16667C3.24583 10 2.5 9.25417 2.5 8.33333V4.16667C2.5 3.24583 3.24583 2.5 4.16667 2.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M4.16667 12.5H6.66667C7.5875 12.5 8.33333 13.2458 8.33333 14.1667V15.8333C8.33333 16.7542 7.5875 17.5 6.66667 17.5H4.16667C3.24583 17.5 2.5 16.7542 2.5 15.8333V14.1667C2.5 13.2458 3.24583 12.5 4.16667 12.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>', '0 0 20 20'),
     },
     {
         label: 'Portfolio',
         to: '/landlord/portfolio',
-        icon: svg('<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>'),
+        icon: svg('<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19l2.757 -7.351a1 1 0 0 1 .936 -.649h12.307a1 1 0 0 1 .986 1.164l-.996 5.211a2 2 0 0 1 -1.964 1.625h-14.026a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v2" />'),
     },
     {
         label: 'Tenants',
@@ -36,12 +38,12 @@ const navItems = [
     {
         label: 'Listings',
         to: '/landlord/listings',
-        icon: svg('<line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="3" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="3" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="3" cy="18" r="1" fill="currentColor" stroke="none"/>'),
+        icon: svg('<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 5a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2" /><path d="M9 12h6" /><path d="M9 16h6" />'),
     },
     {
         label: 'Applications',
         to: '/landlord/applications',
-        icon: svg('<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/>'),
+        icon: svg('<path fill-rule="evenodd" clip-rule="evenodd" d="M15.8857 10.4208C16.4457 9.8608 17.354 9.85997 17.914 10.4208V10.4208C18.474 10.9808 18.474 11.8891 17.9132 12.4491L13.1015 17.2566C12.9457 17.4125 12.734 17.5 12.5132 17.5H10.834V15.8208C10.834 15.6 10.9215 15.3883 11.0782 15.2316L15.8857 10.4208V10.4208Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.83398 7.50004H12.5007" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.83398 10.8333H10.0007" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.83398 14.1667H8.33398" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.8497 13.5166L14.8164 11.4833" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.8333 7.50004V5.00004C15.8333 4.07921 15.0875 3.33337 14.1667 3.33337H4.16667C3.24583 3.33337 2.5 4.07921 2.5 5.00004V15.8334C2.5 16.7542 3.24583 17.5 4.16667 17.5H7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.5007 2.5V4.16667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.16667 2.5V4.16667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.83268 2.5V4.16667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>', '0 0 20 20'),
     },
     {
         label: 'Accounting',
@@ -51,7 +53,7 @@ const navItems = [
     {
         label: 'Documents',
         to: '/landlord/document',
-        icon: svg('<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>'),
+        icon: svg('<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/>'),
     },
     {
         label: 'Maintenance',
@@ -61,22 +63,22 @@ const navItems = [
     {
         label: 'Inspections',
         to: '/landlord/inspections',
-        icon: svg('<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>'),
+        icon: svg('<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M11 15a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M18.5 18.5l2.5 2.5" /><path d="M4 6h16" /><path d="M4 12h4" /><path d="M4 18h4" />'),
     },
     {
         label: 'Calendar',
         to: '/landlord/calendar',
-        icon: svg('<rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>'),
+        icon: svg('<path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12" /><path d="M16 3v4" /><path d="M8 3v4" /><path d="M4 11h16" /><path d="M7 14h.013" /><path d="M10.01 14h.005" /><path d="M13.01 14h.005" /><path d="M16.015 14h.005" /><path d="M13.015 17h.005" /><path d="M7.01 17h.005" /><path d="M10.01 17h.005" />'),
     },
     {
         label: 'Contacts',
         to: '/landlord/contact',
-        icon: svg('<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>'),
+        icon: svg('<path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M16 22a4 4 0 0 0-8 0"/><circle cx="12" cy="15" r="3"/>'),
     },
     {
         label: 'Messages',
         to: '/landlord/messages',
-        icon: svg('<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>'),
+        icon: svg('<path fill-rule="evenodd" clip-rule="evenodd" d="M3.78352 14.1692C2.98018 12.9758 2.49935 11.5475 2.49935 10C2.49935 5.8575 5.85685 2.5 9.99935 2.5C14.1418 2.5 17.4993 5.8575 17.4993 10C17.4993 14.1425 14.1418 17.5 9.99935 17.5C8.72768 17.5 7.53268 17.1775 6.48268 16.6192C5.36102 17.2175 4.08852 17.57 2.72935 17.57C2.36768 17.57 2.01518 17.5375 1.66602 17.4917C2.64352 16.6025 3.37852 15.4608 3.78352 14.1692Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>', '0 0 20 20'),
     },
     {
         label: 'Settings',

@@ -19,3 +19,18 @@ export interface ComparisonFeature {
   growth: boolean;
   pro: boolean;
 }
+
+// listings page interfaces
+export interface Property {
+  id: string;
+  title: string;
+  address: string;
+  price: string;
+  sqft: string;
+  bedrooms: number;
+  bathrooms: number;
+  phone: string;
+  email: string;
+  images: string[];
+  coords: [number, number];
+}

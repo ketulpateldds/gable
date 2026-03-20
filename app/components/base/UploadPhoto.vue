@@ -6,7 +6,7 @@ const props = defineProps({
     },
     description: {
         type: String,
-        default: "Upload an optional applicant photo"
+        default: ""
     }
 })
 </script>
@@ -31,7 +31,8 @@ const props = defineProps({
             <span class="text-[12px] font-bold text-neutral-primary/60 leading-[100%] tracking-[-2%] flex-1">No
                 file chosen</span>
         </div>
-        <p class="mt-[5px] text-[12px] font-bold text-neutral-primary/60 leading-4 tracking-[-2%]">
+        <p v-if="props.description"
+            class="mt-[5px] text-[12px] font-bold text-neutral-primary/60 leading-4 tracking-[-2%]">
             {{ props.description }}</p>
     </div>
 </template>

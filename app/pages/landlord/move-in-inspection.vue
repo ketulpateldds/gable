@@ -2,6 +2,10 @@
 import Navbar from '~/components/landlord/Navbar.vue'
 import Sidebar from '~/components/landlord/Sidebar.vue'
 
+definePageMeta(
+    { path: '/landlord/inspection/template', }
+)
+
 // Sections with checklist items
 const sections = ref([
     {
@@ -196,7 +200,6 @@ function setCondition(item, cond) {
                     <div v-if="section.expanded" class="px-6 py-[25px] flex flex-col gap-4">
                         <div v-for="(item, iIdx) in section.items" :key="iIdx"
                             class="border border-[#0F11141A] rounded-[12px]">
-
                             <p
                                 class="px-4 py-[13px] text-[16px] font-bold text-[#0F1114] leading-[100%] border-b border-[#0F11141A]">
                                 {{ item.name }}
