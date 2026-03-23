@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed, onMounted } from 'vue'
+
 const props = defineProps({
     label: {
         type: String,
@@ -25,6 +27,24 @@ const getOptionValue = (option: string | { value: string; label: string }) =>
 
 const getOptionLabel = (option: string | { value: string; label: string }) =>
     typeof option === 'string' ? option : option.label
+
+// Use first option as default if no placeholder and no modelValue
+const effectiveValue = computed(() => {
+    if (props.modelValue) return props.modelValue
+    if (!props.placeholder && props.options.length > 0) {
+        return getOptionValue(props.options[0])
+    }
+    return ""
+})
+
+onMounted(() => {
+    if (!props.placeholder && !props.modelValue && props.options.length > 0) {
+        const first = props.options[0]
+        if (first !== undefined) {
+            emit('update:modelValue', getOptionValue(first))
+        }
+    }
+})
 </script>
 
 <template>
@@ -34,10 +54,10 @@ const getOptionLabel = (option: string | { value: string; label: string }) =>
             {{ props.label }}
         </label>
         <div class="relative">
-            <select :value="props.modelValue"
+            <select :value="effectiveValue"
                 @change="emit('update:modelValue', ($event.target as HTMLSelectElement).value)"
                 class="w-full py-[15px] px-5 rounded-[80px] border border-neutral-primary/10 text-[12px] font-semibold uppercase leading-[100%] tracking-[-2%] text-neutral-primary appearance-none focus:outline-none">
-                <option v-if="props.placeholder" value="" disabled :selected="!props.modelValue">
+                <option v-if="props.placeholder" value="" disabled :selected="!effectiveValue">
                     {{ props.placeholder }}
                 </option>
                 <option v-for="option in props.options" :key="getOptionValue(option)" :value="getOptionValue(option)">
