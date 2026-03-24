@@ -9,7 +9,7 @@ const navLinks: NavLink[] = [
     { to: '/pricing', label: 'Pricing' },
     { to: '/how-it-works', label: 'How it works' },
     { to: '/listings', label: 'Listings' },
-    { to: '/tenant', label: 'Tenant Placement' },
+    { to: '/tenant-placement', label: 'Tenant Placement' },
 ];
 
 const isOpen = ref(false)
